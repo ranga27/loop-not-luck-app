@@ -8,6 +8,8 @@ target 'LoopNotLuckApp' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
+
   target 'LoopNotLuckAppTests' do
     inherit! :complete
     # Pods for testing
