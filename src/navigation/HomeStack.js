@@ -9,14 +9,13 @@ import {IconButton} from 'react-native-paper';
  * only when the user is logged in
  */
 
-const Stack = createStackNavigator();
 const ChatAppStack = createStackNavigator();
 const ModalStack = createStackNavigator();
 
 /**
  * All chat app related screens
  */
-function ChatApp() {
+function Home() {
   return (
     <ChatAppStack.Navigator
       screenOptions={{
@@ -48,8 +47,8 @@ function ChatApp() {
 
 export default function HomeStack() {
   return (
-    <ModalStack.Navigator mode="modal" headerMode="none">
-      <ModalStack.Screen name="ChatApp" component={ChatApp} />
+    <ModalStack.Navigator headerMode="none">
+      <ModalStack.Screen name="Home" component={Home} />
       <ModalStack.Screen name="AddRoom" component={AddRoomScreen} />
     </ModalStack.Navigator>
   );

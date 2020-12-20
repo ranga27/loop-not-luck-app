@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, Text, Alert} from 'react-native';
 import {Title, List, Divider} from 'react-native-paper';
 import {AuthContext} from '../navigation/AuthProvider';
 import FormButton from '../components/FormButton';
@@ -13,61 +13,56 @@ import Loading from '../components/Loading';
  */
 
 export default function HomeScreen({navigation}) {
-  const [threads, setThreads] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+  const [info, setInfo] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const {firstName, lastName} = info || {};
   const {user, logout} = useContext(AuthContext);
-
   /**
-   * Fetch threads from Firestore using the hook useEffect
+   * Fetch info from Firestore using the hook useEffect
    */
   useEffect(() => {
-    const unsubscribe = firestore()
-      .collection('THREADS')
-      .onSnapshot((querySnapshot) => {
-        const threads = querySnapshot.docs.map((documentSnapshot) => {
-          return {
-            _id: documentSnapshot.id,
-            // give defaults
-            name: '',
-            ...documentSnapshot.data(),
-          };
-        });
+    const loadUser = async () => {
+      console.log('User: ' + user.uid);
 
-        setThreads(threads);
-
-        if (loading) {
-          setLoading(false);
-        }
-      });
-
+      const userDoc = await firestore().collection('users').doc(user.uid).get();
+      if (!userDoc.exists) {
+        Alert.alert('No user data found!');
+      } else {
+        const userData = userDoc.data();
+        console.log('Data: ' + userData);
+        setInfo(userData);
+        setLoading(false);
+      }
+    };
     /**
-     * When the component loads, to fetch the existing chat rooms,unsubscribe listener is decalred to the query.
-     * This listener is going to subscribe to any updates. These updates can be new or existing chat rooms.
-     * When the screen unmounts, it is important to unsubscribe from this listener.
+     * unsubscribe listener
      */
-    return () => unsubscribe();
+
+    loadUser(); //function to undo our stuff from above when component unmounts
   }, []);
 
+  // Firebase code for loading the candidate goes here
+
+  // Display a loading screen while the Firebase data is loading
   if (loading) {
     return <Loading />;
   }
   return (
     <View style={styles.container}>
-      <FlatList
-        data={threads}
-        keyExtractor={(item) => item._id}
-        ItemSeparatorComponent={() => <Divider />}
-        renderItem={({item}) => (
-          <List.Item
-            title={item.name}
-            description="Item description"
-            titleNumberOfLines={1}
-            titleStyle={styles.listTitle}
-            descriptionStyle={styles.listDescription}
-            descriptionNumberOfLines={1}
-          />
-        )}
+      <Title> {firstName + ' ' + lastName}</Title>
+      <Text>You've logged in, now complete your profile</Text>
+
+      <FormButton
+        title="Profile"
+        modeValue="contained"
+        labelStyle={styles.ButtonLabel}
+        onPress={() => navigation.navigate('Step1')}
+      />
+      <FormButton
+        modeValue="contained"
+        title="Logout"
+        labelStyle={styles.ButtonLabel}
+        onPress={() => logout()}
       />
     </View>
   );
@@ -77,11 +72,16 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f5f5',
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   listTitle: {
     fontSize: 22,
   },
   listDescription: {
     fontSize: 16,
+  },
+  ButtonLabel: {
+    fontSize: 20,
   },
 });

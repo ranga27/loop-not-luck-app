@@ -1,28 +1,23 @@
-import React, {useState, useContext} from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Title} from 'react-native-paper';
-import FormInput from '../components/FormInput';
+import React from 'react';
+import {View, StyleSheet, Image} from 'react-native';
 import FormButton from '../components/FormButton';
 
 export default function LoginScreen({navigation}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   return (
     <View style={styles.container}>
-      <Title style={styles.titleText}>Loop Not Luck</Title>
+      <Image style={styles.image} source={require('../../assets/icon.png')} />
 
-      <FormButton
-        title="Login"
-        modeValue="contained"
-        labelStyle={styles.ButtonLabel}
-        onPress={() => navigation.navigate('Login')}
-      />
       <FormButton
         title="Signup"
         modeValue="contained"
         labelStyle={styles.ButtonLabel}
         onPress={() => navigation.navigate('Signup')}
+      />
+      <FormButton
+        title="Login"
+        modeValue="outlined"
+        labelStyle={styles.ButtonLabel}
+        onPress={() => navigation.navigate('Login')}
       />
     </View>
   );
@@ -39,12 +34,16 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 10,
-    textAlign: 'center',
+    textAlign: 'auto',
   },
   ButtonLabel: {
     fontSize: 22,
   },
   navButtonText: {
     fontSize: 16,
+  },
+  image: {
+    width: 400,
+    height: 400,
   },
 });
