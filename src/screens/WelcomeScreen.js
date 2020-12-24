@@ -5,7 +5,10 @@ import FormButton from '../components/FormButton';
 export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require('../../assets/icon.png')} />
+      <Image
+        style={styles.image}
+        source={require('../assets/images/black.png')}
+      />
 
       <FormButton
         title="Signup"
@@ -25,7 +28,6 @@ export default function LoginScreen({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f5f5f5',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

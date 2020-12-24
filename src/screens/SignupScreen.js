@@ -62,7 +62,6 @@ export default function SignupScreen({navigation}) {
         icon="keyboard-backspace"
         size={30}
         style={styles.navButton}
-        color="#6646ee"
         onPress={() => navigation.goBack()}
       />
     </View>
@@ -71,7 +70,6 @@ export default function SignupScreen({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f5f5f5',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

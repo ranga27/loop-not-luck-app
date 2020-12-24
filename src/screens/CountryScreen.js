@@ -1,31 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {RadioButton, Title, Text} from 'react-native-paper';
+import {Title, Text} from 'react-native-paper';
+import {RadioGroup} from '../components/RadioGroup';
+const countryOptions = ['Yes', 'No'];
 
-import FormButton from '../components/FormButton';
-
-export default function CountryScreen({navigation, route}) {
-  const [country, setCountry] = useState('');
-  const {gender} = route.params;
+export default function CountryScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Title style={styles.titleText}>Do you live in the United Kingdom?</Title>
       <Text style={styles.info}>
         If no, please let us know where in the 'other' section
       </Text>
-      <RadioButton.Group
-        onValueChange={(value) => setCountry(value)}
-        value={country}>
-        <RadioButton.Item label="Yes" value="yes" />
-        <RadioButton.Item label="Other" value="other" />
-      </RadioButton.Group>
-      <FormButton
-        title="Next"
-        modeValue="contained"
-        labelStyle={styles.ButtonLabel}
-        onPress={() =>
-          navigation.navigate('Step3', {gender: gender, country: country})
-        }
+      <RadioGroup
+        options={countryOptions}
+        nextScreen={'Step3'}
+        navigation={navigation}
+        field={'country'}
       />
     </View>
   );
@@ -33,7 +23,6 @@ export default function CountryScreen({navigation, route}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f5f5f5',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

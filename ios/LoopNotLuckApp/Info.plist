@@ -55,21 +55,40 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-  <string>AntDesign.ttf</string>
-  <string>Entypo.ttf</string>
-  <string>EvilIcons.ttf</string>
-  <string>Feather.ttf</string>
-  <string>FontAwesome.ttf</string>
-  <string>FontAwesome5_Brands.ttf</string>
-  <string>FontAwesome5_Regular.ttf</string>
-  <string>FontAwesome5_Solid.ttf</string>
-  <string>Foundation.ttf</string>
-  <string>Ionicons.ttf</string>
-  <string>MaterialIcons.ttf</string>
-  <string>MaterialCommunityIcons.ttf</string>
-  <string>SimpleLineIcons.ttf</string>
-  <string>Octicons.ttf</string>
-  <string>Zocial.ttf</string>
-</array>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>ZonaPro-Black.ttf</string>
+		<string>ZonaPro-BlackItalic.ttf</string>
+		<string>ZonaPro-Bold.ttf</string>
+		<string>ZonaPro-BoldItalic.ttf</string>
+		<string>ZonaPro-ExtraBold.ttf</string>
+		<string>ZonaPro-ExtraBoldItalic.ttf</string>
+		<string>ZonaPro-Hairline.ttf</string>
+		<string>ZonaPro-HairlineItalic.ttf</string>
+		<string>ZonaPro-LightItalic.ttf</string>
+		<string>ZonaPro-RegularItalic.ttf</string>
+		<string>ZonaPro-SemiBold.ttf</string>
+		<string>ZonaPro-SemiBoldItalic.ttf</string>
+		<string>ZonaPro-ThinItalic.ttf</string>
+		<string>ZonaPro-Ultra.ttf</string>
+		<string>ZonaPro-UltraItalic.ttf</string>
+		<string>ZonaPro-Light.ttf</string>
+		<string>ZonaPro-Regular.ttf</string>
+		<string>ZonaPro-Thin.ttf</string>
+	</array>
 </dict>
 </plist>

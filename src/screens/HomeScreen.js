@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, StyleSheet, Text, Alert} from 'react-native';
-import {Title, List, Divider} from 'react-native-paper';
+import {View, StyleSheet, Alert} from 'react-native';
+import {Title, Text} from 'react-native-paper';
 import {AuthContext} from '../navigation/AuthProvider';
 import FormButton from '../components/FormButton';
 import firestore from '@react-native-firebase/firestore';
@@ -37,12 +37,8 @@ export default function HomeScreen({navigation}) {
     /**
      * unsubscribe listener
      */
-
     loadUser(); //function to undo our stuff from above when component unmounts
   }, []);
-
-  // Firebase code for loading the candidate goes here
-
   // Display a loading screen while the Firebase data is loading
   if (loading) {
     return <Loading />;
@@ -70,7 +66,6 @@ export default function HomeScreen({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f5f5f5',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

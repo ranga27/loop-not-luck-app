@@ -1,11 +1,11 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import AuthStack from './AuthStack';
-import HomeStack from './HomeStack';
 import OnboardStack from './OnboardStack';
 import {AuthContext} from './AuthProvider';
 import Loading from '../components/Loading';
+import theme from '../constants/theme';
 
 /**
  * We check here if the user is logged in or not
@@ -33,7 +33,7 @@ export default function Routes() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       {user ? <OnboardStack /> : <AuthStack />}
     </NavigationContainer>
   );

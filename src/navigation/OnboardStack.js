@@ -11,7 +11,6 @@ import DisabilityScreen from '../screens/DisabilityScreen';
  * only when the user is logged in
  */
 
-const ModalStack = createStackNavigator();
 const StepsStack = createStackNavigator();
 
 export default function OnboardStack() {
