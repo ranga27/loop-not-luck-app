@@ -19,19 +19,19 @@ const fontConfig = {
   },
   android: {
     regular: {
-      fontFamily: 'ZonaPro-ExtraLight',
+      fontFamily: 'ZonaPro-Regular',
       fontWeight: 'normal',
     },
     medium: {
-      fontFamily: 'ZonaPro-ExtraLight',
+      fontFamily: 'ZonaPro-Regular',
       fontWeight: 'normal',
     },
     light: {
-      fontFamily: 'ZonaPro-ExtraLight',
+      fontFamily: 'ZonaPro-Light',
       fontWeight: 'normal',
     },
     thin: {
-      fontFamily: 'ZonaPro-ExtraLight',
+      fontFamily: 'ZonaPro-Thin',
       fontWeight: 'normal',
     },
   },
