@@ -1,24 +1,24 @@
 import React from 'react';
 import {View, ScrollView, StyleSheet} from 'react-native';
 import {Title} from 'react-native-paper';
-import ethnicityOptions from '../constants/ethnicityOptions';
+import {ethnicityOptions} from '../constants';
 import {RadioGroup} from '../components/RadioGroup';
 
-export default function EthnicityScreen({navigation}) {
+export const Ethnicity = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Title style={styles.titleText}>What is your ethnicity?</Title>
       <ScrollView style={styles.scrollView}>
         <RadioGroup
           options={ethnicityOptions}
-          nextScreen={'Step4'}
+          nextScreen={'Disability'}
           navigation={navigation}
           field={'ethnicity'}
         />
       </ScrollView>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

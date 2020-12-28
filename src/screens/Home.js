@@ -1,18 +1,16 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, StyleSheet, Alert} from 'react-native';
-import {Title, Text} from 'react-native-paper';
-import {AuthContext} from '../navigation/AuthProvider';
-import FormButton from '../components/FormButton';
 import firestore from '@react-native-firebase/firestore';
-
-import Loading from '../components/Loading';
+import {AuthContext} from '../navigation/AuthProvider';
+import {View, StyleSheet, Alert} from 'react-native';
+import {Loading, FormButton} from '../components';
+import {Title, Text} from 'react-native-paper';
 
 /**
  * This is the landing screen after
  * user logs in successfully
  */
 
-export default function HomeScreen({navigation}) {
+export const Home = ({navigation}) => {
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(false);
   const {firstName, lastName} = info || {};
@@ -23,7 +21,6 @@ export default function HomeScreen({navigation}) {
   useEffect(() => {
     const loadUser = async () => {
       console.log('User: ' + user.uid);
-
       const userDoc = await firestore().collection('users').doc(user.uid).get();
       if (!userDoc.exists) {
         Alert.alert('No user data found!');
@@ -38,7 +35,7 @@ export default function HomeScreen({navigation}) {
      * unsubscribe listener
      */
     loadUser(); //function to undo our stuff from above when component unmounts
-  }, []);
+  }, [user.uid]);
   // Display a loading screen while the Firebase data is loading
   if (loading) {
     return <Loading />;
@@ -52,7 +49,7 @@ export default function HomeScreen({navigation}) {
         title="Profile"
         modeValue="contained"
         labelStyle={styles.ButtonLabel}
-        onPress={() => navigation.navigate('Step1')}
+        onPress={() => navigation.navigate('Gender')}
       />
       <FormButton
         modeValue="contained"
@@ -62,7 +59,7 @@ export default function HomeScreen({navigation}) {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

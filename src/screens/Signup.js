@@ -1,11 +1,10 @@
 import React, {useState, useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title, IconButton, Checkbox} from 'react-native-paper';
-import FormInput from '../components/FormInput';
-import FormButton from '../components/FormButton';
+import {FormInput, FormButton} from '../components';
 import {AuthContext} from '../navigation/AuthProvider';
 
-export default function SignupScreen({navigation}) {
+export const Signup = ({navigation}) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -66,7 +65,7 @@ export default function SignupScreen({navigation}) {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

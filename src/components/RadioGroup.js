@@ -9,8 +9,8 @@ const RadioGroup = ({field, options, nextScreen, navigation}) => {
   const {user} = useContext(AuthContext);
   const id = user.uid;
   //field to update
-  const docUpdate = {[field]: selection};
-  console.log(docUpdate);
+  const dataToUpdate = {[field]: selection};
+  console.log(dataToUpdate);
 
   //trigger update only when value of selection is changed
   useEffect(() => {
@@ -19,7 +19,7 @@ const RadioGroup = ({field, options, nextScreen, navigation}) => {
       return;
     }
     const handleValueChange = async () => {
-      await updateProfile(docUpdate, id);
+      await updateProfile(dataToUpdate, id);
     };
     handleValueChange();
   }, [selection]);

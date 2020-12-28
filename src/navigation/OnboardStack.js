@@ -1,26 +1,21 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
-import GenderScreen from '../screens/GenderScreen';
-import CountryScreen from '../screens/CountryScreen';
-import EthnicityScreen from '../screens/EthnicityScreen';
-import DisabilityScreen from '../screens/DisabilityScreen';
-
+import {Home, Country, Disability, Ethnicity, Gender} from '../screens';
 /**
  * This will provide access to screens
  * only when the user is logged in
  */
 
-const StepsStack = createStackNavigator();
+const Stack = createStackNavigator();
 
-export default function OnboardStack() {
+export const OnboardStack = () => {
   return (
-    <StepsStack.Navigator headerMode="none">
-      <StepsStack.Screen name="Home" component={HomeScreen} />
-      <StepsStack.Screen name="Step1" component={GenderScreen} />
-      <StepsStack.Screen name="Step2" component={CountryScreen} />
-      <StepsStack.Screen name="Step3" component={EthnicityScreen} />
-      <StepsStack.Screen name="Step4" component={DisabilityScreen} />
-    </StepsStack.Navigator>
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Gender" component={Gender} />
+      <Stack.Screen name="Country" component={Country} />
+      <Stack.Screen name="Ethnicity" component={Ethnicity} />
+      <Stack.Screen name="Disability" component={Disability} />
+    </Stack.Navigator>
   );
-}
+};

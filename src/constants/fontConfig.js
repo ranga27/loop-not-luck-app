@@ -1,4 +1,4 @@
-const fontConfig = {
+export const fontConfig = {
   ios: {
     regular: {
       fontFamily: 'ZonaPro-Regular',
@@ -36,5 +36,3 @@ const fontConfig = {
     },
   },
 };
-
-export default fontConfig;

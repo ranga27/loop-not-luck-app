@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import FormButton from '../components/FormButton';
+import {FormButton} from '../components';
 
-export default function LoginScreen({navigation}) {
+export const Welcome = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image
@@ -24,7 +24,7 @@ export default function LoginScreen({navigation}) {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

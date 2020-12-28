@@ -20,7 +20,11 @@ export const AuthProvider = ({children}) => {
         setUser,
         login: async (email, password) => {
           try {
-            await auth().signInWithEmailAndPassword(email, password);
+            await auth()
+              .signInWithEmailAndPassword(email, password)
+              .then(() => {
+                console.log(`User ${email} logged in!`);
+              });
           } catch (e) {
             console.log(e);
           }

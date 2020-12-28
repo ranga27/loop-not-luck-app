@@ -1,4 +1,4 @@
-const genderOptions = [
+export const genderOptions = [
   'Male',
   'Female',
   'Male Transgender',
@@ -7,5 +7,3 @@ const genderOptions = [
   'Prefer not to say',
   'Other',
 ];
-
-export default genderOptions;

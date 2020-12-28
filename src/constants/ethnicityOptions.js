@@ -1,4 +1,4 @@
-const etincityOptions = [
+export const ethnicityOptions = [
   'Black / African / Caribbean / Black British',
   'Arab',
   'Asian / Asian British',
@@ -15,5 +15,3 @@ const etincityOptions = [
   'Pakistani',
   'Other',
 ];
-
-export default etincityOptions;

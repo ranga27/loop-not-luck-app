@@ -1,28 +1,28 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title, Text} from 'react-native-paper';
-import genderOptions from '../constants/genderOptions';
 import {RadioGroup} from '../components/RadioGroup';
 
-export default function GenderScreen({navigation}) {
+const disabilityOptions = ['Yes', 'No'];
+export const Disability = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Title style={styles.titleText}>Gender Identity</Title>
+      <Title style={styles.titleText}>
+        Do you consider yourself to have a disability?
+      </Title>
       <Text style={styles.info}>
-        If your gender is not stated below, please feel free to include it in
-        the 'other' section. As with all data in this application form, personal
-        information will not be shared with third parties and will be
-        anonymised.
+        This information will not be shared with potential employers without
+        your consent.
       </Text>
       <RadioGroup
-        options={genderOptions}
-        nextScreen={'Step2'}
+        options={disabilityOptions}
+        nextScreen={'Home'}
         navigation={navigation}
-        field={'gender'}
+        field={'disability'}
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -33,11 +33,11 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 24,
     marginBottom: 10,
+    paddingHorizontal: 50,
   },
   info: {
     textAlign: 'justify',
-    paddingHorizontal: 50,
-    paddingVertical: 20,
+    padding: 20,
   },
   ButtonLabel: {
     fontSize: 22,

@@ -1,7 +1,6 @@
 import React from 'react';
 import {TextInput as RNTextInput, View, StyleSheet} from 'react-native';
-import {IconButton} from 'react-native-paper';
-export default function TextInput({icon, ...otherProps}) {
+export const TextInput = ({icon, ...otherProps}) => {
   const validationColor = '#223e4b';
   return (
     <View
@@ -23,4 +22,4 @@ export default function TextInput({icon, ...otherProps}) {
       </View>
     </View>
   );
-}
+};

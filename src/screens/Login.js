@@ -1,14 +1,12 @@
 import React, {useState, useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title} from 'react-native-paper';
-import FormInput from '../components/FormInput';
-import FormButton from '../components/FormButton';
+import {FormInput, FormButton} from '../components';
 import {AuthContext} from '../navigation/AuthProvider';
 
-export default function LoginScreen({navigation}) {
+export const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const {login} = useContext(AuthContext);
 
   return (
@@ -41,7 +39,7 @@ export default function LoginScreen({navigation}) {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -57,6 +55,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   navButtonText: {
-    fontSize: 16,
+    fontSize: 15,
   },
 });

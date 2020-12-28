@@ -4,7 +4,7 @@ import {Title, Text} from 'react-native-paper';
 import {RadioGroup} from '../components/RadioGroup';
 const countryOptions = ['Yes', 'No'];
 
-export default function CountryScreen({navigation}) {
+export const Country = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Title style={styles.titleText}>Do you live in the United Kingdom?</Title>
@@ -13,13 +13,13 @@ export default function CountryScreen({navigation}) {
       </Text>
       <RadioGroup
         options={countryOptions}
-        nextScreen={'Step3'}
+        nextScreen={'Ethnicity'}
         navigation={navigation}
         field={'country'}
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
