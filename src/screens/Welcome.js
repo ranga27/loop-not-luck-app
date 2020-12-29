@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
-import {FormButton} from '../components';
+import {Button} from '../components';
 
 export const Welcome = ({navigation}) => {
   return (
@@ -10,13 +10,13 @@ export const Welcome = ({navigation}) => {
         source={require('../assets/images/black.png')}
       />
 
-      <FormButton
+      <Button
         title="Signup"
         modeValue="contained"
         labelStyle={styles.ButtonLabel}
         onPress={() => navigation.navigate('Signup')}
       />
-      <FormButton
+      <Button
         title="Login"
         modeValue="outlined"
         labelStyle={styles.ButtonLabel}

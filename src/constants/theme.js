@@ -11,6 +11,7 @@ export const theme = {
     ...NavigationDarkTheme.colors,
     primary: '#f7b921',
     secondary: '#ee2844',
+    tertiary: '#2fb3c',
     accent: '#0f2134',
     background: '#131B26',
   },

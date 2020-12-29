@@ -1,8 +1,8 @@
 import React, {useState, useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title} from 'react-native-paper';
-import {FormInput, FormButton} from '../components';
-import {AuthContext} from '../navigation/AuthProvider';
+import {TextInput, Button} from '../components';
+import {AuthContext} from '../utils';
 
 export const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -12,25 +12,25 @@ export const Login = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Title style={styles.titleText}>Existing Users</Title>
-      <FormInput
+      <TextInput
         labelName="Email"
         value={email}
         autoCapitalize="none"
         onChangeText={(userEmail) => setEmail(userEmail)}
       />
-      <FormInput
+      <TextInput
         labelName="Password"
         value={password}
         secureTextEntry={true}
         onChangeText={(userPassword) => setPassword(userPassword)}
       />
-      <FormButton
+      <Button
         title="Login"
         modeValue="contained"
         labelStyle={styles.loginButtonLabel}
         onPress={() => login(email, password)}
       />
-      <FormButton
+      <Button
         title="New user? Join here"
         modeValue="text"
         uppercase={false}

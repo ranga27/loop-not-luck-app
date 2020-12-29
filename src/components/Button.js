@@ -1,18 +1,18 @@
 import React from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
-import {Button} from 'react-native-paper';
+import {Button as ButtonComponent} from 'react-native-paper';
 
 const {width, height} = Dimensions.get('screen');
 
-export const FormButton = ({title, modeValue, ...rest}) => {
+export const Button = ({title, modeValue, ...rest}) => {
   return (
-    <Button
+    <ButtonComponent
       mode={modeValue}
       {...rest}
       style={styles.button}
       contentStyle={styles.buttonContainer}>
       {title}
-    </Button>
+    </ButtonComponent>
   );
 };
 

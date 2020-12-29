@@ -1,8 +1,8 @@
 import React, {useState, useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title, IconButton, Checkbox} from 'react-native-paper';
-import {FormInput, FormButton} from '../components';
-import {AuthContext} from '../navigation/AuthProvider';
+import {TextInput, Button} from '../components';
+import {AuthContext} from '../utils';
 
 export const Signup = ({navigation}) => {
   const [firstName, setFirstName] = useState('');
@@ -17,32 +17,32 @@ export const Signup = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Title style={styles.titleText}>Register</Title>
-      <FormInput
+      <TextInput
         labelName="First Name"
         value={firstName}
         autoCapitalize="none"
         onChangeText={(userFirstName) => setFirstName(userFirstName)}
       />
-      <FormInput
+      <TextInput
         labelName="Last Name"
         value={lastName}
         autoCapitalize="none"
         onChangeText={(userLastName) => setLastName(userLastName)}
       />
-      <FormInput
+      <TextInput
         labelName="Email"
         value={email}
         autoCapitalize="none"
         onChangeText={(userEmail) => setEmail(userEmail)}
       />
 
-      <FormInput
+      <TextInput
         labelName="Phone Number"
         value={phone}
         autoCapitalize="none"
         onChangeText={(userPhone) => setPhone(userPhone)}
       />
-      <FormInput
+      <TextInput
         labelName="Password"
         value={password}
         secureTextEntry={true}
@@ -50,7 +50,7 @@ export const Signup = ({navigation}) => {
       />
       <Checkbox.Item label="T&C" status="checked" />
 
-      <FormButton
+      <Button
         title="Signup"
         modeValue="contained"
         labelStyle={styles.loginButtonLabel}

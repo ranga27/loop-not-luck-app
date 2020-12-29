@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
-import {AuthProvider} from './AuthProvider';
+import {AuthProvider} from '../utils';
 import {Routes} from './Routes';
 import {theme} from '../constants';
 /**

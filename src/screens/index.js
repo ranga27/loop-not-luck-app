@@ -6,3 +6,5 @@ export {Home} from './Home';
 export {Login} from './Login';
 export {Signup} from './Signup';
 export {Welcome} from './Welcome';
+export {Opportunities} from './Opportunities';
+export {Settings} from './Settings';
