@@ -4,7 +4,7 @@ import {Login, Signup, Welcome} from '../screens';
 
 const Stack = createStackNavigator();
 
-export const AuthStack = () => {
+export const AuthNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Welcome" headerMode="none">
       <Stack.Screen name="Welcome" component={Welcome} />

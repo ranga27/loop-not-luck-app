@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {RadioButton} from 'react-native-paper';
 import useValueChange from '../hooks/useValueChange';
 
-const RadioGroup = ({field, options, nextScreen, navigation}) => {
-  //TODO create a custom hook for value change
+export const RadioGroup = ({field, options, nextScreen, navigation}) => {
+  //TODO: deal with navigation in calling screen & eliminate the use of 'nextScreen' & 'navigation'  variables;
   const [selection, setSelection] = useState('');
   useValueChange(selection, field);
   return (
@@ -21,4 +21,3 @@ const RadioGroup = ({field, options, nextScreen, navigation}) => {
     </>
   );
 };
-export {RadioGroup};

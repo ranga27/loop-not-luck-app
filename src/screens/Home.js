@@ -13,7 +13,7 @@ export const Home = ({navigation}) => {
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(true);
   const {firstName, lastName} = info || {};
-  const {user} = useContext(AuthContext);
+  const {user, logout} = useContext(AuthContext);
   /**
    * Fetch info from Firestore using the hook useEffect
    */
@@ -32,14 +32,21 @@ export const Home = ({navigation}) => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
 
-      <Title> {firstName + ' ' + lastName}</Title>
-      <Text>You've logged in, now complete your profile</Text>
+      <Title>Hello {firstName + ' ' + lastName}!</Title>
+      <Text>Please complete your profile</Text>
 
       <Button
         title="Profile"
         modeValue="contained"
         labelStyle={styles.ButtonLabel}
-        onPress={() => navigation.navigate('Gender')}
+        onPress={() => navigation.navigate('Profile')}
+      />
+
+      <Button
+        modeValue="contained"
+        title="Logout"
+        labelStyle={styles.ButtonLabel}
+        onPress={() => logout()}
       />
     </View>
   );

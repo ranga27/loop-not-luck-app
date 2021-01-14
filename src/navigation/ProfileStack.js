@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, Country, Disability, Ethnicity, Gender} from '../screens';
+import {Profile, Country, Disability, Ethnicity, Gender} from '../screens';
 /**
  * This will provide access to screens
  * only when the user is logged in
@@ -8,10 +8,10 @@ import {Home, Country, Disability, Ethnicity, Gender} from '../screens';
 
 const Stack = createStackNavigator();
 
-export const OnboardStack = () => {
+export const ProfileStack = () => {
   return (
-    <Stack.Navigator headerMode="none">
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Navigator>
+      <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Gender" component={Gender} />
       <Stack.Screen name="Country" component={Country} />
       <Stack.Screen name="Ethnicity" component={Ethnicity} />

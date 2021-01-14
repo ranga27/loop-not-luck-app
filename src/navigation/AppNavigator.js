@@ -1,41 +1,48 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Opportunities, Settings} from '../screens';
-import {theme} from '../constants';
+import {Home, Opportunities} from '../screens';
+import {ProfileStack} from './ProfileStack';
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export const MainTabNavigator = () => {
+const ProfileNavigator = () => {
+  return <ProfileStack />;
+};
+
+export const AppNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Opportunities" component={Opportunities} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Profile" component={ProfileNavigator} />
     </Tab.Navigator>
   );
 };
 
-export const MainStackNavigator = () => {
-  return (
-    <Stack.Navigator
+/*     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
         gestureEnabled: true,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          fontFamily: theme.fonts.regular.fontFamily,
-        },
+        headerTitleStyle: styles.headerTitleStyle,
         headerTintColor: theme.colors.primary,
         headerBackTitleVisible: false,
-      }}
-      headerMode="float">
+      }}>
       <Stack.Screen
         name="Home"
-        component={MainTabNavigator}
-        options={{title: 'Home'}}
+        component={AppTabNavigator}
+        options={({route}) => ({
+          headerTitle: getHeaderTitle(route),
+        })}
       />
-    </Stack.Navigator>
-  );
-};
+      <Stack.Screen name="Gender" component={OnboardStack} />
+    </Stack.Navigator> 
+    
+    
+    
+    const styles = StyleSheet.create({
+  headerTitleStyle: {
+    fontWeight: 'bold',
+    fontFamily: theme.fonts.regular.fontFamily,
+  },
+});
+*/
