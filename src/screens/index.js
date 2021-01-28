@@ -8,3 +8,4 @@ export {Signup} from './Signup';
 export {Welcome} from './Welcome';
 export {Opportunities} from './Opportunities';
 export {Profile} from './Profile';
+export {DetailScreen} from './DetailScreen';

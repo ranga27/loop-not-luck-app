@@ -2,6 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Opportunities} from '../screens';
 import {ProfileStack} from './ProfileStack';
+import {OppsStack} from './OppsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -9,11 +10,15 @@ const ProfileNavigator = () => {
   return <ProfileStack />;
 };
 
+const OppsNavigator = () => {
+  return <OppsStack />;
+};
+
 export const AppNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Opportunities" component={Opportunities} />
+      <Tab.Screen name="Opportunities" component={OppsNavigator} />
       <Tab.Screen name="Profile" component={ProfileNavigator} />
     </Tab.Navigator>
   );

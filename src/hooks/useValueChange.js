@@ -16,6 +16,7 @@ export default (selection, field) => {
   const id = user.uid;
 
   // Update datastore only after value of selection is changed
+  //TODO: store in local state and then update all values at once, avoid repititve writes to the store
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;

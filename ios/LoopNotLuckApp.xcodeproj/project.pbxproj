@@ -15,6 +15,7 @@
 		1B222F81016948E58147BBE7 /* ZonaPro-Ultra.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E7BC10DDCD24A968476DE10 /* ZonaPro-Ultra.ttf */; };
 		1E836EE95E5E430EA549D3F4 /* ZonaPro-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A18595BA7CE433996CF90F4 /* ZonaPro-ExtraBoldItalic.ttf */; };
 		25A6BD50687943469E721048 /* ZonaPro-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD43D35A73C14C7B8A3816C5 /* ZonaPro-Hairline.ttf */; };
+		2B7EFA4168294ED6B70D487A /* ZonaPro-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6ABAC88FF213484A8F29589C /* ZonaPro-Thin.ttf */; };
 		2B9EC2DE478F49B795AD6447 /* ZonaPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6A8E1AF3A2F423884847210 /* ZonaPro-SemiBold.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -25,7 +26,9 @@
 		439738E975A376F61554141E /* libPods-LoopNotLuckApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13456C77E40C45335AE7E130 /* libPods-LoopNotLuckApp-tvOS.a */; };
 		441F1BDFC8454C219A71ED3B /* ZonaPro-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2029BDCD92443DEAF1862B8 /* ZonaPro-ThinItalic.ttf */; };
 		4B4E6A7572A942ED8C771B20 /* ZonaPro-UltraItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7C21CD1C0F4748A32EC51B /* ZonaPro-UltraItalic.ttf */; };
+		52920CF29F3642A898B220FA /* ZonaPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D40107C6156C448DBAC29922 /* ZonaPro-Light.ttf */; };
 		5E1B788C638944A5BBB4FBC8 /* ZonaPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86B9C60B6A846D5BAFB04B1 /* ZonaPro-Bold.ttf */; };
+		62E9C2E7EBF746C4B708E20A /* ZonaPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 974CFE40561E4CE1A5AE50AF /* ZonaPro-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		88A0ACF41324440A82A1DBE2 /* ZonaPro-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0FFF39A2FE4C4984ACE07F /* ZonaPro-RegularItalic.ttf */; };
 		88D80B744D0B412EA843DD03 /* ZonaPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB8C5C7CB14F4003AF8F710A /* ZonaPro-BoldItalic.ttf */; };
@@ -37,9 +40,6 @@
 		D3E79CA0517048F6BF098A2A /* ZonaPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1B51F00F48249DEB53EF /* ZonaPro-SemiBoldItalic.ttf */; };
 		E6FE113653EF4078A9E7A1F8 /* ZonaPro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E170214C6AA4B538DF158C6 /* ZonaPro-ExtraBold.ttf */; };
 		EA0A8D9FCF54ADA16D34E971 /* libPods-LoopNotLuckApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BED17B31A0F5DFD8514A9398 /* libPods-LoopNotLuckApp-tvOSTests.a */; };
-		52920CF29F3642A898B220FA /* ZonaPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D40107C6156C448DBAC29922 /* ZonaPro-Light.ttf */; };
-		62E9C2E7EBF746C4B708E20A /* ZonaPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 974CFE40561E4CE1A5AE50AF /* ZonaPro-Regular.ttf */; };
-		2B7EFA4168294ED6B70D487A /* ZonaPro-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6ABAC88FF213484A8F29589C /* ZonaPro-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +90,7 @@
 		5FFE9FE2F19C4D95A0E99F0E /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		6058A6539F9C4AE29AA64296 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		6318B2EC980744DDACDA2E61 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		6ABAC88FF213484A8F29589C /* ZonaPro-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-Thin.ttf"; path = "../src/assets/fonts/ZonaPro-Thin.ttf"; sourceTree = "<group>"; };
 		753F5608ADF3DBD72D5183A2 /* Pods-LoopNotLuckApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopNotLuckApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-LoopNotLuckApp-tvOS/Pods-LoopNotLuckApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LoopNotLuckApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82A2B8F3B158FC361BD40524 /* Pods-LoopNotLuckApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopNotLuckApp.debug.xcconfig"; path = "Target Support Files/Pods-LoopNotLuckApp/Pods-LoopNotLuckApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		8A2B43A7258637BF0014E863 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8AAB0452259408560048380B /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		8C94D862B0BA49B68880BBDF /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		974CFE40561E4CE1A5AE50AF /* ZonaPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-Regular.ttf"; path = "../src/assets/fonts/ZonaPro-Regular.ttf"; sourceTree = "<group>"; };
 		9B4C71C4A00A00215A8A4AA3 /* Pods-LoopNotLuckApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopNotLuckApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-LoopNotLuckApp-tvOS/Pods-LoopNotLuckApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		9BF7FDFADEF37AC6AC02FA17 /* Pods-LoopNotLuckApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopNotLuckApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-LoopNotLuckApp-tvOSTests/Pods-LoopNotLuckApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E7BC10DDCD24A968476DE10 /* ZonaPro-Ultra.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-Ultra.ttf"; path = "../src/assets/fonts/ZonaPro-Ultra.ttf"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		C912AEA52FDE425694A5F406 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		C9BA82FBFD6E43B6B508EE36 /* ZonaPro-HairlineItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-HairlineItalic.ttf"; path = "../src/assets/fonts/ZonaPro-HairlineItalic.ttf"; sourceTree = "<group>"; };
 		D0479876ABFB44E5BED358C9 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		D40107C6156C448DBAC29922 /* ZonaPro-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-Light.ttf"; path = "../src/assets/fonts/ZonaPro-Light.ttf"; sourceTree = "<group>"; };
 		DB8C5C7CB14F4003AF8F710A /* ZonaPro-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-BoldItalic.ttf"; path = "../src/assets/fonts/ZonaPro-BoldItalic.ttf"; sourceTree = "<group>"; };
 		E1B138FA4B4DF8534B19E180 /* Pods-LoopNotLuckApp-LoopNotLuckAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopNotLuckApp-LoopNotLuckAppTests.debug.xcconfig"; path = "Target Support Files/Pods-LoopNotLuckApp-LoopNotLuckAppTests/Pods-LoopNotLuckApp-LoopNotLuckAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -120,9 +123,6 @@
 		F2029BDCD92443DEAF1862B8 /* ZonaPro-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-ThinItalic.ttf"; path = "../src/assets/fonts/ZonaPro-ThinItalic.ttf"; sourceTree = "<group>"; };
 		FD43D35A73C14C7B8A3816C5 /* ZonaPro-Hairline.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ZonaPro-Hairline.ttf"; path = "../src/assets/fonts/ZonaPro-Hairline.ttf"; sourceTree = "<group>"; };
 		FD70D40A5C9446B69BD46188 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		D40107C6156C448DBAC29922 /* ZonaPro-Light.ttf */ = {isa = PBXFileReference; name = "ZonaPro-Light.ttf"; path = "../src/assets/fonts/ZonaPro-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		974CFE40561E4CE1A5AE50AF /* ZonaPro-Regular.ttf */ = {isa = PBXFileReference; name = "ZonaPro-Regular.ttf"; path = "../src/assets/fonts/ZonaPro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6ABAC88FF213484A8F29589C /* ZonaPro-Thin.ttf */ = {isa = PBXFileReference; name = "ZonaPro-Thin.ttf"; path = "../src/assets/fonts/ZonaPro-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -869,7 +869,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopnotluck.LoopNotLuckApp;
 				PRODUCT_NAME = LoopNotLuckApp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -892,7 +892,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopnotluck.LoopNotLuckApp;
 				PRODUCT_NAME = LoopNotLuckApp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
