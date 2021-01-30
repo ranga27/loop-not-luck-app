@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 
 export const ProfileStack = () => {
   return (
-    <Stack.Navigator headerMode='none'>
+    <Stack.Navigator headerMode="none">
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Gender" component={Gender} />
       <Stack.Screen name="Country" component={Country} />

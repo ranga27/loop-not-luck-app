@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Opportunities} from '../screens';
+import {Home} from '../screens';
 import {ProfileStack} from './ProfileStack';
 import {OppsStack} from './OppsStack';
 

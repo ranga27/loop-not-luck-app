@@ -40,7 +40,7 @@ export const DetailScreen = ({navigation, route}) => {
       <IconButton
         icon="close"
         size={28}
-        color="#fff"
+        color="black"
         style={{
           position: 'absolute',
           top: 40,

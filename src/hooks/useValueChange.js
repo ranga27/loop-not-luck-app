@@ -9,7 +9,7 @@ export default (selection, field) => {
 
   //create object for the field to update
   const dataToUpdate = {[field]: selection};
-  console.log(dataToUpdate);
+  console.log('Data to update: ', dataToUpdate);
 
   // Get the current logged in user's uid
   const {user} = useContext(AuthContext);
@@ -23,7 +23,7 @@ export default (selection, field) => {
       return;
     }
     const handleValueChange = async () => {
-      await updateProfile(dataToUpdate, id);
+      // await updateProfile(dataToUpdate, id);
     };
     handleValueChange();
   }, [selection]);

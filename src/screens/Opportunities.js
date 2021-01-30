@@ -16,19 +16,15 @@ import {data} from '../constants/data';
 
 const {width} = Dimensions.get('screen');
 
-const ITEM_WIDTH = width * 0.9;
-const ITEM_HEIGHT = ITEM_WIDTH * 0.9;
-
+const ITEM_WIDTH = width * 0.7;
+const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 export const Opportunities = ({navigation}) => {
   return (
-    <View style={{flex: 1, backgroundColor: '#0f0f0f'}}>
+    <View style={styles.container}>
       {/* Header */}
       <View style={{marginTop: 50, marginBottom: 20, paddingHorizontal: 20}}>
-        <Text style={{color: '#888', textTransform: 'uppercase'}}>
-          Saturday 9 January
-        </Text>
         <Text style={{color: '#fff', fontSize: 32, fontWeight: '600'}}>
-          Today
+          Your Opportunities
         </Text>
       </View>
       <View style={{flex: 1, paddingBottom: 20}}>
@@ -97,11 +93,8 @@ export const Opportunities = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
-    marginBottom: 30,
+    backgroundColor: '#0f0f0f',
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   text: {
     color: theme.colors.primary,

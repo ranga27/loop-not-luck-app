@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   scrollView: {
     margin: 20,
