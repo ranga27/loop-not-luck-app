@@ -1,6 +1,6 @@
 import React from 'react';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
-import {Opportunities, DetailScreen} from '../screens';
+import {Saved, SavedDetailScreen} from '../screens';
 
 const Stack = createSharedElementStackNavigator();
 
@@ -14,13 +14,13 @@ const options = {
     };
   },
 };
-export const OppsStack = () => {
+export const BookMarkStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Opportunities" headerMode="none">
-      <Stack.Screen name="Opportunities" component={Opportunities} />
+    <Stack.Navigator initialRouteName="Saved" headerMode="none">
+      <Stack.Screen name="Saved" component={Saved} />
       <Stack.Screen
-        name="DetailScreen"
-        component={DetailScreen}
+        name="SavedDetailScreen"
+        component={SavedDetailScreen}
         options={() => options}
       />
     </Stack.Navigator>

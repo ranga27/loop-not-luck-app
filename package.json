@@ -11,6 +11,7 @@
     "pods": "cd ios/ && pod install"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "react-native-async-storage/async-storage",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-firebase/app": "^10.5.0",
     "@react-native-firebase/auth": "^10.5.1",
@@ -31,6 +32,10 @@
     "react-native-shared-element": "^0.7.0",
     "react-native-vector-icons": "^8.0.0",
     "react-navigation-shared-element": "5.0.0-alpha1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
     "yup": "^0.32.8"
   },
   "devDependencies": {
@@ -42,7 +47,8 @@
     "eslint": "^7.18.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
-    "react-test-renderer": "17.0.1"
+    "react-test-renderer": "17.0.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "jest": {
     "preset": "react-native"

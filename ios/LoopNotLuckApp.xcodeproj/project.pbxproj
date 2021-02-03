@@ -69,7 +69,7 @@
 		0E72DB02E5B1E1AE36912EE6 /* libPods-LoopNotLuckApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoopNotLuckApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C50D13340643438F828A3C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		13456C77E40C45335AE7E130 /* libPods-LoopNotLuckApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoopNotLuckApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* LoopNotLuckApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoopNotLuckApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Loop Not Luck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Loop Not Luck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = LoopNotLuckApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = LoopNotLuckApp/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LoopNotLuckApp/Images.xcassets; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* LoopNotLuckApp.app */,
+				13B07F961A680F5B00A75B9A /* Loop Not Luck.app */,
 				00E356EE1AD99517003FC87E /* LoopNotLuckAppTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* LoopNotLuckApp-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* LoopNotLuckApp-tvOSTests.xctest */,
@@ -339,7 +339,7 @@
 			);
 			name = LoopNotLuckApp;
 			productName = LoopNotLuckApp;
-			productReference = 13B07F961A680F5B00A75B9A /* LoopNotLuckApp.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Loop Not Luck.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* LoopNotLuckApp-tvOS */ = {
@@ -387,7 +387,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -871,7 +871,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnotluck.candidate.app;
-				PRODUCT_NAME = LoopNotLuckApp;
+				PRODUCT_NAME = "Loop Not Luck";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -895,7 +895,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnotluck.candidate.app;
-				PRODUCT_NAME = LoopNotLuckApp;
+				PRODUCT_NAME = "Loop Not Luck";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

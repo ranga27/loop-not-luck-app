@@ -6,6 +6,11 @@ import {Loading} from '../components';
 import {theme} from '../constants';
 import {AppNavigator} from './AppNavigator';
 import {AuthNavigator} from './AuthNavigator';
+import {StatusBar} from 'react-native';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {store, persistor} from '../redux/store';
+
 /**
  * We check here if the user is logged in or not
  */
@@ -35,8 +40,13 @@ export const Routes = () => {
   }
 
   return (
-    <NavigationContainer theme={theme}>
-      {user ? <AppNavigator /> : <AuthNavigator />}
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer theme={theme}>
+          <StatusBar barStyle="light-content" />
+          {user ? <AppNavigator /> : <AuthNavigator />}
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
