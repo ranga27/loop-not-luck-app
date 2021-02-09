@@ -3,6 +3,8 @@ import {View, StyleSheet, StatusBar} from 'react-native';
 import {Loading, Button} from '../components';
 import {Title, Text} from 'react-native-paper';
 import {getUserData, AuthContext} from '../utils';
+import {useSelector} from 'react-redux';
+import {signOutFirebase} from '../firebase/firesbaseService';
 
 /**
  * This is the landing screen after
@@ -10,29 +12,29 @@ import {getUserData, AuthContext} from '../utils';
  */
 
 export const Notifications = ({navigation}) => {
-  const [info, setInfo] = useState([]);
+  const {currentUserProfile} = useSelector((state) => state.profile);
+
   const [loading, setLoading] = useState(true);
-  const {firstName, lastName} = info || {};
-  const {user, logout} = useContext(AuthContext);
   /**
    * Fetch info from Firestore using the hook useEffect
    */
-  useEffect(() => {
-    getUserData(user).then((userData) => {
-      setInfo(userData);
-      console.log('User: ' + userData.firstName);
-      setLoading(false);
-    });
-  }, [user]);
-  // Display a loading screen while the Firebase data is loading
-  if (loading) {
-    return <Loading />;
+
+  async function handleSignOut() {
+    try {
+      await signOutFirebase();
+    } catch (error) {
+      console.log(error.message);
+    }
   }
+  // Display a loading screen while the Firebase data is loading
+  /* if (!currentUserProfile) {
+    return <Loading />;
+  } */
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
 
-      <Title>Hello {firstName + ' ' + lastName}!</Title>
+      <Title>Hello {}!</Title>
       <Text>Your Notifications will come here</Text>
 
       <Button
@@ -46,7 +48,7 @@ export const Notifications = ({navigation}) => {
         modeValue="contained"
         title="Logout"
         labelStyle={styles.ButtonLabel}
-        onPress={() => logout()}
+        onPress={() => handleSignOut()}
       />
     </View>
   );

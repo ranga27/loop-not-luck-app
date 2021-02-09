@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 16},
     shadowRadius: 30,
     shadowOpacity: 0.2,
+    alignSelf: 'center',
   },
   buttonContainer: {
     width: width / 2,

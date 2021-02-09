@@ -16,7 +16,7 @@ const options = {
 };
 export const OppsStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Opportunities" headerMode="none">
+    <Stack.Navigator headerMode="none">
       <Stack.Screen name="Opportunities" component={Opportunities} />
       <Stack.Screen
         name="DetailScreen"

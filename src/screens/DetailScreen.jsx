@@ -12,7 +12,7 @@ import {IconButton} from 'react-native-paper';
 import {SharedElement} from 'react-navigation-shared-element';
 import * as Animatable from 'react-native-animatable';
 import {useSelector, useDispatch} from 'react-redux';
-import {getBooks, addBookmark, removeBookmark} from '../redux/actions';
+import {getBooks, addBookmark, removeBookmark} from '../redux/booksActions';
 
 const {height} = Dimensions.get('window');
 const ITEM_HEIGHT = height * 0.5;
@@ -20,7 +20,7 @@ const ITEM_HEIGHT = height * 0.5;
 export const DetailScreen = ({navigation, route}) => {
   const {item} = route.params;
   const buttonRef = useRef();
-  const {books, bookmarks} = useSelector((state) => state.booksReducer);
+  const {books, bookmarks} = useSelector((state) => state.books);
   const dispatch = useDispatch();
 
   const fetchBooks = () => dispatch(getBooks());

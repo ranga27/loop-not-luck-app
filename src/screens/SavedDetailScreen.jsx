@@ -12,7 +12,7 @@ import {IconButton} from 'react-native-paper';
 import {SharedElement} from 'react-navigation-shared-element';
 import * as Animatable from 'react-native-animatable';
 import {useSelector, useDispatch} from 'react-redux';
-import {removeBookmark} from '../redux/actions';
+import {removeBookmark} from '../redux/booksActions';
 
 const {height} = Dimensions.get('window');
 const ITEM_HEIGHT = height * 0.5;
@@ -20,7 +20,7 @@ const ITEM_HEIGHT = height * 0.5;
 export const SavedDetailScreen = ({navigation, route}) => {
   const {item} = route.params;
   const buttonRef = useRef();
-  const {bookmarks} = useSelector((state) => state.booksReducer);
+  const {bookmarks} = useSelector((state) => state.books);
   const dispatch = useDispatch();
 
   const removeFromBookmarkList = (book) => dispatch(removeBookmark(book));

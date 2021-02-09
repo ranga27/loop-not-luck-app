@@ -7,17 +7,18 @@ import {theme} from '../constants';
 import {AppNavigator} from './AppNavigator';
 import {AuthNavigator} from './AuthNavigator';
 import {StatusBar} from 'react-native';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
-import {store, persistor} from '../redux/store';
+import {verifyAuth} from '../redux/authActions';
+import {useSelector} from 'react-redux';
 
 /**
  * We check here if the user is logged in or not
  */
 
 export const Routes = () => {
-  const {user, setUser} = useContext(AuthContext);
-  const [loading, setLoading] = useState(true);
+  const {authenticated, currentUser} = useSelector((state) => state.auth);
+
+  /*   const {user, setUser} = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
   const [initializing, setInitializing] = useState(true);
 
   // Handle user state changes
@@ -28,25 +29,21 @@ export const Routes = () => {
       setInitializing(false);
     }
     setLoading(false);
-  };
+  }; */
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  //   return subscriber; // unsubscribe on unmount
+  // }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer theme={theme}>
-          <StatusBar barStyle="light-content" />
-          {user ? <AppNavigator /> : <AuthNavigator />}
-        </NavigationContainer>
-      </PersistGate>
-    </Provider>
+    <NavigationContainer theme={theme}>
+      <StatusBar barStyle="light-content" />
+      {authenticated ? <AppNavigator /> : <AuthNavigator />}
+    </NavigationContainer>
   );
 };

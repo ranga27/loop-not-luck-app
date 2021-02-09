@@ -1,17 +1,19 @@
 import React from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
-import {TextInput as TextInputComponent} from 'react-native-paper';
+import {TextInput, Text} from 'react-native-paper';
+import {useField} from 'formik';
 
 const {width, height} = Dimensions.get('screen');
 
-export const TextInput = ({labelName, ...rest}) => {
+export const LoopTextInput = ({label, ...props}) => {
+  //const [field, meta] = useField(props);
   return (
-    <TextInputComponent
-      label={labelName}
+    <TextInput
+      label={label}
       mode={'outlined'}
       style={styles.input}
       numberOfLines={1}
-      {...rest}
+      {...props}
     />
   );
 };

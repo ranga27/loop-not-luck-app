@@ -11,10 +11,8 @@ export const AuthNavigator = () => {
   const {currentUser} = useSelector((state) => state.auth);
   return (
     <Stack.Navigator initialRouteName="Welcome" headerMode="none">
-      <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} />
-      <Stack.Screen name="Forgot" component={ForgotPassword} />
+      <Stack.Screen name="Email Sent" component={EmailConfirm} />
+      <Stack.Screen name="Email Confirm" component={EmailConfirm} />
     </Stack.Navigator>
   );
 };

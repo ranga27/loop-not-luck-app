@@ -19,14 +19,14 @@ const ITEM_WIDTH = width * 0.7;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
 export const Saved = ({navigation}) => {
-  const {bookmarks} = useSelector((state) => state.booksReducer);
+  const {bookmarks} = useSelector((state) => state.books);
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.mainContainer}>
         {/* Header */}
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Bookmarked Opportunities</Text>
+          <Text style={styles.headerText}>Saved Opportunities</Text>
         </View>
         {/* Scrollable content */}
         {bookmarks.length === 0 ? (

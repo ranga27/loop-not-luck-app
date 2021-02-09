@@ -2,7 +2,7 @@ import {
   GET_BOOKS,
   ADD_TO_BOOKMARK_LIST,
   REMOVE_FROM_BOOKMARK_LIST,
-} from './actions';
+} from './booksActions';
 
 const initialState = {
   books: [],
