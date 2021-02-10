@@ -3,37 +3,21 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title, IconButton, Checkbox} from 'react-native-paper';
 import {TextInput, Button, ErrorMessage} from '../../components';
-import * as Yup from 'yup';
-import {registerInFirebase} from '../../firebase/firesbaseService';
+import {registerInFirebase} from '../../firebase/authService';
+import {signupSchema} from '../../constants/signupValidationSchema';
 
 export const Signup = ({navigation}) => {
   const handleFormSubmit = async (values, actions) => {
     try {
       await registerInFirebase(values);
       actions.setSubmitting(false);
+      navigation.navigate('EmailSent');
     } catch (error) {
       actions.setErrors({auth: error.message});
       actions.setSubmitting(false);
     }
   };
-  const phoneNumberRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-  const loginSchema = Yup.object().shape({
-    firstName: Yup.string().required().label('First Name'),
-    lastName: Yup.string().required().label('Last Name'),
-    email: Yup.string()
-      .label('Email')
-      .email('Enter a valid email')
-      .required('Please enter a registered email'),
-    phoneNumber: Yup.string()
-      .required()
-      .label('Phone Number')
-      .matches(phoneNumberRegExp, 'Phone Number is not valid'),
-    password: Yup.string()
-      .label('Password')
-      .required()
-      .min(8, 'Password must have at least 8 characters '),
-  });
   return (
     <View style={styles.container}>
       <Formik
@@ -45,7 +29,7 @@ export const Signup = ({navigation}) => {
           password: '',
         }}
         onSubmit={(values, actions) => handleFormSubmit(values, actions)}
-        validationSchema={loginSchema}>
+        validationSchema={signupSchema}>
         {({
           handleChange,
           handleBlur,

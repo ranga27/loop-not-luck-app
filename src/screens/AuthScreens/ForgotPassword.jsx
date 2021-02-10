@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {TextInput, Button, ErrorMessage} from '../../components';
 import {Formik} from 'formik';
-import {signInWithEmail} from '../../firebase/firesbaseService';
+import {signInWithEmail} from '../../firebase/authService';
 import * as Yup from 'yup';
 const {width, height} = Dimensions.get('screen');
 

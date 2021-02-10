@@ -4,7 +4,7 @@ import {Loading, Button} from '../components';
 import {Title, Text} from 'react-native-paper';
 import {getUserData, AuthContext} from '../utils';
 import {useSelector} from 'react-redux';
-import {signOutFirebase} from '../firebase/firesbaseService';
+import {signOutFirebase} from '../firebase/authService';
 
 /**
  * This is the landing screen after
