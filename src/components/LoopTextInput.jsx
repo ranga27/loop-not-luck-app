@@ -6,7 +6,6 @@ import {useField} from 'formik';
 const {width, height} = Dimensions.get('screen');
 
 export const LoopTextInput = ({label, ...props}) => {
-  //const [field, meta] = useField(props);
   return (
     <TextInput
       label={label}

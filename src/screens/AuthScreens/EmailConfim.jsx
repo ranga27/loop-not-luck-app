@@ -4,12 +4,13 @@ import {Title} from 'react-native-paper';
 import {Button} from '../../components';
 import {signOutFirebase} from '../../firebase/authService';
 import {theme} from '../../constants';
+import {useState} from 'react';
 
 export const EmailConfirm = ({navigation}) => {
+  const [signedOut, setSignedOut] = useState(false);
   const handleSignOut = async () => {
     try {
       await signOutFirebase();
-      navigation.navigate('Login');
     } catch (error) {
       console.error(error.message);
     }

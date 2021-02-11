@@ -56,14 +56,6 @@ export const Signup = ({navigation}) => {
               value={values.lastName}
             />
             <ErrorMessage errorValue={touched.lastName && errors.lastName} />
-            <TextInput
-              label="Email"
-              autoCapitalize="none"
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              value={values.email}
-            />
-            <ErrorMessage errorValue={touched.email && errors.email} />
 
             <TextInput
               label="Phone Number"
@@ -75,6 +67,14 @@ export const Signup = ({navigation}) => {
             <ErrorMessage
               errorValue={touched.phoneNumber && errors.phoneNumber}
             />
+            <TextInput
+              label="Email"
+              autoCapitalize="none"
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+            />
+            <ErrorMessage errorValue={touched.email && errors.email} />
             <TextInput
               label="Password"
               onChangeText={handleChange('password')}
