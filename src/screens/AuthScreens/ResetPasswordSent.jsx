@@ -1,44 +1,33 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title} from 'react-native-paper';
-import {Button} from '../../components';
 import {theme} from '../../constants';
-import {signOutFirebase} from '../../firebase/authService';
-import auth from '@react-native-firebase/auth';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import {URL, URLSearchParams} from 'react-native-url-polyfill';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Button} from '../../components';
+import {useDispatch} from 'react-redux';
+import {passwordReset, setAuthRoute} from '../../redux/authActions';
 
-export const EmailSent = ({navigation}) => {
+export const ResetPasswordSent = ({navigation}) => {
+  const dispatch = useDispatch();
+
+  const handleResend = async () => {
+    try {
+      dispatch(passwordReset());
+      dispatch(setAuthRoute('Forgot'));
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const handleDynamicLink = async (link) => {
     // Check and handle if the link is a email login link
     const mode = getURLParam(link.url, 'mode');
-    if (mode === 'verifyEmail') {
+    if (mode === 'resetPassword') {
       try {
         //Extract verification code
         const oobCode = getURLParam(link.url, 'oobCode');
-        await auth()
-          .applyActionCode(oobCode)
-          .then((resp) => {
-            console.log('Email Address verified');
-            auth()
-              .currentUser.getIdToken(true)
-              .then(() => {
-                auth()
-                  .currentUser.reload()
-                  .then(() => {
-                    if (auth().currentUser.emailVerified)
-                      navigation.navigate('EmailConfirm');
-                  });
-              })
-              .catch((error) => console.log(error));
-          })
-          .catch((error) => {
-            if (error.code == 'auth/invalid-action-code')
-              console.log(
-                'The code is expired, or has already been used. Please verify your email address again',
-              );
-          });
+        navigation.navigate('ResetPasswordChange', {oobCode: oobCode});
       } catch (e) {
         console.log(error);
       } finally {
@@ -59,16 +48,25 @@ export const EmailSent = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Title style={styles.titleText}>
-        Verification email sent, please check your email!
+        Reset password email sent, please check your inbox! If you haven't
+        recevied, request again
       </Title>
+      <Button
+        modeValue="contained"
+        title="Resend"
+        labelStyle={styles.ButtonLabel}
+        onPress={() => handleResend()}
+      />
     </View>
   );
 };
+
 const getURLParam = (urlString, param) => {
   const url = new URL(urlString);
   const params = new URLSearchParams(url.search);
   return params.get(param) || '';
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

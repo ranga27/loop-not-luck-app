@@ -31,6 +31,33 @@ export async function registerInFirebase(newUser) {
     }); 
     return await setUserProfileData(result.user);*/
   } catch (error) {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+    throw error;
+  }
+}
+
+export async function sendPasswordResetEmail(user) {
+  try {
+    await auth().sendPasswordResetEmail(user.email, {
+      handleCodeInApp: true,
+      url: 'https://loopnotluckuser.page.link/app',
+      iOS: {
+        bundleId: 'com.loopnotluck.app',
+      },
+    });
+    return true;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function confirmPasswordReset(code, password) {
+  try {
+    await auth().confirmPasswordReset(code, password);
+    return true;
+  } catch (error) {
     throw error;
   }
 }

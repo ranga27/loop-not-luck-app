@@ -14,8 +14,13 @@ const persistConfig = {
   whitelist: ['bookmarks'],
 };
 
+const authConfig = {
+  key: 'auth',
+  storage: AsyncStorage,
+};
+
 const rootReducer = combineReducers({
-  auth: authReducer,
+  auth: persistReducer(authConfig, authReducer),
   books: persistReducer(persistConfig, booksReducer),
   profile: profileReducer,
 });

@@ -1,41 +1,43 @@
 import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
+import {Title} from 'react-native-paper';
 import {TextInput, Button, ErrorMessage} from '../../components';
-import {Formik} from 'formik';
-import {signInWithEmail} from '../../firebase/authService';
-import * as Yup from 'yup';
-
+import {confirmPasswordReset} from '../../firebase/authService';
+import {theme} from '../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {Formik} from 'formik';
+import * as Yup from 'yup';
+import {useDispatch} from 'react-redux';
+
 const {height, width} = Dimensions.get('screen');
 
-export const Login = ({navigation}) => {
+const loginSchema = Yup.object().shape({
+  password: Yup.string()
+    .label('Password')
+    .required()
+    .min(7, 'Password must have at least 8 characters '),
+});
+
+export const ResetPasswordChange = ({route, navigation}) => {
+  const dispatch = useDispatch();
+
+  const {oobCode} = route.params;
   const handleFormSubmit = async (values, actions) => {
     try {
-      await signInWithEmail(values);
-      actions.setSubmitting(false);
-      navigation.navigate('App');
+      if (await confirmPasswordReset(oobCode, values.password))
+        navigation.navigate('ResetPasswordConfirm'),
+          actions.setSubmitting(false);
     } catch (error) {
-      actions.setErrors({auth: 'Problem with username or password'});
+      actions.setErrors({auth: error.message});
       actions.setSubmitting(false);
     }
   };
-
-  const loginSchema = Yup.object().shape({
-    email: Yup.string()
-      .label('Email')
-      .email('Enter a valid email')
-      .required('Please enter a registered email'),
-    password: Yup.string()
-      .label('Password')
-      .required()
-      .min(7, 'Password must have at least 8 characters '),
-  });
-
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
+        <Title style={styles.titleText}>Choose new Password</Title>
         <Formik
-          initialValues={{email: '', password: ''}}
+          initialValues={{password: ''}}
           onSubmit={(values, actions) => handleFormSubmit(values, actions)}
           validationSchema={loginSchema}>
           {({
@@ -50,15 +52,6 @@ export const Login = ({navigation}) => {
           }) => (
             <>
               <TextInput
-                label="Email"
-                autoCapitalize="none"
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                value={values.email}
-              />
-              <ErrorMessage errorValue={touched.email && errors.email} />
-
-              <TextInput
                 label="Password"
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
@@ -68,7 +61,7 @@ export const Login = ({navigation}) => {
               <ErrorMessage errorValue={touched.password && errors.password} />
               <ErrorMessage errorValue={errors.auth} />
               <Button
-                title="Login"
+                title="Submit"
                 modeValue="contained"
                 labelStyle={styles.loginButtonLabel}
                 onPress={handleSubmit}
@@ -78,20 +71,6 @@ export const Login = ({navigation}) => {
             </>
           )}
         </Formik>
-        <Button
-          title="Forgot password?"
-          modeValue="text"
-          uppercase={false}
-          labelStyle={styles.navButtonText}
-          onPress={() => navigation.navigate('Forgot')}
-        />
-        <Button
-          title="New user? Join here"
-          modeValue="text"
-          uppercase={false}
-          labelStyle={styles.navButtonText}
-          onPress={() => navigation.navigate('Signup')}
-        />
       </View>
     </KeyboardAwareScrollView>
   );
@@ -107,11 +86,19 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 24,
     marginBottom: 10,
+    color: theme.colors.primary,
+    textAlign: 'center',
   },
   loginButtonLabel: {
     fontSize: 22,
   },
   navButtonText: {
-    fontSize: 15,
+    fontSize: 18,
+  },
+  navButton: {
+    marginTop: 10,
+  },
+  ButtonLabel: {
+    fontSize: 20,
   },
 });

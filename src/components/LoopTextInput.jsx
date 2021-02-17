@@ -9,19 +9,24 @@ export const LoopTextInput = ({label, ...props}) => {
   return (
     <TextInput
       label={label}
-      mode={'outlined'}
+      mode={'flat'}
       style={styles.input}
       numberOfLines={1}
       {...props}
+     // render={(props) => <InternalTextInput />}
     />
   );
 };
 
 const styles = StyleSheet.create({
   input: {
+    //flex: 1,
     margin: 10,
     width: width / 1.5,
     height: height / 15,
-    borderRadius: 24,
+  },
+  internal: {
+    paddingTop: 0,
+    paddingBottom: 0,
   },
 });

@@ -51,29 +51,3 @@ export const AppNavigator = () => {
     </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.colors.background,
-  },
-  titleText: {
-    fontSize: 24,
-    marginBottom: 10,
-    color: theme.colors.primary,
-  },
-  loginButtonLabel: {
-    fontSize: 22,
-  },
-  navButtonText: {
-    fontSize: 18,
-  },
-  navButton: {
-    marginTop: 10,
-  },
-  ButtonLabel: {
-    fontSize: 20,
-  },
-});

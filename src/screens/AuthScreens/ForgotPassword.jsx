@@ -2,17 +2,22 @@ import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {TextInput, Button, ErrorMessage} from '../../components';
 import {Formik} from 'formik';
-import {signInWithEmail} from '../../firebase/authService';
+import {sendPasswordResetEmail} from '../../firebase/authService';
 import * as Yup from 'yup';
+import {useDispatch} from 'react-redux';
+import {resetPassword} from '../../redux/authActions';
+
 const {width, height} = Dimensions.get('screen');
 
 export const ForgotPassword = ({navigation}) => {
+  const dispatch = useDispatch();
+
   const handleFormSubmit = async (values, actions) => {
     try {
-      await signInWithEmail(values);
       actions.setSubmitting(false);
+      if (await sendPasswordResetEmail(values)) dispatch(resetPassword());
     } catch (error) {
-      actions.setErrors({auth: 'Problem with username or password'});
+      actions.setErrors({auth: error.message});
       actions.setSubmitting(false);
     }
   };
@@ -49,6 +54,7 @@ export const ForgotPassword = ({navigation}) => {
               value={values.email}
             />
             <ErrorMessage errorValue={touched.email && errors.email} />
+            <ErrorMessage errorValue={errors.auth} />
 
             <Button
               title="Reset Password"

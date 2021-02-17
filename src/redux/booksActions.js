@@ -23,7 +23,6 @@ export const getBooks = () => {
     };
   } catch (error) {
     // Add custom logic to handle errors
-    console.log(error);
   }
 };
 
@@ -33,7 +32,7 @@ export const addBookmark = (book) => (dispatch) => {
     payload: book,
   });
 };
-
+//TODO: why are we dispatching and not passing payload directly
 export const removeBookmark = (book) => (dispatch) => {
   dispatch({
     type: REMOVE_FROM_BOOKMARK_LIST,

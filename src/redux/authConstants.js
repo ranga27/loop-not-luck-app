@@ -1,2 +1,6 @@
 export const SIGN_IN_USER = 'SIGN_IN_USER';
 export const SIGN_OUT_USER = 'SIGN_OUT_USER';
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const PASSWORD_RESET = 'PASSWORD_RESET';
+export const VERIFY_EMAIL = 'VERIFY_EMAIL';
+export const SET_AUTH_ROUTE = 'SET_AUTH_ROUTE';

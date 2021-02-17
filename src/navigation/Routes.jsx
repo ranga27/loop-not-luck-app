@@ -1,32 +1,45 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import auth from '@react-native-firebase/auth';
 import {theme} from '../constants';
 import {AppNavigator} from './AppNavigator';
 import {AuthNavigator} from './AuthNavigator';
 import {StatusBar} from 'react-native';
 import {useSelector} from 'react-redux';
 import {EmailVerifyNavigator} from './EmailVerifyNavigator';
+import {ResetPasswordNavigator} from './ResetPasswordNavigator';
+import {createStackNavigator} from '@react-navigation/stack';
+const AuthStack = createStackNavigator();
 
 /**
- * We check here if the user is logged in or not
+ * We check here the auth state of the user
  */
 export const Routes = () => {
-  const {authenticated, currentUser} = useSelector((state) => state.auth);
+  const {authenticated, currentUser, resetPassword} = useSelector(
+    (state) => state.auth,
+  );
 
-  // Show email sent message when user created, verification email sent but not verified
   return (
     <NavigationContainer theme={theme}>
       <StatusBar barStyle="light-content" />
-      {authenticated ? (
-        currentUser.emailVerified ? (
-          <AppNavigator />
+      <AuthStack.Navigator headerMode="none">
+        {authenticated ? (
+          currentUser.emailVerified ? (
+            <AuthStack.Screen name="App" component={AppNavigator} />
+          ) : (
+            <AuthStack.Screen
+              name="EmailVerify"
+              component={EmailVerifyNavigator}
+            />
+          )
+        ) : resetPassword ? (
+          <AuthStack.Screen
+            name="ResetPassword"
+            component={ResetPasswordNavigator}
+          />
         ) : (
-          <EmailVerifyNavigator />
-        )
-      ) : (
-        <AuthNavigator />
-      )}
+          <AuthStack.Screen name="Auth" component={AuthNavigator} />
+        )}
+      </AuthStack.Navigator>
     </NavigationContainer>
   );
 };

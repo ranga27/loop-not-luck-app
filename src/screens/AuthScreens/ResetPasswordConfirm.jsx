@@ -1,29 +1,31 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import {Title} from 'react-native-paper';
 import {Button} from '../../components';
 import {theme} from '../../constants';
 import {useDispatch} from 'react-redux';
-import {verifyEmail} from '../../redux/authActions';
+import {passwordReset, setAuthRoute} from '../../redux/authActions';
+const {height, width} = Dimensions.get('screen');
+import {saveData} from '../../utils/asyncStorage';
 
-export const EmailConfirm = ({navigation}) => {
+export const ResetPasswordConfirm = ({navigation}) => {
   const dispatch = useDispatch();
-
-  const handleVerifyEmail = () => {
+  const handleLogin = async () => {
     try {
-      dispatch(verifyEmail());
+      dispatch(passwordReset());
+      dispatch(setAuthRoute('Login'));
     } catch (error) {
       console.error(error.message);
     }
   };
   return (
     <View style={styles.container}>
-      <Title style={styles.titleText}>Email verified! please continue</Title>
+      <Title style={styles.titleText}>Password changed! please login</Title>
       <Button
         modeValue="contained"
-        title="Home"
+        title="Login"
         labelStyle={styles.ButtonLabel}
-        onPress={() => handleVerifyEmail()}
+        onPress={() => handleLogin()}
       />
     </View>
   );
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.colors.background,
   },
   titleText: {
     fontSize: 24,

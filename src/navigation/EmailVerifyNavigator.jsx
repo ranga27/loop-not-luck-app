@@ -9,7 +9,6 @@ import {EmailSent} from '../screens/AuthScreens/EmailSent';
 const Stack = createStackNavigator();
 
 export const EmailVerifyNavigator = () => {
-  const {currentUser} = useSelector((state) => state.auth);
   return (
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="EmailSent" component={EmailSent} />
