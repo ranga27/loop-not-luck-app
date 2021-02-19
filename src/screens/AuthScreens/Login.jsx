@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
-import {TextInput, Button, ErrorMessage} from '../../components';
+import {InputField, Button, ErrorMessage} from '../../components';
 import {Formik} from 'formik';
 import {signInWithEmail} from '../../firebase/authService';
 import * as Yup from 'yup';
@@ -49,7 +49,7 @@ export const Login = ({navigation}) => {
             isSubmitting,
           }) => (
             <>
-              <TextInput
+              <InputField
                 label="Email"
                 autoCapitalize="none"
                 onChangeText={handleChange('email')}
@@ -58,7 +58,7 @@ export const Login = ({navigation}) => {
               />
               <ErrorMessage errorValue={touched.email && errors.email} />
 
-              <TextInput
+              <InputField
                 label="Password"
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}

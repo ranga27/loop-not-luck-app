@@ -2,8 +2,16 @@ import React from 'react';
 import {theme} from '../constants';
 import {StyleSheet, View} from 'react-native';
 import {Button} from '../components';
+import {signOutFirebase} from '../firebase/authService';
 
 export const Profile = ({navigation}) => {
+  const handleSignOut = async () => {
+    try {
+      await signOutFirebase();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <>
       <View style={styles.container}>
@@ -12,6 +20,12 @@ export const Profile = ({navigation}) => {
           modeValue="contained"
           labelStyle={styles.ButtonLabel}
           onPress={() => navigation.navigate('Gender')}
+        />
+        <Button
+          modeValue="contained"
+          title="Logout"
+          labelStyle={styles.ButtonLabel}
+          onPress={() => handleSignOut()}
         />
       </View>
     </>

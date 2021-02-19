@@ -4,7 +4,6 @@ const phoneNumberRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([
 
 export const signupSchema = Yup.object().shape({
   firstName: Yup.string().required().label('First Name'),
-  lastName: Yup.string().required().label('Last Name'),
   email: Yup.string()
     .label('Email')
     .email('Enter a valid email')
@@ -17,4 +16,5 @@ export const signupSchema = Yup.object().shape({
     .label('Password')
     .required()
     .min(8, 'Password must have at least 8 characters '),
+  source: Yup.string().label('Where did you hear about us? ').required(),
 });

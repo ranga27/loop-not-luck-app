@@ -11,10 +11,11 @@ export const theme = {
     ...NavigationDarkTheme.colors,
     primary: '#f7b921',
     background: '#131B26',
+    surface: '#182230',
+    accent: '#0f2134',
+    onSurface: '#565E67',
     onBackground: '#b4b4b4',
     secondary: '#ee2844',
-    tertiary: '#2fb3c',
-    accent: '#0f2134',
   },
   fonts: configureFonts(fontConfig),
 };

@@ -1,15 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Title} from 'react-native-paper';
-import {Button} from '../../components';
+import {Button, Loading} from '../../components';
 import {theme} from '../../constants';
-import {signOutFirebase} from '../../firebase/authService';
 import auth from '@react-native-firebase/auth';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import {URL, URLSearchParams} from 'react-native-url-polyfill';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useSelector} from 'react-redux';
+import {
+  sendEmailVerification,
+  signOutFirebase,
+} from '../../firebase/authService';
 
 export const EmailSent = ({navigation}) => {
+  const {currentUser} = useSelector((state) => state.auth);
+  const [loading, setLoading] = useState(false);
+  const handleResend = async () => {
+    try {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        sendEmailVerification();
+      }, 3000);
+    } catch (error) {
+      //TODO: error message on screen
+      console.error(error.message);
+    }
+  };
+
   const handleDynamicLink = async (link) => {
     // Check and handle if the link is a email login link
     const mode = getURLParam(link.url, 'mode');
@@ -58,9 +76,23 @@ export const EmailSent = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Title style={styles.titleText}>
-        Verification email sent, please check your email!
-      </Title>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Title style={styles.titleText}>
+            Verification email sent to {currentUser.email}, please check your
+            email!
+          </Title>
+
+          <Button
+            modeValue="contained"
+            title="Resend"
+            labelStyle={styles.ButtonLabel}
+            onPress={() => handleResend()}
+          />
+        </>
+      )}
     </View>
   );
 };

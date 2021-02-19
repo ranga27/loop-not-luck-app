@@ -9,6 +9,16 @@ export function signOutFirebase() {
   return auth().signOut();
 }
 
+export async function sendEmailVerification() {
+  await auth().currentUser.sendEmailVerification({
+    handleCodeInApp: true,
+    url: 'https://loopnotluckuser.page.link/app',
+    iOS: {
+      bundleId: 'com.loopnotluck.app',
+    },
+  });
+}
+
 export async function registerInFirebase(newUser) {
   try {
     //remove then
