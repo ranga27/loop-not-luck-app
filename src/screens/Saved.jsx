@@ -39,18 +39,18 @@ export const Saved = ({navigation}) => {
             <ScrollView
               indicatorStyle="white"
               contentContainerStyle={{alignItems: 'center'}}>
-              {bookmarks.map((item) => (
-                <View key={item.id}>
+              {bookmarks.map((item, index) => (
+                <View key={index}>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={{marginBottom: 14}}
                     onPress={() =>
                       navigation.navigate('SavedDetailScreen', {item})
                     }>
-                    <SharedElement id={`item.${item.id}.image_url`}>
+                    <SharedElement id={`item.${item.id}.opportunity.logoUrl`}>
                       <Image
                         style={styles.imageComponent}
-                        source={{uri: item.image_url}}
+                        source={{uri: item.opportunity.logoUrl}}
                         resizeMode="cover"
                       />
                     </SharedElement>
@@ -58,11 +58,14 @@ export const Saved = ({navigation}) => {
                       <View style={{flexDirection: 'row'}}>
                         <View style={{flexDirection: 'column', paddingLeft: 6}}>
                           <SharedElement id={`item.${item.id}.title`}>
-                            <Text style={styles.titleText}>{item.title}</Text>
+                            <Text style={styles.titleText}>
+                              {item.opportunity.title}
+                            </Text>
                           </SharedElement>
-                          <SharedElement id={`item.${item.id}.description`}>
+                          <SharedElement
+                            id={`item.${item.id}.opportunity.organisation`}>
                             <Text style={styles.descriptionText}>
-                              {item.description}
+                              {item.opportunity.organisation}
                             </Text>
                           </SharedElement>
                         </View>

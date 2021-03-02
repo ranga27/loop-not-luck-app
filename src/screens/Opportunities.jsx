@@ -13,7 +13,7 @@ import {SharedElement} from 'react-navigation-shared-element';
 import {data} from '../constants/data';
 
 const {width} = Dimensions.get('screen');
-const ITEM_WIDTH = width * 0.7;
+const ITEM_WIDTH = width * 0.3;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
 export const Opportunities = ({navigation}) => {
@@ -41,20 +41,14 @@ export const Opportunities = ({navigation}) => {
                     resizeMode="cover"
                   />
                 </SharedElement>
-                <View style={styles.detailsContainer}>
-                  <View style={{flexDirection: 'row'}}>
-                    <View style={{flexDirection: 'column', paddingLeft: 6}}>
-                      <SharedElement id={`item.${item.id}.title`}>
-                        <Text style={styles.titleText}>{item.title}</Text>
-                      </SharedElement>
-                      <SharedElement id={`item.${item.id}.description`}>
-                        <Text style={styles.descriptionText}>
-                          {item.description}
-                        </Text>
-                      </SharedElement>
-                    </View>
-                  </View>
-                </View>
+                  <SharedElement id={`item.${item.id}.title`}>
+                    <Text style={styles.titleText}>{item.title}</Text>
+                  </SharedElement>
+                  <SharedElement id={`item.${item.id}.description`}>
+                    <Text style={styles.descriptionText}>
+                      {item.description}
+                    </Text>
+                  </SharedElement>
               </TouchableOpacity>
             </View>
           ))}

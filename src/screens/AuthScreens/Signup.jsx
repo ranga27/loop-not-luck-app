@@ -135,7 +135,6 @@ export const Signup = ({navigation}) => {
                   onChangeText={handleChange('other')}
                   onBlur={handleBlur('other')}
                   value={values.other}
-                  secureTextEntry={true}
                 />
               )}
               <ErrorMessage errorValue={errors.auth} />

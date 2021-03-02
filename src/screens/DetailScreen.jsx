@@ -49,9 +49,9 @@ export const DetailScreen = ({navigation, route}) => {
   };
   return (
     <View style={{flex: 1}}>
-      <SharedElement id={`item.${item.id}.image_url`}>
+      <SharedElement id={`item.${item.id}.opportunity.logoUrl`}>
         <Image
-          source={{uri: item.image_url}}
+          source={{uri: item.opportunity.logoUrl}}
           style={styles.image}
           resizeMode="cover"
         />
@@ -61,14 +61,19 @@ export const DetailScreen = ({navigation, route}) => {
         animation="fadeIn"
         duration={600}
         delay={300}
-        style={[StyleSheet.absoluteFillObject]}></Animatable.View>
-      <IconButton
-        icon="close"
-        size={28}
-        color={theme.colors.accent}
-        style={styles.closeButton}
-        onPress={() => navigation.goBack()}
-      />
+        style={[StyleSheet.absoluteFillObject]}>
+        <IconButton
+          icon="close"
+          size={28}
+          color={theme.colors.accent}
+          style={styles.closeButton}
+          onPress={() => {
+            buttonRef.current.fadeOut(100).then(() => {
+              navigation.goBack();
+            });
+          }}
+        />
+      </Animatable.View>
       <IconButton
         icon={ifExists(item) ? 'bookmark' : 'bookmark-outline'}
         size={28}
@@ -81,11 +86,13 @@ export const DetailScreen = ({navigation, route}) => {
       <View
         style={{flexDirection: 'row', marginTop: 10, paddingHorizontal: 20}}>
         <View style={{flexDirection: 'column', paddingLeft: 6}}>
-          <SharedElement id={`item.${item.id}.title`}>
-            <Text style={styles.titleText}>{item.title}</Text>
+          <SharedElement id={`item.${item.id}.opportunity.title`}>
+            <Text style={styles.titleText}>{item.opportunity.title}</Text>
           </SharedElement>
-          <SharedElement id={`item.${item.id}.description`}>
-            <Text style={styles.descriptionText}>{item.description}</Text>
+          <SharedElement id={`item.${item.id}.opportunity.organisation`}>
+            <Text style={styles.descriptionText}>
+              {item.opportunity.organisation}
+            </Text>
           </SharedElement>
         </View>
       </View>
@@ -95,22 +102,7 @@ export const DetailScreen = ({navigation, route}) => {
           paddingHorizontal: 20,
         }}
         contentContainerStyle={{paddingVertical: 20}}>
-        <Text style={styles.detailsText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
-        </Text>
+        <Text style={styles.detailsText}>{item.opportunity.description}</Text>
       </ScrollView>
     </View>
   );
@@ -120,17 +112,17 @@ DetailScreen.sharedElements = (route) => {
   const {item} = route.params;
   return [
     {
-      id: `item.${item.id}.image_url`,
+      id: `item.${item.id}.opportunity.logoUrl`,
       animation: 'move',
       resize: 'clip',
     },
     {
-      id: `item.${item.id}.title`,
+      id: `item.${item.id}.opportunity.title`,
       animation: 'fade',
       resize: 'clip',
     },
     {
-      id: `item.${item.id}.description`,
+      id: `item.${item.id}.opportunity.organisation`,
       animation: 'fade',
       resize: 'clip',
     },

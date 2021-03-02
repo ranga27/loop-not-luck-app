@@ -8,7 +8,8 @@ export const data = [
     id: '1',
     title: 'PWC',
     description: 'Summer Intern',
-    image_url: 'https://logo.clearbit.com/pwc.com',
+    image_url:
+      'https://storage.googleapis.com/loop-luck.appspot.com/companyLogos/3685b434-331a-4b89-ae7d-1c80f80c98b0.png',
     iconName: 'location-pin',
   },
 

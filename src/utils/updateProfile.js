@@ -6,7 +6,7 @@ export const updateProfile = async (dataToUpdate, id) => {
       .collection('users')
       .doc(id)
       .update(dataToUpdate)
-      .then(console.debug('Data updated!'));
+      .then(console.log('Firestore data updated!'));
   } catch (e) {
     console.log(e);
   }

@@ -2,3 +2,4 @@
 
 TODO
 animation, screen tranistions
+use redux for opps

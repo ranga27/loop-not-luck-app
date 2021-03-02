@@ -11,7 +11,6 @@ export const getBooks = () => {
   try {
     return async (dispatch) => {
       const books = data;
-      // console.log('DATA ========>', response.data);
       if (books) {
         dispatch({
           type: GET_BOOKS,

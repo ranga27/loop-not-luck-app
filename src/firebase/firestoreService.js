@@ -4,6 +4,11 @@ import firestore from '@react-native-firebase/firestore';
 
 const db = firestore();
 
+export async function getOpportunitiesFromFirestore() {
+  const opportunities = await db.collection('opportunities').get();
+  return opportunities;
+}
+
 export function dataFromSnapshot(snapshot) {
   if (!snapshot.exists) {
     return undefined;
