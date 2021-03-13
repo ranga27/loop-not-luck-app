@@ -6,3 +6,4 @@ export {theme} from './theme';
 export {data} from './data';
 export {channels} from './marketingChannel';
 export {societies} from './societies';
+export {countries} from './countries';

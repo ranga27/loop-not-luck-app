@@ -26,27 +26,24 @@ export const AppNavigator = () => {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           //replace using switch case
-          if (route.name === 'Opportunities') {
-            iconName = focused ? 'business' : 'business-outline';
-          } else if (route.name === 'Saved') {
+          if (route.name === 'My Loop') {
+            iconName = focused ? 'radio-button-on' : 'radio-button-on-outline';
+          } else if (route.name === 'Opportunities') {
             iconName = focused ? 'bookmarks' : 'bookmarks-outline';
-          } else if (route.name === 'Notifications') {
-            iconName = focused ? 'notifications' : 'notifications-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'settings' : 'settings-outline';
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}>
-      <Tab.Screen name="Opportunities" component={OppsStack} />
       <Tab.Screen
-        name="Saved"
+        name="Opportunities"
         component={BookMarkStack}
         options={{
           tabBarBadge: bookmarks.length,
         }}
       />
-      <Tab.Screen name="Notifications" component={Notifications} />
+      <Tab.Screen name="My Loop" component={OppsStack} />
       <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );

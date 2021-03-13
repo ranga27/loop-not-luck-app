@@ -15,25 +15,31 @@ export const Gender = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.info}>
-        {currentUserProfile.firstName}, what gender do you identify with?
-      </Text>
-      <RadioButton.Group
-        onValueChange={(value) => {
-          setShowOther(value === 'Other');
-          if (value != 'Other') {
-            setSelection(value);
-            navigation.navigate('BirthDate');
-          }
-        }}
-        value={selection}>
-        {genderOptions.map((child, index) => (
-          <RadioButton.Item
-            key={index}
-            label={child.label}
-            value={child.value}
-          />
-        ))}
+      <View style={styles.titleContainer}>
+        <Text style={{fontSize: 24}}>
+          {currentUserProfile.firstName}, what gender do you identify with?
+        </Text>
+      </View>
+      <View style={styles.radioContainer}>
+        <RadioButton.Group
+          onValueChange={(value) => {
+            setShowOther(value === 'Other');
+            if (value != 'Other') {
+              setSelection(value);
+              navigation.navigate('BirthDate');
+            }
+          }}
+          value={selection}>
+          {genderOptions.map((child, index) => (
+            <RadioButton.Item
+              key={index}
+              label={child.label}
+              value={child.value}
+            />
+          ))}
+        </RadioButton.Group>
+      </View>
+      <View style={styles.inputContainer}>
         {showOther && (
           <>
             <InputField
@@ -51,7 +57,7 @@ export const Gender = ({navigation}) => {
             />
           </>
         )}
-      </RadioButton.Group>
+      </View>
     </View>
   );
 };
@@ -61,20 +67,38 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  titleText: {
-    fontSize: 24,
+  titleContainer: {
+    flex: 1,
+    //width: width * 0.8,
+    //height: 100,
+    //borderWidth: 2,
+    //borderColor: 'white',
+    justifyContent: 'flex-end',
     marginBottom: 10,
+    alignItems: 'center',
+    //flexGrow: 1,
   },
-  info: {
-    textAlign: 'justify',
-    paddingHorizontal: 50,
-    paddingVertical: 20,
+  radioContainer: {
+    //flex: 1,
+    //width: width * 0.8,
+    //height: 100,
+   // borderWidth: 2,
+    //borderColor: 'white',
+    //justifyContent: 'flex-end',
+    marginHorizontal: 50,
+    //alignItems: 'center',
+    //flexGrow: 4,
   },
-  ButtonLabel: {
-    fontSize: 22,
-  },
-  navButtonText: {
-    fontSize: 18,
+  inputContainer: {
+    flex: 1,
+    //width: width * 0.8,
+    //height: 100,
+    //borderWidth: 2,
+    //borderColor: 'white',
+    //justifyContent: 'flex-end',
+    //marginBottom: 10,
+    alignItems: 'center',
+    //flexGrow: 1,
   },
   navButton: {
     marginTop: 10,
