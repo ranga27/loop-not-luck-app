@@ -4,15 +4,24 @@ import {RadioButton, Text, IconButton} from 'react-native-paper';
 import {genderOptions} from '../../constants/genderOptions';
 import {useSelector} from 'react-redux';
 import useValueChange from '../../hooks/useValueChange';
-import {InputField} from '../../components';
+import {ErrorMessage, InputField} from '../../components';
+import {Formik} from 'formik';
+import * as Yup from 'yup';
 
 export const Gender = ({navigation}) => {
   const {currentUserProfile} = useSelector((state) => state.profile);
   const [selection, setSelection] = useState('');
   const [showOther, setShowOther] = useState(false);
-  const [otherValue, setOtherValue] = useState(false);
   useValueChange(selection, 'gender');
-
+  const handleFormSubmit = (values, actions) => {
+    try {
+      setSelection(values.gender);
+      navigation.navigate('BirthDate');
+    } catch (error) {
+      actions.setErrors(error.message);
+      actions.setSubmitting(false);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -39,25 +48,35 @@ export const Gender = ({navigation}) => {
           ))}
         </RadioButton.Group>
       </View>
-      <View style={styles.inputContainer}>
-        {showOther && (
-          <>
-            <InputField
-              label="Please specify"
-              onChangeText={(value) => setOtherValue(value)}
-            />
-            <IconButton
-              icon="chevron-right"
-              size={30}
-              style={styles.navButton}
-              onPress={() => {
-                setSelection(otherValue);
-                navigation.navigate('BirthDate');
-              }}
-            />
-          </>
+      <Formik
+        initialValues={{gender: ''}}
+        validateOnChange={false}
+        validationSchema={Yup.object({
+          gender: Yup.string().label('Gender').required(),
+        })}
+        onSubmit={(values, actions) => handleFormSubmit(values, actions)}>
+        {({handleChange, handleSubmit, values, errors}) => (
+          <View style={styles.inputContainer}>
+            {showOther && (
+              <>
+                <InputField
+                  label="Please specify"
+                  onChangeText={handleChange('gender')}
+                  value={values.gender}
+                />
+                <ErrorMessage errorValue={errors.gender} />
+
+                <IconButton
+                  icon="chevron-right"
+                  size={30}
+                  style={styles.navButton}
+                  onPress={handleSubmit}
+                />
+              </>
+            )}
+          </View>
         )}
-      </View>
+      </Formik>
     </View>
   );
 };
@@ -82,7 +101,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     //width: width * 0.8,
     //height: 100,
-   // borderWidth: 2,
+    // borderWidth: 2,
     //borderColor: 'white',
     //justifyContent: 'flex-end',
     marginHorizontal: 50,

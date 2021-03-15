@@ -26,7 +26,7 @@ export const UGGrade = ({navigation}) => {
           <RadioButton.Group
             onValueChange={(value) => handleChange(value)}
             value={selection}>
-            <RadioButton.Item label="1" value="1" />
+            <RadioButton.Item label="1st" value="1" />
             <RadioButton.Item label="2:1" value="2:1" />
             <RadioButton.Item label="2:2" value="2:2" />
             <RadioButton.Item label="3rd" value="3rd" />

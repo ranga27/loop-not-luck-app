@@ -1,4 +1,5 @@
 export {ethnicityOptions} from './ethnicityOptions';
+export {careerInterestsOptions} from './careerInterestsOptions';
 export {fontConfig} from './fontConfig';
 export {genderOptions} from './genderOptions';
 export {countryOptions} from './countryOptions';
