@@ -10,9 +10,9 @@ import {channels, societies} from '../../constants';
 
 const {height, width} = Dimensions.get('screen');
 export const Signup = ({navigation}) => {
-  const [showSocieties, setShowSocieties] = useState(false);
-  const [showReferee, setshowReferee] = useState(false);
-  const [showOther, setShowOther] = useState(false);
+  const [isSocietySelected, setIsSocietySelected] = useState(false);
+  const [isRefereeSelected, setIsRefreeSelected] = useState(false);
+  const [isOtherSelected, setIsOtherSelected] = useState(false);
   const handleFormSubmit = async (values, actions) => {
     try {
       await registerInFirebase(values);
@@ -23,7 +23,28 @@ export const Signup = ({navigation}) => {
       actions.setSubmitting(false);
     }
   };
-
+  const handleSelectionChange = (value) => {
+    setIsSocietySelected(value === 'Society');
+    setIsRefreeSelected(false);
+    setIsOtherSelected(value === 'Other');
+    if (value === 'Word of Mouth') {
+      Alert.alert(
+        'Word of Mouth',
+        "We'd like to thank them. Are you happy to share their name?",
+        [
+          {
+            text: 'No',
+            style: 'cancel',
+          },
+          {
+            text: 'Yes',
+            onPress: () => setIsRefreeSelected(value === 'Word of Mouth'),
+          },
+        ],
+        {cancelable: false},
+      );
+    }
+  };
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
@@ -74,7 +95,6 @@ export const Signup = ({navigation}) => {
                 value={values.email}
                 errorValue={touched.email && errors.email}
               />
-
               <InputField
                 label="Password"
                 onChangeText={handleChange('password')}
@@ -88,40 +108,21 @@ export const Signup = ({navigation}) => {
                 data={channels}
                 value={values.source}
                 onChange={(value) => {
+                  //handleChange not effective on setting value
                   setFieldValue('source', value);
-                  setShowSocieties(value === 'Society');
-                  setshowReferee(false);
-                  setShowOther(value === 'Other');
-                  if (value === 'Word of Mouth') {
-                    Alert.alert(
-                      'Word of Mouth',
-                      "We'd like to thank them. Are you happy to share their name?",
-                      [
-                        {
-                          text: 'No',
-                          style: 'cancel',
-                        },
-                        {
-                          text: 'Yes',
-                          onPress: () =>
-                            setshowReferee(value === 'Word of Mouth'),
-                        },
-                      ],
-                      {cancelable: false},
-                    );
-                  }
+                  handleSelectionChange(value);
                 }}
                 errorValue={touched.source && errors.source}
               />
-              {showSocieties && (
+              {isSocietySelected && (
                 <SingleSelect
-                  label="Societies"
+                  label="Select Society"
+                  data={societies}
                   value={values.society}
                   onChange={handleChange('society')}
-                  data={societies}
                 />
               )}
-              {showReferee && (
+              {isRefereeSelected && (
                 <InputField
                   label="Please share their name"
                   onChangeText={handleChange('referee')}
@@ -129,7 +130,7 @@ export const Signup = ({navigation}) => {
                   value={values.referee}
                 />
               )}
-              {showOther && (
+              {isOtherSelected && (
                 <InputField
                   label="Please populate"
                   onChangeText={handleChange('other')}
