@@ -1,8 +1,5 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Login, Signup, Welcome} from '../screens';
-import {ForgotPassword} from '../screens/AuthScreens/ForgotPassword';
-import {useSelector} from 'react-redux';
 import {EmailConfirm} from '../screens/AuthScreens/EmailConfim';
 import {EmailSent} from '../screens/AuthScreens/EmailSent';
 

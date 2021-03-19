@@ -7,10 +7,8 @@ import auth from '@react-native-firebase/auth';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 import {URL, URLSearchParams} from 'react-native-url-polyfill';
 import {useSelector} from 'react-redux';
-import {
-  sendEmailVerification,
-  signOutFirebase,
-} from '../../firebase/authService';
+import {sendEmailVerification} from '../../firebase/authService';
+import {openInbox} from 'react-native-email-link';
 
 export const EmailSent = ({navigation}) => {
   const {currentUser} = useSelector((state) => state.auth);
@@ -74,6 +72,9 @@ export const EmailSent = ({navigation}) => {
     return () => unsubscribe();
   }, []);
 
+  const handleOpenInbox = () => {
+    openInbox({title: 'Open mail apps'});
+  };
   return (
     <View style={styles.container}>
       {loading ? (
@@ -84,9 +85,14 @@ export const EmailSent = ({navigation}) => {
             Verification email sent to {currentUser.email}, please check your
             email!
           </Title>
-
           <Button
             modeValue="contained"
+            title="Open Email"
+            labelStyle={styles.ButtonLabel}
+            onPress={() => handleOpenInbox()}
+          />
+          <Button
+            modeValue="outlined"
             title="Resend"
             labelStyle={styles.ButtonLabel}
             onPress={() => handleResend()}
@@ -110,18 +116,10 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 24,
+    padding: 20,
     marginBottom: 10,
     color: theme.colors.primary,
     textAlign: 'center',
-  },
-  loginButtonLabel: {
-    fontSize: 22,
-  },
-  navButtonText: {
-    fontSize: 18,
-  },
-  navButton: {
-    marginTop: 10,
   },
   ButtonLabel: {
     fontSize: 20,

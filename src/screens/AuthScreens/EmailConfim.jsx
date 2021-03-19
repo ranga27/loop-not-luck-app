@@ -39,17 +39,9 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 24,
     marginBottom: 10,
+    padding: 20,
     color: theme.colors.primary,
     textAlign: 'center',
-  },
-  loginButtonLabel: {
-    fontSize: 22,
-  },
-  navButtonText: {
-    fontSize: 18,
-  },
-  navButton: {
-    marginTop: 10,
   },
   ButtonLabel: {
     fontSize: 20,

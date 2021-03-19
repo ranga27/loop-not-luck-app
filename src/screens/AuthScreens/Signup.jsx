@@ -10,13 +10,13 @@ import {channels, societies} from '../../constants';
 
 const {height, width} = Dimensions.get('screen');
 export const Signup = ({navigation}) => {
-  const [isSocietySelected, setIsSocietySelected] = useState(false);
-  const [isRefereeSelected, setIsRefreeSelected] = useState(false);
-  const [isOtherSelected, setIsOtherSelected] = useState(false);
+  const [isSocietySelected, setSocietySelected] = useState(false);
+  const [isRefereeSelected, setRefreeSelected] = useState(false);
+  const [isOtherSelected, setOtherSelected] = useState(false);
   const handleFormSubmit = async (values, actions) => {
     try {
-      await registerInFirebase(values);
       actions.setSubmitting(false);
+      await registerInFirebase(values);
       navigation.navigate('EmailSent');
     } catch (error) {
       actions.setErrors({auth: error.message});
@@ -24,9 +24,9 @@ export const Signup = ({navigation}) => {
     }
   };
   const handleSelectionChange = (value) => {
-    setIsSocietySelected(value === 'Society');
-    setIsRefreeSelected(false);
-    setIsOtherSelected(value === 'Other');
+    setSocietySelected(value === 'Society');
+    setRefreeSelected(false);
+    setOtherSelected(value === 'Other');
     if (value === 'Word of Mouth') {
       Alert.alert(
         'Word of Mouth',
@@ -38,7 +38,7 @@ export const Signup = ({navigation}) => {
           },
           {
             text: 'Yes',
-            onPress: () => setIsRefreeSelected(value === 'Word of Mouth'),
+            onPress: () => setRefreeSelected(value === 'Word of Mouth'),
           },
         ],
         {cancelable: false},
@@ -56,6 +56,8 @@ export const Signup = ({navigation}) => {
             password: '',
             source: '',
             society: '',
+            referee: '',
+            other: '',
           }}
           onSubmit={(values, actions) => handleFormSubmit(values, actions)}
           validationSchema={signupSchema}>

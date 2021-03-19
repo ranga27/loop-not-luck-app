@@ -17,6 +17,7 @@ export {CareerInterest} from './Onboarding/CareerInterest';
 export {PGDegree} from './Onboarding/PGDegree';
 export {Postgrad} from './Onboarding/Postgrad';
 export {PGGradYear} from './Onboarding/PGGradYear';
+export {Onboarding} from './Onboarding/Onboarding';
 export {Disability} from './Disability';
 export {Home} from './Home';
 export {Login} from './AuthScreens/Login';

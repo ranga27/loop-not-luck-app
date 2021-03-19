@@ -25,7 +25,7 @@ export async function registerInFirebase(newUser) {
       newUser.email,
       newUser.password,
     );
-
+    //move to separate function
     await result.user.sendEmailVerification({
       handleCodeInApp: true,
       url: 'https://loopnotluckuser.page.link/app',
@@ -34,8 +34,9 @@ export async function registerInFirebase(newUser) {
       },
     });
 
+    const {password, ...user} = newUser;
     //Create new user doc in the fireStore users collection
-    return await setUserProfileData(result.user.uid, newUser);
+    return await setUserProfileData(result.user.uid, user);
   } catch (error) {
     if (error.code === 'auth/email-already-in-use') {
       console.log('That email address is already in use!');

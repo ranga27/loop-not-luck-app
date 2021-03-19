@@ -8,6 +8,7 @@ import {useSelector} from 'react-redux';
 import {EmailVerifyNavigator} from './EmailVerifyNavigator';
 import {ResetPasswordNavigator} from './ResetPasswordNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
+import {OnboardingNavigator} from './OnboardingNavigator';
 const AuthStack = createStackNavigator();
 
 /**
@@ -24,7 +25,14 @@ export const Routes = () => {
       <AuthStack.Navigator headerMode="none">
         {authenticated ? (
           currentUser.emailVerified ? (
-            <AuthStack.Screen name="App" component={AppNavigator} />
+            currentUser.profileComplete ? (
+              <AuthStack.Screen name="App" component={AppNavigator} />
+            ) : (
+              <AuthStack.Screen
+                name="Onboarding"
+                component={OnboardingNavigator}
+              />
+            )
           ) : (
             <AuthStack.Screen
               name="EmailVerify"

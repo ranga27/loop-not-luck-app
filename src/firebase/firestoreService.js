@@ -64,13 +64,14 @@ export function cancelEventToggle(event) {
 }
 
 export function setUserProfileData(uid, user) {
-  return db.collection('users').doc(uid).set({
-    firstName: user.firstName,
-    email: user.email,
-    phoneNumber: user.phoneNumber,
-    source: user.source,
-    createdAt: firestore.FieldValue.serverTimestamp(),
-  });
+  return db
+    .collection('users')
+    .doc(uid)
+    .set({
+      ...user,
+      createdAt: firestore.FieldValue.serverTimestamp(),
+      profileComplete: false,
+    });
 }
 
 export function getUserProfile(userId) {
