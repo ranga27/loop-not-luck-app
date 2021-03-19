@@ -7,3 +7,4 @@ unselected: 'white'
 TODO
 animation, screen tranistions
 use redux for opps
+code resuse - components on oboarding

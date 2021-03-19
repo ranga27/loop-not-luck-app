@@ -63,11 +63,12 @@ export function cancelEventToggle(event) {
   });
 }
 
-export function setUserProfileData(user) {
-  return db.collection('users').doc(user.uid).set({
-    displayName: user.displayName,
+export function setUserProfileData(uid, user) {
+  return db.collection('users').doc(uid).set({
+    firstName: user.firstName,
     email: user.email,
     phoneNumber: user.phoneNumber,
+    source: user.source,
     createdAt: firestore.FieldValue.serverTimestamp(),
   });
 }

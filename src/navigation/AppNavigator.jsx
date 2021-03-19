@@ -44,7 +44,7 @@ export const AppNavigator = () => {
         }}
       />
       <Tab.Screen name="My Loop" component={OppsStack} />
-      <Tab.Screen name="Profile" component={ProfileStack} />
+      <Tab.Screen name="Profile" component={ProfileStack}  />
     </Tab.Navigator>
   );
 };

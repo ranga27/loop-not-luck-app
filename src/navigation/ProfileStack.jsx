@@ -1,4 +1,5 @@
 import React from 'react';
+import {theme} from '../constants/theme';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   Profile,
@@ -22,6 +23,7 @@ import {
   PGGrade,
   PGGradYear,
 } from '../screens';
+import {FirebaseDynamicLinksTypes} from '@react-native-firebase/dynamic-links';
 /**
  * This will provide access to screens
  * only when the user is logged in
@@ -31,7 +33,14 @@ const Stack = createStackNavigator();
 
 export const ProfileStack = () => {
   return (
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator
+      screenOptions={{
+        title: '',
+        headerStyle: {
+          backgroundColor: theme.colors.background,
+          shadowColor: theme.colors.background,
+        },
+      }}>
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Gender" component={Gender} />
       <Stack.Screen name="BirthDate" component={BirthDate} />

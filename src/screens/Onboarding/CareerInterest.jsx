@@ -33,7 +33,7 @@ export const CareerInterest = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={{fontSize: 24}}>
+        <Text style={{fontSize: 18}}>
           There are thousands of opportunities out there. To help us find the
           ones most relevant to you - select your area(s) of interest.
         </Text>

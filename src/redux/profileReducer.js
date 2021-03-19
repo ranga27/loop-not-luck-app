@@ -6,7 +6,6 @@ import {
 
 const initialState = {
   currentUserProfile: null,
-  onboardingOptions: null,
 };
 
 export default function profileReducer(state = initialState, {type, payload}) {

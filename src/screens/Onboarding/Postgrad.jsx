@@ -1,15 +1,25 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
-import {IconButton, RadioButton, Text} from 'react-native-paper';
-import {SingleSelect} from '../../components';
+import {IconButton, Text} from 'react-native-paper';
+import {SingleSelect, ErrorMessage} from '../../components';
 import {societies} from '../../constants';
 import useValueChange from '../../hooks/useValueChange';
+import * as Yup from 'yup';
+import {Formik} from 'formik';
 const {height, width} = Dimensions.get('screen');
-
+//TODO Merge this component with Undergraduate.jsx
 export const Postgrad = ({navigation}) => {
   const [selection, setSelection] = useState('');
   useValueChange(selection, 'pgUniversity');
-
+  const handleFormSubmit = (values, actions) => {
+    try {
+      setSelection(values.pgUniversity);
+      navigation.navigate('PGCourse');
+    } catch (error) {
+      actions.setErrors(error.message);
+      actions.setSubmitting(false);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -17,20 +27,36 @@ export const Postgrad = ({navigation}) => {
           What postgraduate university are you attending?
         </Text>
       </View>
-      <View style={styles.select}>
-        <SingleSelect
-          data={societies}
-          value={selection}
-          onChange={(value) => setSelection(value)}
-          enableSearch
-        />
-      </View>
-      <View style={styles.navButton}>
-        <IconButton
-          icon="chevron-right"
-          size={30}
-          onPress={() => navigation.navigate('PGCourse')}></IconButton>
-      </View>
+      <Formik
+        initialValues={{pgUniversity: ''}}
+        validateOnChange={false}
+        validationSchema={Yup.object({
+          pgUniversity: Yup.string().label('PG University').required(),
+        })}
+        onSubmit={(values, actions) => handleFormSubmit(values, actions)}>
+        {({handleChange, handleSubmit, values, errors}) => (
+          <>
+            <View style={styles.select}>
+              <SingleSelect
+                label="Select your PG Univeristy"
+                data={societies}
+                value={values.pgUniversity}
+                onChange={handleChange('pgUniversity')}
+                enableSearch
+              />
+            </View>
+            <View style={styles.navButton}>
+              <ErrorMessage errorValue={errors.pgUniversity} />
+
+              <IconButton
+                icon="chevron-right"
+                size={30}
+                onPress={handleSubmit}
+              />
+            </View>
+          </>
+        )}
+      </Formik>
     </View>
   );
 };
@@ -66,5 +92,6 @@ const styles = StyleSheet.create({
     //borderWidth: 2,
     //borderColor: 'white',
     flexGrow: 4,
+    alignItems: 'center',
   },
 });

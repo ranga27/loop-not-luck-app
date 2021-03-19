@@ -21,25 +21,21 @@ export async function sendEmailVerification() {
 
 export async function registerInFirebase(newUser) {
   try {
-    //remove then
-    await auth()
-      .createUserWithEmailAndPassword(newUser.email, newUser.password)
-      .then((userCredential) => {
-        setUserProfileData(userCredential.user);
-        userCredential.user.sendEmailVerification({
-          handleCodeInApp: true,
-          url: 'https://loopnotluckuser.page.link/app',
-          iOS: {
-            bundleId: 'com.loopnotluck.app',
-          },
-        });
-      })
-      .then(() => updateUserProfile(newUser));
+    const result = await auth().createUserWithEmailAndPassword(
+      newUser.email,
+      newUser.password,
+    );
 
-    /*  await result.user.updateProfile({
-      displayName: creds.firstName,
-    }); 
-    return await setUserProfileData(result.user);*/
+    await result.user.sendEmailVerification({
+      handleCodeInApp: true,
+      url: 'https://loopnotluckuser.page.link/app',
+      iOS: {
+        bundleId: 'com.loopnotluck.app',
+      },
+    });
+
+    //Create new user doc in the fireStore users collection
+    return await setUserProfileData(result.user.uid, newUser);
   } catch (error) {
     if (error.code === 'auth/email-already-in-use') {
       console.log('That email address is already in use!');
