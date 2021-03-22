@@ -74,11 +74,19 @@ export function setUserProfileData(uid, user) {
     });
 }
 
-export function getUserProfile(userId) {
-  return db.collection('users').doc(userId);
+export async function updateUserProfile() {
+  const user = auth().currentUser;
+  try {
+    return await db.collection('users').doc(user.uid).update({
+      profileComplete: true,
+      profileCompletedAt: firestore.FieldValue.serverTimestamp(),
+    });
+  } catch (error) {
+    throw error;
+  }
 }
 
-export async function updateUserProfile(profile) {
+/* export async function updateUserProfile(profile) {
   const user = auth().currentUser;
   try {
     if (user.displayName !== profile.displayName) {
@@ -90,4 +98,8 @@ export async function updateUserProfile(profile) {
   } catch (error) {
     throw error;
   }
+} */
+
+export function getUserProfile(userId) {
+  return db.collection('users').doc(userId);
 }

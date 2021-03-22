@@ -12,12 +12,13 @@ import {OnboardingNavigator} from './OnboardingNavigator';
 const AuthStack = createStackNavigator();
 
 /**
- * We check here the auth state of the user
+ * Check the auth state of the user
  */
 export const Routes = () => {
   const {authenticated, currentUser, resetPassword} = useSelector(
     (state) => state.auth,
   );
+  const {currentUserProfile} = useSelector((state) => state.profile);
 
   return (
     <NavigationContainer theme={theme}>
@@ -25,7 +26,7 @@ export const Routes = () => {
       <AuthStack.Navigator headerMode="none">
         {authenticated ? (
           currentUser.emailVerified ? (
-            currentUser.profileComplete ? (
+            currentUserProfile.profileComplete ? (
               <AuthStack.Screen name="App" component={AppNavigator} />
             ) : (
               <AuthStack.Screen

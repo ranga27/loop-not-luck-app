@@ -7,6 +7,7 @@ import {careerInterestsOptions} from '../../constants';
 import {ErrorMessage, InputField} from '../../components';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import {updateUserProfile} from '../../firebase/firestoreService';
 const {height, width} = Dimensions.get('screen');
 
 export const CareerInterest = ({navigation}) => {
@@ -14,17 +15,17 @@ export const CareerInterest = ({navigation}) => {
   const [selection, setSelection] = useState('');
   const [showOther, setShowOther] = useState(false);
   useValueChange(selection, 'careerInterests  ');
-  const handleValueChange = (value) => {
+  const handleValueChange = async (value) => {
     setShowOther(value === 'Other');
     if (value != 'Other') {
       setSelection(value);
-      navigation.navigate('Profile');
+      await updateUserProfile();
     }
   };
-  const handleFormSubmit = (values, actions) => {
+  const handleFormSubmit = async (values, actions) => {
     try {
       setSelection(values.interests);
-      navigation.navigate('Profile');
+      await updateUserProfile();
     } catch (error) {
       actions.setErrors(error.message);
       actions.setSubmitting(false);

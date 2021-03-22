@@ -20,9 +20,9 @@ export const Onboarding = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Title style={styles.titleText}>
-          {currentUserProfile.firstName}, so that our recommendations are as
-          relevant as possible we would like to get to know you better. It
-          should take 4 mins to get you registered and in the Loop!
+          Hello, so that our recommendations are as relevant as possible, we
+          would like to get to know you better. It should take 4 mins to get you
+          registered and in the Loop!
         </Title>
       </View>
       <View style={styles.buttonContainer}>
