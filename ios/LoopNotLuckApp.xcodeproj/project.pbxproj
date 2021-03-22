@@ -814,7 +814,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 7KR6635NT9;
+				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -840,7 +840,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 7KR6635NT9;
+				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				INFOPLIST_FILE = LoopNotLuckAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -851,6 +851,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c83fd50b-abc1-434c-93a9-1512d763e24a";
+				PROVISIONING_PROFILE_SPECIFIER = "com.loopnotluck.app AppStore";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoopNotLuckApp.app/LoopNotLuckApp";
 			};
 			name = Release;
@@ -864,7 +866,7 @@
 				CODE_SIGN_ENTITLEMENTS = "LoopNotLuckApp/Loop Not Luck.entitlements";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LoopNotLuckApp/Info.plist;
@@ -893,8 +895,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				INFOPLIST_FILE = LoopNotLuckApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 0.5;
@@ -905,7 +907,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopnotluck.app;
 				PRODUCT_NAME = "Loop Not Luck";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c83fd50b-abc1-434c-93a9-1512d763e24a";
+				PROVISIONING_PROFILE_SPECIFIER = "com.loopnotluck.app AppStore";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -922,6 +925,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "LoopNotLuckApp-tvOS/Info.plist";
@@ -951,6 +955,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "LoopNotLuckApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -961,6 +966,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.LoopNotLuckApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c83fd50b-abc1-434c-93a9-1512d763e24a";
+				PROVISIONING_PROFILE_SPECIFIER = "com.loopnotluck.app AppStore";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
@@ -977,6 +984,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "LoopNotLuckApp-tvOSTests/Info.plist";
@@ -1005,6 +1013,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8DLGYHD8R9;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "LoopNotLuckApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1015,6 +1024,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.LoopNotLuckApp-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c83fd50b-abc1-434c-93a9-1512d763e24a";
+				PROVISIONING_PROFILE_SPECIFIER = "com.loopnotluck.app AppStore";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoopNotLuckApp-tvOS.app/LoopNotLuckApp-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
