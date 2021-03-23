@@ -24,7 +24,7 @@ export const CareerInterest = ({navigation}) => {
   };
   const handleFormSubmit = async (values, actions) => {
     try {
-      setSelection(values.interests);
+      setSelection(values.other);
       await updateUserProfile();
     } catch (error) {
       actions.setErrors(error.message);
@@ -55,10 +55,10 @@ export const CareerInterest = ({navigation}) => {
         </View>
       </ScrollView>
       <Formik
-        initialValues={{gender: ''}}
+        initialValues={{other: ''}}
         validateOnChange={false}
         validationSchema={Yup.object({
-          gender: Yup.string().label('Gender').required(),
+          other: Yup.string().label('Interest').required(),
         })}
         onSubmit={(values, actions) => handleFormSubmit(values, actions)}>
         {({handleChange, handleSubmit, values, errors}) => (
@@ -66,11 +66,11 @@ export const CareerInterest = ({navigation}) => {
             {showOther && (
               <>
                 <InputField
-                  label="Please specify"
-                  onChangeText={handleChange('gender')}
-                  value={values.gender}
+                  label="Please specify Interest"
+                  onChangeText={handleChange('other')}
+                  value={values.other}
                 />
-                <ErrorMessage errorValue={errors.gender} />
+                <ErrorMessage errorValue={errors.other} />
 
                 <IconButton
                   icon="chevron-right"
