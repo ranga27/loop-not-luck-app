@@ -11,9 +11,10 @@ import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
-  const {bookmarks} = useSelector((state) => state.books);
+  const {bookmarks} = useSelector((state) => state.opps);
   return (
     <Tab.Navigator
+      initialRouteName={'My Loop'}
       tabBarOptions={{
         labelStyle: {
           fontSize: 12,
@@ -44,7 +45,7 @@ export const AppNavigator = () => {
         }}
       />
       <Tab.Screen name="My Loop" component={OppsStack} />
-      <Tab.Screen name="Profile" component={ProfileStack}  />
+      <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );
 };

@@ -20,7 +20,7 @@ const ITEM_HEIGHT = height * 0.5;
 export const DetailScreen = ({navigation, route}) => {
   const {item} = route.params;
   const buttonRef = useRef();
-  const {books, bookmarks} = useSelector((state) => state.books);
+  const {books, bookmarks} = useSelector((state) => state.opps);
   const dispatch = useDispatch();
 
   const fetchBooks = () => dispatch(getBooks());

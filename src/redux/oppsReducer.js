@@ -9,7 +9,7 @@ const initialState = {
   bookmarks: [],
 };
 
-function booksReducer(state = initialState, action) {
+function oppsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_BOOKS:
       return {...state, books: action.payload};
@@ -27,4 +27,4 @@ function booksReducer(state = initialState, action) {
   }
 }
 
-export default booksReducer;
+export default oppsReducer;

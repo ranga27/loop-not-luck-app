@@ -3,13 +3,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistStore, persistReducer} from 'redux-persist';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import booksReducer from '../redux/booksReducer';
+import oppsReducer from '../redux/oppsReducer';
 import authReducer from '../redux/authReducer';
 import {verifyAuth} from '../redux/authActions';
 import profileReducer from '../redux/profileReducer';
 
-const persistConfig = {
-  key: 'root',
+const oppsConfig = {
+  key: 'opps',
   storage: AsyncStorage,
   whitelist: ['bookmarks'],
 };
@@ -19,16 +19,22 @@ const authConfig = {
   storage: AsyncStorage,
 };
 
+const profileConfig = {
+  key: 'profile',
+  storage: AsyncStorage,
+};
+
 const rootReducer = combineReducers({
   auth: persistReducer(authConfig, authReducer),
-  books: persistReducer(persistConfig, booksReducer),
-  profile: profileReducer,
+  opps: persistReducer(oppsConfig, oppsReducer),
+  profile: persistReducer(profileConfig, profileReducer),
 });
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
+
 export const persistor = persistStore(store);
 
 export function configureStore() {
