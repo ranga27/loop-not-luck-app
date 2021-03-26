@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import {passwordReset, setAuthRoute} from '../../redux/authActions';
 const {height, width} = Dimensions.get('screen');
 import {saveData} from '../../utils/asyncStorage';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const ResetPasswordConfirm = ({navigation}) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export const ResetPasswordConfirm = ({navigation}) => {
       dispatch(setAuthRoute('Login'));
     } catch (error) {
       console.error(error.message);
+      crashlytics().recordError(error);
     }
   };
   return (

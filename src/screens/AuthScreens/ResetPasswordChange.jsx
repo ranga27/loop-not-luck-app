@@ -8,6 +8,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {useDispatch} from 'react-redux';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const {height, width} = Dimensions.get('screen');
 
@@ -28,6 +29,7 @@ export const ResetPasswordChange = ({route, navigation}) => {
         navigation.navigate('ResetPasswordConfirm'),
           actions.setSubmitting(false);
     } catch (error) {
+      crashlytics().recordError(error);
       actions.setErrors({auth: error.message});
       actions.setSubmitting(false);
     }

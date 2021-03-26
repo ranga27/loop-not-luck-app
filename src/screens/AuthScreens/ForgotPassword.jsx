@@ -6,6 +6,7 @@ import {sendPasswordResetEmail} from '../../firebase/authService';
 import * as Yup from 'yup';
 import {useDispatch} from 'react-redux';
 import {resetPassword} from '../../redux/authActions';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -19,6 +20,7 @@ export const ForgotPassword = ({navigation}) => {
     } catch (error) {
       actions.setErrors({auth: error.message});
       actions.setSubmitting(false);
+      crashlytics().recordError(error);
     }
   };
 

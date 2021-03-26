@@ -5,6 +5,7 @@ import {StyleSheet, View} from 'react-native';
 import {Button} from '../../components';
 import {signOutFirebase} from '../../firebase/authService';
 import {useSelector} from 'react-redux';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const Onboarding = ({navigation}) => {
   const {currentUserProfile} = useSelector((state) => state.profile);
@@ -14,6 +15,7 @@ export const Onboarding = ({navigation}) => {
       await signOutFirebase();
     } catch (error) {
       console.log(error.message);
+      crashlytics().recordError(error);
     }
   };
   return (

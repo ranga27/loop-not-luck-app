@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import useValueChange from '../../hooks/useValueChange';
 import {InputField} from '../../components';
 import {parse, isDate} from 'date-fns';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const today = new Date();
 export const BirthDate = ({navigation}) => {
@@ -25,6 +26,7 @@ export const BirthDate = ({navigation}) => {
     } catch (error) {
       actions.setErrors(error.message);
       actions.setSubmitting(false);
+      crashlytics().recordError(error);
     }
   };
   const [selection, setSelection] = useState('');

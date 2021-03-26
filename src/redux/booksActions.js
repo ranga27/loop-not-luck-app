@@ -1,4 +1,5 @@
 import {data} from '../constants';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 // Define action types
 export const GET_BOOKS = 'GET_BOOKS';
@@ -22,6 +23,7 @@ export const getBooks = () => {
     } catch (error) {
       // Add custom logic to handle errors
       console.log(error);
+      crashlytics().recordError(error);
     }
   };
 };

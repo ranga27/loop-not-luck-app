@@ -1,6 +1,7 @@
 //import cuid from 'cuid';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const db = firestore();
 
@@ -39,7 +40,6 @@ export function dataFromSnapshot(snapshot) {
       }
     }
   }
-
   return {
     ...data,
     id: snapshot.id,
@@ -85,7 +85,8 @@ export async function updateUserProfile() {
       profileCompletedAt: firestore.FieldValue.serverTimestamp(),
     });
   } catch (error) {
-    throw error;
+    crashlytics().recordError(error);
+    console.log(error);
   }
 }
 
@@ -103,6 +104,10 @@ export async function updateUserProfile() {
   }
 } */
 
-export function getUserProfile(userId) {
+export function getUserProfileDocRef(userId) {
   return db.collection('users').doc(userId);
+}
+
+export async function getUserProfile(userId) {
+  return await db.collection('users').doc(userId).get();
 }

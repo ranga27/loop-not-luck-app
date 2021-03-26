@@ -7,6 +7,7 @@ import {URL, URLSearchParams} from 'react-native-url-polyfill';
 import {Button} from '../../components';
 import {useDispatch} from 'react-redux';
 import {passwordReset, setAuthRoute} from '../../redux/authActions';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const ResetPasswordSent = ({navigation}) => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ export const ResetPasswordSent = ({navigation}) => {
         navigation.navigate('ResetPasswordChange', {oobCode: oobCode});
       } catch (e) {
         console.log(error);
+        crashlytics().recordError(error);
       } finally {
       }
     }

@@ -8,6 +8,8 @@ import {ErrorMessage, InputField} from '../../components';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {updateUserProfile} from '../../firebase/firestoreService';
+import crashlytics from '@react-native-firebase/crashlytics';
+
 const {height, width} = Dimensions.get('screen');
 
 export const CareerInterest = ({navigation}) => {
@@ -29,6 +31,7 @@ export const CareerInterest = ({navigation}) => {
     } catch (error) {
       actions.setErrors(error.message);
       actions.setSubmitting(false);
+      crashlytics().recordError(error);
     }
   };
   return (

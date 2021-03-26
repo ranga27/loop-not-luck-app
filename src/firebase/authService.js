@@ -1,5 +1,6 @@
 import auth from '@react-native-firebase/auth';
-import {setUserProfileData, updateUserProfile} from './firestoreService';
+import {setUserProfileData} from './firestoreService';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export function signInWithEmail(creds) {
   return auth().signInWithEmailAndPassword(creds.email, creds.password);
@@ -40,6 +41,7 @@ export async function registerInFirebase(newUser) {
   } catch (error) {
     if (error.code === 'auth/email-already-in-use') {
       console.log('That email address is already in use!');
+      crashlytics().recordError(error);
     }
     throw error;
   }
@@ -56,7 +58,8 @@ export async function sendPasswordResetEmail(user) {
     });
     return true;
   } catch (error) {
-    throw error;
+    crashlytics().recordError(error);
+    console.log(error);
   }
 }
 
@@ -65,7 +68,8 @@ export async function confirmPasswordReset(code, password) {
     await auth().confirmPasswordReset(code, password);
     return true;
   } catch (error) {
-    throw error;
+    crashlytics().recordError(error);
+    console.log(error);
   }
 }
 
@@ -85,6 +89,7 @@ export async function socialLogin(selectedProvider) {
     }
   } catch (error) {
     console.log(error.message);
+    console.log(error);
   }
 }
 

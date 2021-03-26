@@ -7,6 +7,7 @@ import useValueChange from '../../hooks/useValueChange';
 import {ErrorMessage, InputField} from '../../components';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const Gender = ({navigation}) => {
   const {currentUserProfile} = useSelector((state) => state.profile);
@@ -20,6 +21,8 @@ export const Gender = ({navigation}) => {
     } catch (error) {
       actions.setErrors(error.message);
       actions.setSubmitting(false);
+            crashlytics().recordError(error);
+
     }
   };
   return (

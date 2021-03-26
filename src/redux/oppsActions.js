@@ -2,6 +2,7 @@ import {fetchOppsFromFirestore} from '../firebase/firestoreService';
 import {FETCH_OPPS} from './oppsConstants';
 //This is incorrect, move firestore calls out of actions
 import firestore from '@react-native-firebase/firestore';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export function fetchOpps() {
   return async (dispatch) => {
@@ -22,6 +23,7 @@ export function fetchOpps() {
         });
     } catch (error) {
       console.log(error);
+      crashlytics().recordError(error);
     }
   };
 }

@@ -4,6 +4,7 @@ import {InputField, Button, ErrorMessage} from '../../components';
 import {Formik} from 'formik';
 import {signInWithEmail} from '../../firebase/authService';
 import * as Yup from 'yup';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const {height, width} = Dimensions.get('screen');
@@ -17,6 +18,7 @@ export const Login = ({navigation}) => {
     } catch (error) {
       actions.setErrors({auth: 'Problem with username or password'});
       actions.setSubmitting(false);
+      crashlytics().recordError(error);
     }
   };
 

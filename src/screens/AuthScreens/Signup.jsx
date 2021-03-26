@@ -7,6 +7,7 @@ import {registerInFirebase} from '../../firebase/authService';
 import {signupSchema} from '../../constants/signupValidationSchema';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {channels, societies} from '../../constants';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const {height, width} = Dimensions.get('screen');
 export const Signup = ({navigation}) => {
@@ -21,6 +22,7 @@ export const Signup = ({navigation}) => {
     } catch (error) {
       actions.setErrors({auth: error.message});
       actions.setSubmitting(false);
+      crashlytics().recordError(error);
     }
   };
   const handleSelectionChange = (value) => {

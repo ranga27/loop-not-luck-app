@@ -1,29 +1,36 @@
 import {
   RESET_PASSWORD,
   SIGN_IN_USER,
-  SIGN_OUT_USER, 
+  SIGN_OUT_USER,
   VERIFY_EMAIL,
   PASSWORD_RESET,
   SET_AUTH_ROUTE,
 } from './authConstants';
-import {dataFromSnapshot, getUserProfile} from '../firebase/firestoreService';
-import {listenToCurrentUserProfile} from './profileActions';
+import {
+  dataFromSnapshot,
+  getUserProfileDocRef,
+} from '../firebase/firestoreService';
+import {
+  listenToCurrentUserProfile,
+  loadCurrentUserProfile,
+} from './profileActions';
 import auth from '@react-native-firebase/auth';
 
 export function signInUser(user) {
-  return {
-    type: SIGN_IN_USER,
-    payload: user,
+  return function (dispatch) {
+    loadCurrentUserProfile(user.uid);
+    dispatch({type: SIGN_IN_USER, payload: user});
   };
 }
 //listen to the firebase auth state, this isn't an async function
 export function verifyAuth() {
   return function (dispatch) {
-    //can we move this to authService.js
+    //move this to authService.js
     return auth().onAuthStateChanged((user) => {
       if (user) {
         dispatch(signInUser(user));
-        const profileRef = getUserProfile(user.uid);
+        //since this is on snapshot it won't load data the first time, either enforce it to run or use load data action
+        const profileRef = getUserProfileDocRef(user.uid);
         profileRef.onSnapshot((snapshot) => {
           dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)));
         });

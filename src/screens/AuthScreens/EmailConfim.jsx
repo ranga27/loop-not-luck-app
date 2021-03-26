@@ -5,6 +5,7 @@ import {Button} from '../../components';
 import {theme} from '../../constants';
 import {useDispatch} from 'react-redux';
 import {verifyEmail} from '../../redux/authActions';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const EmailConfirm = ({navigation}) => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ export const EmailConfirm = ({navigation}) => {
       dispatch(verifyEmail());
     } catch (error) {
       console.error(error.message);
+      crashlytics().recordError(error);
     }
   };
   return (

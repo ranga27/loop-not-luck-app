@@ -3,6 +3,7 @@ import {theme} from '../constants';
 import {StyleSheet, View} from 'react-native';
 import {Button} from '../components';
 import {signOutFirebase} from '../firebase/authService';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const Profile = ({navigation}) => {
   const handleSignOut = async () => {
@@ -10,6 +11,7 @@ export const Profile = ({navigation}) => {
       await signOutFirebase();
     } catch (error) {
       console.log(error.message);
+      crashlytics().recordError(error);
     }
   };
   return (

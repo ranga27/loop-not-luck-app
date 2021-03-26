@@ -7,6 +7,8 @@ import useValueChange from '../../hooks/useValueChange';
 import {useSelector} from 'react-redux';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
+import crashlytics from '@react-native-firebase/crashlytics';
+
 const {height, width} = Dimensions.get('screen');
 
 export const UGCourse = ({navigation}) => {
@@ -20,6 +22,7 @@ export const UGCourse = ({navigation}) => {
     } catch (error) {
       actions.setErrors(error.message);
       actions.setSubmitting(false);
+      crashlytics().recordError(error);
     }
   };
   return (

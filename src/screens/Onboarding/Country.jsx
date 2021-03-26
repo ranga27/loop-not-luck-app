@@ -6,6 +6,7 @@ import {countries, countryOptions} from '../../constants';
 import useValueChange from '../../hooks/useValueChange';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const {height, width} = Dimensions.get('screen');
 
@@ -21,6 +22,7 @@ export const Country = ({navigation}) => {
     } catch (error) {
       actions.setErrors(error.message);
       actions.setSubmitting(false);
+      crashlytics().recordError(error);
     }
   };
   return (

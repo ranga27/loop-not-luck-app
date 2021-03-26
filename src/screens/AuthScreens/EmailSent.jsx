@@ -9,6 +9,7 @@ import {URL, URLSearchParams} from 'react-native-url-polyfill';
 import {useSelector} from 'react-redux';
 import {sendEmailVerification} from '../../firebase/authService';
 import {openInbox} from 'react-native-email-link';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const EmailSent = ({navigation}) => {
   const {currentUser} = useSelector((state) => state.auth);
@@ -23,6 +24,7 @@ export const EmailSent = ({navigation}) => {
     } catch (error) {
       //TODO: error message on screen
       console.error(error.message);
+      crashlytics().recordError(error);
     }
   };
 
@@ -47,16 +49,21 @@ export const EmailSent = ({navigation}) => {
                       navigation.navigate('EmailConfirm');
                   });
               })
-              .catch((error) => console.log(error));
+              .catch((error) => {
+                console.log(error);
+                crashlytics().recordError(error);
+              });
           })
           .catch((error) => {
             if (error.code == 'auth/invalid-action-code')
               console.log(
                 'The code is expired, or has already been used. Please verify your email address again',
               );
+            crashlytics().recordError(error);
           });
-      } catch (e) {
+      } catch (error) {
         console.log(error);
+        crashlytics().recordError(error);
       } finally {
       }
     }
