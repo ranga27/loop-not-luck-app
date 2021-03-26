@@ -4,6 +4,23 @@ import firestore from '@react-native-firebase/firestore';
 
 const db = firestore();
 
+export async function fetchOppsFromFirestore() {
+  const opps = [];
+  firestore()
+    .collection('opportunities')
+    .get()
+    .then((querySnapshot) => {
+      console.log('Total opps: ', querySnapshot.size);
+      querySnapshot.forEach((documentSnapshot) => {
+        opps.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
+        });
+      });
+    });
+  return opps;
+}
+
 export async function getOpportunitiesFromFirestore() {
   const opportunities = await db.collection('opportunities').get();
   return opportunities;
@@ -33,20 +50,6 @@ export function listenToEventsFromFirestore() {
 }
 export function listenToEventFromFirestore(eventId) {
   return db.collection('events').doc(eventId);
-}
-
-export function addEventToFirestore(event) {
-  return db.collection('events').add({
-    ...event,
-    hostedBy: 'Diana',
-    hostPhotoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
-    attendees: firestore.FieldValue.arrayUnion({
-      //kind of array.push
-      //id: cuid(),
-      displayName: 'Diana',
-      photoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
-    }),
-  });
 }
 
 export function updateEventInFirestore(event) {

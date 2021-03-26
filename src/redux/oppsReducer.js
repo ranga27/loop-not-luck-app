@@ -1,30 +1,23 @@
-import {
-  GET_BOOKS,
-  ADD_TO_BOOKMARK_LIST,
-  REMOVE_FROM_BOOKMARK_LIST,
-} from './booksActions';
+import {FETCH_OPPS, RETAIN_STATE} from './oppsConstants';
 
 const initialState = {
-  books: [],
-  bookmarks: [],
+  opps: [],
+  retainState: false,
 };
 
-function oppsReducer(state = initialState, action) {
-  switch (action.type) {
-    case GET_BOOKS:
-      return {...state, books: action.payload};
-    case ADD_TO_BOOKMARK_LIST:
-      return {...state, bookmarks: [...state.bookmarks, action.payload]};
-    case REMOVE_FROM_BOOKMARK_LIST:
+export default function oppsReducer(state = initialState, {type, payload}) {
+  switch (type) {
+    case FETCH_OPPS:
       return {
         ...state,
-        bookmarks: state.bookmarks.filter(
-          (book) => book.id !== action.payload.id,
-        ),
+        opps: payload,
+      };
+    case RETAIN_STATE:
+      return {
+        ...state,
+        retainState: true,
       };
     default:
       return state;
   }
 }
-
-export default oppsReducer;

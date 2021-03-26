@@ -26,7 +26,7 @@ export const Opps = ({navigation}) => {
   const [opps, setOpps] = useState([]); // Initial empty array of opps
   const [loading, setLoading] = useState(true); // Set loading to true on component mount
 
-  const {books} = useSelector((state) => state.opps);
+  const {books} = useSelector((state) => state.favs);
   const dispatch = useDispatch();
 
   const fetchBooks = () => dispatch(getBooks());

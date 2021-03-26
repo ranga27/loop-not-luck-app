@@ -20,7 +20,7 @@ const ITEM_HEIGHT = height * 0.5;
 export const SavedDetailScreen = ({navigation, route}) => {
   const {item} = route.params;
   const buttonRef = useRef();
-  const {bookmarks} = useSelector((state) => state.opps);
+  const {bookmarks} = useSelector((state) => state.favs);
   const dispatch = useDispatch();
 
   const removeFromBookmarkList = (book) => dispatch(removeBookmark(book));

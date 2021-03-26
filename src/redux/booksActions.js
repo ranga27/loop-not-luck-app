@@ -8,8 +8,8 @@ export const REMOVE_FROM_BOOKMARK_LIST = 'REMOVE_FROM_BOOKMARK_LIST';
 // Define action creators
 
 export const getBooks = () => {
-  try {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    try {
       const books = data;
       if (books) {
         dispatch({
@@ -19,10 +19,11 @@ export const getBooks = () => {
       } else {
         console.log('Unable to fetch data ');
       }
-    };
-  } catch (error) {
-    // Add custom logic to handle errors
-  }
+    } catch (error) {
+      // Add custom logic to handle errors
+      console.log(error);
+    }
+  };
 };
 
 export const addBookmark = (book) => (dispatch) => {

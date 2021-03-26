@@ -3,13 +3,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistStore, persistReducer} from 'redux-persist';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import oppsReducer from '../redux/oppsReducer';
+import favsReducer from '../redux/favsReducer';
 import authReducer from '../redux/authReducer';
+import oppsReducer from '../redux/oppsReducer';
 import {verifyAuth} from '../redux/authActions';
 import profileReducer from '../redux/profileReducer';
 
-const oppsConfig = {
-  key: 'opps',
+const favsConfig = {
+  key: 'favs',
   storage: AsyncStorage,
   whitelist: ['bookmarks'],
 };
@@ -25,8 +26,9 @@ const profileConfig = {
 };
 
 const rootReducer = combineReducers({
+  opps: oppsReducer,
   auth: persistReducer(authConfig, authReducer),
-  opps: persistReducer(oppsConfig, oppsReducer),
+  favs: persistReducer(favsConfig, favsReducer),
   profile: persistReducer(profileConfig, profileReducer),
 });
 
