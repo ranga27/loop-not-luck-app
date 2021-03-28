@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {InputField, Button, ErrorMessage} from '../../components';
 import {Formik} from 'formik';
 import {signInWithEmail} from '../../firebase/authService';
 import * as Yup from 'yup';
 import crashlytics from '@react-native-firebase/crashlytics';
-
+import {useSelector, useDispatch} from 'react-redux';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {loadCurrentUserProfile} from '../../redux/profileActions';
+
 const {height, width} = Dimensions.get('screen');
 
 export const Login = ({navigation}) => {
+  const dispatch = useDispatch();
+
+  const loadUserDetails = (creds) => dispatch(loadCurrentUserProfile(creds));
+
   const handleFormSubmit = async (values, actions) => {
     try {
-      await signInWithEmail(values);
+      loadUserDetails(values);
       actions.setSubmitting(false);
-      navigation.navigate('App');
+      //navigation.navigate('App');
     } catch (error) {
       actions.setErrors({auth: 'Problem with username or password'});
       actions.setSubmitting(false);

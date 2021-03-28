@@ -10,16 +10,13 @@ import {
   dataFromSnapshot,
   getUserProfileDocRef,
 } from '../firebase/firestoreService';
-import {
-  listenToCurrentUserProfile,
-  loadCurrentUserProfile,
-} from './profileActions';
+import {listenToCurrentUserProfile} from './profileActions';
 import auth from '@react-native-firebase/auth';
 
 export function signInUser(user) {
-  return function (dispatch) {
-    loadCurrentUserProfile(user.uid);
-    dispatch({type: SIGN_IN_USER, payload: user});
+  return {
+    type: SIGN_IN_USER,
+    payload: user,
   };
 }
 //listen to the firebase auth state, this isn't an async function

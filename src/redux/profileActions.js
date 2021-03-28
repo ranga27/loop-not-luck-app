@@ -6,11 +6,13 @@ import {
 } from './profileConstants';
 import crashlytics from '@react-native-firebase/crashlytics';
 import {getUserProfile} from '../firebase/firestoreService';
+import {signInWithEmail} from '../firebase/authService';
 
-export function loadCurrentUserProfile(userId) {
+export function loadCurrentUserProfile(creds) {
   return async (dispatch) => {
     try {
-      getUserProfile(userId).then((profile) =>
+      const result = await signInWithEmail(creds);
+      await getUserProfile(result.user.uid).then((profile) =>
         dispatch({type: LOAD_CURRENT_USER_PROFILE, payload: profile.data()}),
       );
     } catch (error) {

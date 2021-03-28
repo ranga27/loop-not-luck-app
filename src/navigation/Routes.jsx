@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {theme} from '../constants';
 import {AppNavigator} from './AppNavigator';
@@ -10,22 +10,21 @@ import {ResetPasswordNavigator} from './ResetPasswordNavigator';
 import {createStackNavigator} from '@react-navigation/stack';
 import {OnboardingNavigator} from './OnboardingNavigator';
 import {loadCurrentUserProfile} from '../redux/profileActions';
+import {Loading} from '../screens';
 
 const AuthStack = createStackNavigator();
 
-/**
- * Check the auth state of the user
- */
 export const Routes = () => {
+  const [isLoading, setLoading] = useState(false);
   const {authenticated, currentUser, resetPassword} = useSelector(
     (state) => state.auth,
   );
   const {currentUserProfile} = useSelector((state) => state.profile);
 
   const dispatch = useDispatch();
-  const getUserProfile = () => dispatch(loadCurrentUserProfile());
+  /*  const getUserProfile = () => dispatch(loadCurrentUserProfile());
 
-  /*  useEffect(() => {
+   useEffect(() => {
     if (authenticated && !currentUserProfile) {
       getUserProfile();
     }
@@ -37,13 +36,17 @@ export const Routes = () => {
       <AuthStack.Navigator headerMode="none">
         {authenticated ? (
           currentUser.emailVerified ? (
-            currentUserProfile.profileComplete ? (
-              <AuthStack.Screen name="App" component={AppNavigator} />
+            currentUserProfile ? (
+              currentUserProfile.profileComplete ? (
+                <AuthStack.Screen name="App" component={AppNavigator} />
+              ) : (
+                <AuthStack.Screen
+                  name="Onboarding"
+                  component={OnboardingNavigator}
+                />
+              )
             ) : (
-              <AuthStack.Screen
-                name="Onboarding"
-                component={OnboardingNavigator}
-              />
+              <AuthStack.Screen name="Loading" component={Loading} />
             )
           ) : (
             <AuthStack.Screen
