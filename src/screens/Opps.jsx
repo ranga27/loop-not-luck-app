@@ -23,15 +23,10 @@ const ITEM_WIDTH = width * 0.3;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
 export const Opps = ({navigation}) => {
-  const [opps, setOpps] = useState([]); // Initial empty array of opps
-  const [loading, setLoading] = useState(true); // Set loading to true on component mount
+  const [loading, setLoading] = useState(false); // Set loading to true on component mount
+  const {opps} = useSelector((state) => state.opps);
 
-  const {books} = useSelector((state) => state.favs);
-  const dispatch = useDispatch();
-
-  const fetchBooks = () => dispatch(getBooks());
-
-  useEffect(() => {
+  /*   useEffect(() => {
     const subscriber = firestore()
       .collection('opportunities')
       .onSnapshot((querySnapshot) => {
@@ -47,7 +42,7 @@ export const Opps = ({navigation}) => {
       });
     // Unsubscribe from events when no longer in use
     return () => subscriber();
-  }, []);
+  }, []); */
 
   const renderItem = ({item}) => {
     return (
@@ -57,24 +52,22 @@ export const Opps = ({navigation}) => {
           onPress={() => navigation.navigate('DetailScreen', {item})}>
           <View style={{flexDirection: 'row', flex: 1}}>
             {/* Opps Logo */}
-            <SharedElement id={`item.${item.id}.opportunity.logoUrl`}>
+            <SharedElement id={`item.${item.id}.logoUrl`}>
               <Image
-                source={{uri: item.opportunity.logoUrl}}
-                resizeMode="cover"
+                source={{uri: item.logoUrl}}
+                resizeMode="contain"
                 style={styles.logo}
               />
             </SharedElement>
             {/* Opps Metadata */}
             <View style={{flex: 1, marginLeft: 12}}>
               {/* Opps Title */}
-              <SharedElement id={`item.${item.id}.opportunity.title`}>
-                <Text style={styles.titleText}>{item.opportunity.title}</Text>
+              <SharedElement id={`item.${item.id}.title`}>
+                <Text style={styles.titleText}>{item.title}</Text>
               </SharedElement>
               {/* Meta info */}
-              <SharedElement id={`item.${item.id}.opportunity.organisation`}>
-                <Text style={styles.descriptionText}>
-                  {item.opportunity.organisation}
-                </Text>
+              <SharedElement id={`item.${item.id}.organisation`}>
+                <Text style={styles.descriptionText}>{item.organisation}</Text>
               </SharedElement>
             </View>
           </View>
@@ -88,7 +81,6 @@ export const Opps = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, paddingHorizontal: 16}}>
-        <Text style={styles.headerText}>Your Opportunities</Text>
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
             data={opps}
@@ -117,7 +109,13 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 20,
   },
-  logo: {borderRadius: 14, width: ITEM_WIDTH, height: ITEM_HEIGHT},
+  logo: {
+    borderRadius: 18,
+    width: 120,
+    height: 120,
+    borderWidth: 3,
+    borderColor: theme.colors.background,
+  },
   detailsContainer: {left: 10},
   titleText: {
     color: theme.colors.primary,

@@ -47,10 +47,10 @@ export const Saved = ({navigation}) => {
                     onPress={() =>
                       navigation.navigate('SavedDetailScreen', {item})
                     }>
-                    <SharedElement id={`item.${item.id}.opportunity.logoUrl`}>
+                    <SharedElement id={`item.${item.id}.logoUrl`}>
                       <Image
                         style={styles.imageComponent}
-                        source={{uri: item.opportunity.logoUrl}}
+                        source={{uri: item.logoUrl}}
                         resizeMode="cover"
                       />
                     </SharedElement>
@@ -59,13 +59,13 @@ export const Saved = ({navigation}) => {
                         <View style={{flexDirection: 'column', paddingLeft: 6}}>
                           <SharedElement id={`item.${item.id}.title`}>
                             <Text style={styles.titleText}>
-                              {item.opportunity.title}
+                              {item.title}
                             </Text>
                           </SharedElement>
                           <SharedElement
-                            id={`item.${item.id}.opportunity.organisation`}>
+                            id={`item.${item.id}.organisation`}>
                             <Text style={styles.descriptionText}>
-                              {item.opportunity.organisation}
+                              {item.organisation}
                             </Text>
                           </SharedElement>
                         </View>

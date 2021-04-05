@@ -8,39 +8,31 @@ import {
   Image,
   Dimensions,
   SafeAreaView,
-  FlatList,
-  ActivityIndicator,
   StatusBar,
-  Pressable,
 } from 'react-native';
-import {SharedElement} from 'react-navigation-shared-element';
-import {data} from '../constants/data';
 import {useSelector, useDispatch} from 'react-redux';
-import {getBooks} from '../redux/booksActions';
-import firestore from '@react-native-firebase/firestore';
-import {Title, Text, List, Paragraph} from 'react-native-paper';
-import {RETAIN_STATE} from '../redux/oppsConstants';
+import {Title, Text, List} from 'react-native-paper';
 import {fetchOpps} from '../redux/oppsActions';
+import {Loading} from '../components';
 
 const {width} = Dimensions.get('screen');
 const ITEM_WIDTH = width * 0.3;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
 export const MyLoop = ({navigation}) => {
-  const [oppts, setOpps] = useState([]); // Initial empty array of opps
-  const [loading, setLoading] = useState(false); // Set loading to true on component mount
+  const [isLoading, setLoading] = useState(true); // Set loading to true on component mount
 
-  const {books} = useSelector((state) => state.favs);
-  const {opps, retainState} = useSelector((state) => state.opps);
+  const {opps} = useSelector((state) => state.opps);
   const dispatch = useDispatch();
   const getOpps = () => dispatch(fetchOpps());
 
   useEffect(() => {
     getOpps();
+    setLoading(false);
   }, []);
 
-  if (loading) {
-    return <ActivityIndicator />;
+  if (isLoading) {
+    return <Loading />;
   }
   return (
     <SafeAreaView style={styles.container}>
@@ -70,16 +62,24 @@ export const MyLoop = ({navigation}) => {
               title={'Other Top Picks for you'}
               titleStyle={styles.accordionTitleText}
               left={(props) => <List.Icon {...props} />}>
-              {opps.map((child, index) => (
-                <List.Item key={index} title={child.title} />
+              {opps.map((item, index) => (
+                <List.Item
+                  key={index}
+                  title={item.title}
+                  onPress={() => navigation.navigate('DetailScreen', {item})}
+                />
               ))}
             </List.Accordion>
           </List.Section>
         </View>
         <View style={styles.otherOpps}>
-          <Title style={{color: theme.colors.primary}}>
-            Click here to explore the rest of LNL opportunities
-          </Title>
+          <TouchableOpacity>
+            <Title
+              style={{color: theme.colors.primary, fontSize: 18}}
+              onPress={() => navigation.navigate('Opps')}>
+              Click here to explore the rest of LNL opportunities
+            </Title>
+          </TouchableOpacity>
         </View>
         <View style={styles.feedback}>
           <Title style={{color: theme.colors.primary}}>Feedback?</Title>
@@ -103,7 +103,11 @@ const styles = StyleSheet.create({
     flex: 1,
     //flexGrow: 4,
   },
-  cardTitleText: {color: theme.colors.primary, paddingLeft: 10},
+  cardTitleText: {
+    color: theme.colors.primary,
+    paddingLeft: 10,
+    alignSelf: 'center',
+  },
   card: {
     flexDirection: 'row',
     flex: 1,
@@ -134,7 +138,7 @@ const styles = StyleSheet.create({
   },
   accordionTitleText: {
     color: theme.colors.primary,
-    fontSize: 20,
+    fontSize: 18,
   },
   text: {
     color: theme.colors.primary,

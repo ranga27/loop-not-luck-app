@@ -1,6 +1,6 @@
 import React from 'react';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
-import {Saved, SavedDetailScreen} from '../screens';
+import {Saved, SavedDetailScreen, Bookmarked} from '../screens';
 
 const Stack = createSharedElementStackNavigator();
 
@@ -16,7 +16,8 @@ const options = {
 };
 export const BookMarkStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Saved" headerMode="none">
+    <Stack.Navigator initialRouteName="Bookmarked" headerMode="none">
+      <Stack.Screen name="Bookmarked" component={Bookmarked} />
       <Stack.Screen name="Saved" component={Saved} />
       <Stack.Screen
         name="SavedDetailScreen"

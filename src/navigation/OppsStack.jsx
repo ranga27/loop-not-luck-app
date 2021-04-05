@@ -1,28 +1,43 @@
 import React from 'react';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
-import {Opportunities, DetailScreen, MyLoop} from '../screens';
-import {Opps} from '../screens/Opps';
+import {Opps, OppsDetails, MyLoop} from '../screens';
+import {theme} from '../constants/theme';
 
 const Stack = createSharedElementStackNavigator();
 
-const options = {
-  headerBackTitleVisible: false,
-  cardStyleInterpolator: ({current: {progress}}) => {
-    return {
-      cardStyle: {
-        opacity: progress,
-      },
-    };
-  },
-};
 export const OppsStack = () => {
   return (
-    <Stack.Navigator headerMode="none">
-      <Stack.Screen name="MyLoop" component={MyLoop} />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="MyLoop"
+        component={MyLoop}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Opps"
+        component={Opps}
+        options={{
+          headerTitle: false,
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+            shadowColor: theme.colors.background,
+          },
+        }}
+      />
       <Stack.Screen
         name="DetailScreen"
-        component={DetailScreen}
-        options={() => options}
+        component={OppsDetails}
+        options={{
+          headerTitle: false,
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+            shadowColor: theme.colors.background,
+          },
+        }}
       />
     </Stack.Navigator>
   );

@@ -14,8 +14,7 @@ export function fetchOpps() {
           const opps = [];
           querySnapshot.forEach((documentSnapshot) => {
             opps.push({
-              //remove .opportunity when the data is fixed
-              ...documentSnapshot.data().opportunity,
+              ...documentSnapshot.data(),
               key: documentSnapshot.id,
             });
           });

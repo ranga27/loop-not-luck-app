@@ -29,12 +29,6 @@ export const Profile = ({navigation}) => {
           labelStyle={styles.ButtonLabel}
           onPress={() => handleSignOut()}
         />
-        <Button
-          modeValue="outlined"
-          title="Test Crash"
-          labelStyle={styles.ButtonLabel}
-          onPress={() => crashlytics().crash()}
-        />
       </View>
     </>
   );
