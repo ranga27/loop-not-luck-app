@@ -9,7 +9,6 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import {SharedElement} from 'react-navigation-shared-element';
 import {data} from '../constants/data';
 
 const {width} = Dimensions.get('screen');
@@ -33,23 +32,9 @@ export const Opportunities = ({navigation}) => {
               <TouchableOpacity
                 activeOpacity={0.8}
                 style={{marginBottom: 14}}
-                onPress={() => navigation.navigate('DetailScreen', {item})}>
-                <SharedElement id={`item.${item.id}.image_url`}>
-                  <Image
-                    style={styles.imageComponent}
-                    source={{uri: item.image_url}}
-                    resizeMode="cover"
-                  />
-                </SharedElement>
-                  <SharedElement id={`item.${item.id}.title`}>
-                    <Text style={styles.titleText}>{item.title}</Text>
-                  </SharedElement>
-                  <SharedElement id={`item.${item.id}.description`}>
-                    <Text style={styles.descriptionText}>
-                      {item.description}
-                    </Text>
-                  </SharedElement>
-              </TouchableOpacity>
+                onPress={() =>
+                  navigation.navigate('DetailScreen', {item})
+                }></TouchableOpacity>
             </View>
           ))}
         </ScrollView>

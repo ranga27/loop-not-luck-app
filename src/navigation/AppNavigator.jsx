@@ -6,7 +6,7 @@ import {ProfileStack} from './ProfileStack';
 import {OppsStack} from './OppsStack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {theme} from '../constants';
-import {BookMarkStack} from './BookMarkStack';
+import {BookmarkTabBar} from './BookmarkTabBar';
 import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
@@ -15,15 +15,14 @@ export const AppNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName={'My Loop'}
-      tabBarOptions={{
-        labelStyle: {
+      screenOptions={({route}) => ({
+        headerShown: false,
+        tabBarLabelStyle: {
           fontSize: 12,
           margin: 0,
           padding: 0,
           fontFamily: theme.fonts.regular.fontFamily,
         },
-      }}
-      screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           //replace using switch case
@@ -37,13 +36,7 @@ export const AppNavigator = () => {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}>
-      <Tab.Screen
-        name="Opportunities"
-        component={BookMarkStack}
-        options={{
-          tabBarBadge: bookmarks.length,
-        }}
-      />
+      <Tab.Screen name="Opportunities" component={BookmarkTabBar} />
       <Tab.Screen name="My Loop" component={OppsStack} />
       <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>

@@ -10,7 +10,9 @@ export const AuthNavigator = () => {
   const {authRoute} = useSelector((state) => state.auth);
 
   return (
-    <Stack.Navigator headerMode="none" initialRouteName={authRoute}>
+    <Stack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName={authRoute}>
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />

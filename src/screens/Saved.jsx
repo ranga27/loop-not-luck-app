@@ -11,7 +11,6 @@ import {
   SafeAreaView,
   FlatList,
 } from 'react-native';
-import {SharedElement} from 'react-navigation-shared-element';
 import {useSelector} from 'react-redux';
 
 const {width} = Dimensions.get('screen');
@@ -47,28 +46,13 @@ export const Saved = ({navigation}) => {
                     onPress={() =>
                       navigation.navigate('SavedDetailScreen', {item})
                     }>
-                    <SharedElement id={`item.${item.id}.logoUrl`}>
-                      <Image
-                        style={styles.imageComponent}
-                        source={{uri: item.logoUrl}}
-                        resizeMode="cover"
-                      />
-                    </SharedElement>
                     <View style={styles.detailsContainer}>
                       <View style={{flexDirection: 'row'}}>
-                        <View style={{flexDirection: 'column', paddingLeft: 6}}>
-                          <SharedElement id={`item.${item.id}.title`}>
-                            <Text style={styles.titleText}>
-                              {item.title}
-                            </Text>
-                          </SharedElement>
-                          <SharedElement
-                            id={`item.${item.id}.organisation`}>
-                            <Text style={styles.descriptionText}>
-                              {item.organisation}
-                            </Text>
-                          </SharedElement>
-                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'column',
+                            paddingLeft: 6,
+                          }}></View>
                       </View>
                     </View>
                   </TouchableOpacity>

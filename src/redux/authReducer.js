@@ -5,6 +5,7 @@ import {
   VERIFY_EMAIL,
   PASSWORD_RESET,
   SET_AUTH_ROUTE,
+  SIGN_IN_USER_ERROR,
 } from './authConstants';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   currentUser: null,
   resetPassword: false,
   authRoute: 'Welcome',
+  error: '',
 };
 
 export default function authReducer(state = initialState, {type, payload}) {
@@ -28,6 +30,8 @@ export default function authReducer(state = initialState, {type, payload}) {
           emailVerified: payload.emailVerified,
         },
       };
+    case SIGN_IN_USER_ERROR:
+      return {...state, error: payload.message};
     case SIGN_OUT_USER:
       return {
         ...state,

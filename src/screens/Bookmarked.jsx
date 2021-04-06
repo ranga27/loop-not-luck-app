@@ -14,7 +14,6 @@ import {
   Title,
   Paragraph,
 } from 'react-native';
-import {SharedElement} from 'react-navigation-shared-element';
 import {useSelector} from 'react-redux';
 
 const {width} = Dimensions.get('screen');
@@ -23,7 +22,14 @@ const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
 export const Bookmarked = ({navigation}) => {
   const {bookmarks} = useSelector((state) => state.favs);
-  return <SafeAreaView style={{flex: 1}}></SafeAreaView>;
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}></SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({

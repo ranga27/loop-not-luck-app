@@ -3,24 +3,20 @@ import {
   LISTEN_TO_CURRENT_USER_PROFILE,
   LISTEN_TO_SELECTED_USER_PROFILE,
   UPDATE_USER_PROFILE,
+  LOAD_USER_ERROR,
 } from './profileConstants';
-import crashlytics from '@react-native-firebase/crashlytics';
 import {getUserProfile} from '../firebase/firestoreService';
-import {signInWithEmail} from '../firebase/authService';
 
-export function loadCurrentUserProfile(creds) {
+export function loadCurrentUserProfile(user) {
   return async (dispatch) => {
-    try {
-      const result = await signInWithEmail(creds);
-      await getUserProfile(result.user.uid).then((profile) =>
+    getUserProfile(user.uid)
+      .then((profile) =>
         dispatch({type: LOAD_CURRENT_USER_PROFILE, payload: profile.data()}),
-      );
-    } catch (error) {
-      console.log(error);
-      crashlytics().recordError(error);
-    }
+      )
+      .catch((error) => console.error(error));
   };
 }
+
 //Continuously listen to the current user's profile from firestore and populate in redux store
 export function listenToCurrentUserProfile(profile) {
   return {
@@ -42,3 +38,8 @@ export function updateUserProfile(dataToUpdate) {
     payload: dataToUpdate,
   };
 }
+
+export const loadUserError = (message) => ({
+  type: LOAD_USER_ERROR,
+  payload: message,
+});

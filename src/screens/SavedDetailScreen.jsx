@@ -9,7 +9,6 @@ import {
   Dimensions,
 } from 'react-native';
 import {IconButton} from 'react-native-paper';
-import {SharedElement} from 'react-navigation-shared-element';
 import * as Animatable from 'react-native-animatable';
 import {useSelector, useDispatch} from 'react-redux';
 import {removeBookmark} from '../redux/booksActions';
@@ -31,13 +30,6 @@ export const SavedDetailScreen = ({navigation, route}) => {
 
   return (
     <View style={{flex: 1}}>
-      <SharedElement id={`item.${item.id}.logoUrl`}>
-        <Image
-          source={{uri: item.logoUrl}}
-          style={styles.image}
-          resizeMode="cover"
-        />
-      </SharedElement>
       <Animatable.View
         ref={buttonRef}
         animation="fadeIn"
@@ -68,16 +60,7 @@ export const SavedDetailScreen = ({navigation, route}) => {
       />
       <View
         style={{flexDirection: 'row', marginTop: 10, paddingHorizontal: 20}}>
-        <View style={{flexDirection: 'column', paddingLeft: 6}}>
-          <SharedElement id={`item.${item.id}.title`}>
-            <Text style={styles.titleText}>{item.title}</Text>
-          </SharedElement>
-          <SharedElement id={`item.${item.id}.organisation`}>
-            <Text style={styles.descriptionText}>
-              {item.organisation}
-            </Text>
-          </SharedElement>
-        </View>
+        <View style={{flexDirection: 'column', paddingLeft: 6}}></View>
       </View>
       <ScrollView
         indicatorStyle="white"

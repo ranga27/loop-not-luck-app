@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 export const ResetPasswordNavigator = () => {
   const {currentUser} = useSelector((state) => state.auth);
   return (
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="ResetPasswordSent" component={ResetPasswordSent} />
       <Stack.Screen
         name="ResetPasswordChange"

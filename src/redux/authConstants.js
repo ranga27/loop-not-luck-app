@@ -4,3 +4,4 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const PASSWORD_RESET = 'PASSWORD_RESET';
 export const VERIFY_EMAIL = 'VERIFY_EMAIL';
 export const SET_AUTH_ROUTE = 'SET_AUTH_ROUTE';
+export const SIGN_IN_USER_ERROR = 'SIGN_IN_USER_ERROR';

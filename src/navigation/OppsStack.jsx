@@ -1,9 +1,9 @@
 import React from 'react';
-import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
+import {createStackNavigator} from '@react-navigation/stack';
 import {Opps, OppsDetails, MyLoop} from '../screens';
 import {theme} from '../constants/theme';
 
-const Stack = createSharedElementStackNavigator();
+const Stack = createStackNavigator();
 
 export const OppsStack = () => {
   return (
@@ -19,7 +19,7 @@ export const OppsStack = () => {
         name="Opps"
         component={Opps}
         options={{
-          headerTitle: false,
+          headerTitle: '',
           headerBackTitleVisible: false,
           headerStyle: {
             backgroundColor: theme.colors.background,
@@ -31,7 +31,7 @@ export const OppsStack = () => {
         name="DetailScreen"
         component={OppsDetails}
         options={{
-          headerTitle: false,
+          headerTitle: '',
           headerBackTitleVisible: false,
           headerStyle: {
             backgroundColor: theme.colors.background,

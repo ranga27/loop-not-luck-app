@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 export const EmailVerifyNavigator = () => {
   return (
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="EmailSent" component={EmailSent} />
       <Stack.Screen name="EmailConfirm" component={EmailConfirm} />
     </Stack.Navigator>

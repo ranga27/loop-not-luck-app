@@ -2,7 +2,7 @@ import auth from '@react-native-firebase/auth';
 import {setUserProfileData} from './firestoreService';
 import crashlytics from '@react-native-firebase/crashlytics';
 
-export function signInWithEmail(creds) {
+export async function signInWithEmail(creds) {
   return auth().signInWithEmailAndPassword(creds.email, creds.password);
 }
 

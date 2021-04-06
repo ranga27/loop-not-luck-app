@@ -5,6 +5,7 @@ import {
   VERIFY_EMAIL,
   PASSWORD_RESET,
   SET_AUTH_ROUTE,
+  SIGN_IN_USER_ERROR,
 } from './authConstants';
 import {
   dataFromSnapshot,
@@ -65,3 +66,7 @@ export function setAuthRoute(route) {
     payload: route,
   };
 }
+export const signInUserError = (message) => ({
+  type: SIGN_IN_USER_ERROR,
+  payload: message,
+});

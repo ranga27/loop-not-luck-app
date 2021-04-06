@@ -12,7 +12,6 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
-import {SharedElement} from 'react-navigation-shared-element';
 import {data} from '../constants/data';
 import {useSelector, useDispatch} from 'react-redux';
 import {getBooks} from '../redux/booksActions';
@@ -50,27 +49,7 @@ export const Opps = ({navigation}) => {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => navigation.navigate('DetailScreen', {item})}>
-          <View style={{flexDirection: 'row', flex: 1}}>
-            {/* Opps Logo */}
-            <SharedElement id={`item.${item.id}.logoUrl`}>
-              <Image
-                source={{uri: item.logoUrl}}
-                resizeMode="contain"
-                style={styles.logo}
-              />
-            </SharedElement>
-            {/* Opps Metadata */}
-            <View style={{flex: 1, marginLeft: 12}}>
-              {/* Opps Title */}
-              <SharedElement id={`item.${item.id}.title`}>
-                <Text style={styles.titleText}>{item.title}</Text>
-              </SharedElement>
-              {/* Meta info */}
-              <SharedElement id={`item.${item.id}.organisation`}>
-                <Text style={styles.descriptionText}>{item.organisation}</Text>
-              </SharedElement>
-            </View>
-          </View>
+          <View style={{flexDirection: 'row', flex: 1}}></View>
         </TouchableOpacity>
       </View>
     );
