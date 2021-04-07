@@ -21,7 +21,7 @@ const ITEM_WIDTH = width * 0.7;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
 export const Bookmarked = ({navigation}) => {
-  const {bookmarks} = useSelector((state) => state.favs);
+  const {saved} = useSelector((state) => state.favs);
   return (
     <SafeAreaView
       style={{

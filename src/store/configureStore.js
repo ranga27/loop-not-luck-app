@@ -9,10 +9,11 @@ import oppsReducer from '../redux/oppsReducer';
 import {verifyAuth} from '../redux/authActions';
 import profileReducer from '../redux/profileReducer';
 
+//favourites
 const favsConfig = {
   key: 'favs',
   storage: AsyncStorage,
-  whitelist: ['bookmarks'],
+  whitelist: ['saved'],
 };
 
 const authConfig = {

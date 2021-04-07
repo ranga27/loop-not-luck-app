@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Opps, OppsDetails, MyLoop} from '../screens';
+import {OppsDetails, MyLoop, OppsList} from '../screens';
 import {theme} from '../constants/theme';
 
 const Stack = createStackNavigator();
@@ -16,8 +16,8 @@ export const OppsStack = () => {
         }}
       />
       <Stack.Screen
-        name="Opps"
-        component={Opps}
+        name="OppsList"
+        component={OppsList}
         options={{
           headerTitle: '',
           headerBackTitleVisible: false,
@@ -28,7 +28,7 @@ export const OppsStack = () => {
         }}
       />
       <Stack.Screen
-        name="DetailScreen"
+        name="OppsDetails"
         component={OppsDetails}
         options={{
           headerTitle: '',

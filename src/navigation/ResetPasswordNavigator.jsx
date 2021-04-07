@@ -1,6 +1,5 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {useSelector} from 'react-redux';
 import {ResetPasswordChange} from '../screens/AuthScreens/ResetPasswordChange';
 import {ResetPasswordSent} from '../screens/AuthScreens/ResetPasswordSent';
 import {ResetPasswordConfirm} from '../screens/AuthScreens/ResetPasswordConfirm';
@@ -8,7 +7,6 @@ import {ResetPasswordConfirm} from '../screens/AuthScreens/ResetPasswordConfirm'
 const Stack = createStackNavigator();
 
 export const ResetPasswordNavigator = () => {
-  const {currentUser} = useSelector((state) => state.auth);
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="ResetPasswordSent" component={ResetPasswordSent} />

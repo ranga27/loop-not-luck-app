@@ -13,9 +13,8 @@
     "update": "yarn upgrade --latest && cd ios/ && pod update"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.1",
+    "@react-native-async-storage/async-storage": "^1.15.2",
     "@react-native-community/masked-view": "^0.1.10",
-    "@react-native-community/picker": "^1.8.1",
     "@react-native-firebase/analytics": "^11.2.0",
     "@react-native-firebase/app": "^11.2.0",
     "@react-native-firebase/auth": "^11.2.0",
@@ -43,7 +42,7 @@
     "react-native-picker-select": "^8.0.4",
     "react-native-reanimated": "^2.1.0",
     "react-native-safe-area-context": "^3.2.0",
-    "react-native-screens": "^3.0.0",
+    "react-native-screens": "^3.1.0",
     "react-native-tab-view": "^3.0.1",
     "react-native-url-polyfill": "^1.2.0",
     "react-native-vector-icons": "^8.0.0",

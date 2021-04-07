@@ -15,12 +15,11 @@ import {getBooks, addSaved, removeSaved} from '../redux/favsActions';
 const {height} = Dimensions.get('window');
 const ITEM_HEIGHT = height * 0.5;
 
-export const OppsDetails = ({navigation, route}) => {
+export const SavedDetails = ({navigation, route}) => {
   const {item} = route.params;
   const {saved} = useSelector((state) => state.favs);
   const dispatch = useDispatch();
 
-  const fetchBooks = () => dispatch(getBooks());
   const addToSavedList = (opps) => dispatch(addSaved(opps));
   const removeFromSavedList = (opps) => dispatch(removeSaved(opps));
 
@@ -57,7 +56,7 @@ export const OppsDetails = ({navigation, route}) => {
               <Text style={styles.titleText}>{item.title}</Text>
               <Text style={styles.descriptionText}>{item.organisation}</Text>
               <Text style={styles.dateText}>
-                Closing date: {item.deadline.toDate().toDateString()}
+                {/* Closing date: {item.deadline.toDate().toDateString()} */}
               </Text>
               <FAB
                 style={styles.fab}

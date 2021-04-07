@@ -7,6 +7,7 @@ import crashlytics from '@react-native-firebase/crashlytics';
 export function fetchOpps() {
   return async (dispatch) => {
     try {
+      //TODO: move to firesStore.service
       firestore()
         .collection('opportunities')
         .get()

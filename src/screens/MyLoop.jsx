@@ -66,7 +66,7 @@ export const MyLoop = ({navigation}) => {
                 <List.Item
                   key={index}
                   title={item.title}
-                  onPress={() => navigation.navigate('DetailScreen', {item})}
+                  onPress={() => navigation.navigate('OppsDetails', {item})}
                 />
               ))}
             </List.Accordion>
@@ -76,7 +76,7 @@ export const MyLoop = ({navigation}) => {
           <TouchableOpacity>
             <Title
               style={{color: theme.colors.primary, fontSize: 18}}
-              onPress={() => navigation.navigate('Opps')}>
+              onPress={() => navigation.navigate('OppsList')}>
               Click here to explore the rest of LNL opportunities
             </Title>
           </TouchableOpacity>

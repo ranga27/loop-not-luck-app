@@ -1,26 +1,24 @@
 import {
-  GET_BOOKS,
-  ADD_TO_BOOKMARK_LIST,
-  REMOVE_FROM_BOOKMARK_LIST,
-} from './booksActions';
+  GET_SAVED_LIST,
+  ADD_TO_SAVED_LIST,
+  REMOVE_FROM_SAVED_LIST,
+} from './favsActions';
 
 const initialState = {
-  books: [],
-  bookmarks: [],
+  saved: [],
+  applied: [],
 };
 
 function favsReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_BOOKS:
-      return {...state, books: action.payload};
-    case ADD_TO_BOOKMARK_LIST:
-      return {...state, bookmarks: [...state.bookmarks, action.payload]};
-    case REMOVE_FROM_BOOKMARK_LIST:
+    case GET_SAVED_LIST:
+      return {...state, saved: action.payload};
+    case ADD_TO_SAVED_LIST:
+      return {...state, saved: [...state.saved, action.payload]};
+    case REMOVE_FROM_SAVED_LIST:
       return {
         ...state,
-        bookmarks: state.bookmarks.filter(
-          (book) => book.id !== action.payload.id,
-        ),
+        saved: state.saved.filter((book) => book.key !== action.payload.key),
       };
     default:
       return state;

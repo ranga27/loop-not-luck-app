@@ -11,7 +11,7 @@ import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
-  const {bookmarks} = useSelector((state) => state.favs);
+  const {saved} = useSelector((state) => state.favs);
   return (
     <Tab.Navigator
       initialRouteName={'My Loop'}

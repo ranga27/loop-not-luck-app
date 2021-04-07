@@ -18,12 +18,6 @@ export const Profile = ({navigation}) => {
     <>
       <View style={styles.container}>
         <Button
-          title="Profile"
-          modeValue="contained"
-          labelStyle={styles.ButtonLabel}
-          onPress={() => navigation.navigate('Gender')}
-        />
-        <Button
           modeValue="contained"
           title="Logout"
           labelStyle={styles.ButtonLabel}

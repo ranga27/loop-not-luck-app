@@ -18,49 +18,42 @@ const ITEM_WIDTH = width * 0.7;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
 export const Saved = ({navigation}) => {
-  const {bookmarks} = useSelector((state) => state.favs);
-
+  const {saved} = useSelector((state) => state.favs);
+  //TODO: reuse code from OppsList & share the component
+  const renderItem = ({item}) => {
+    return (
+      <View style={{marginVertical: 12}}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('SavedDetails', {item})}>
+          <View style={{flexDirection: 'row', flex: 1}}>
+            <View style={{flexDirection: 'row', flex: 1}}>
+              <Image
+                source={{uri: item.logoUrl}}
+                resizeMode="contain"
+                style={styles.logo}
+              />
+              <View style={{flex: 1, marginLeft: 12}}>
+                <Text style={styles.titleText}>{item.title}</Text>
+                <Text style={styles.descriptionText}>{item.organisation}</Text>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  };
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={styles.mainContainer}>
-        {/* Header */}
-        <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Saved Opportunities</Text>
+      <View style={{flex: 1, paddingHorizontal: 16}}>
+        <View style={{flex: 1, marginTop: 8}}>
+          <FlatList
+            data={saved}
+            keyExtractor={(item, index) => String(index)}
+            renderItem={renderItem}
+            showsVerticalScrollIndicator={false}
+          />
         </View>
-        {/* Scrollable content */}
-        {bookmarks.length === 0 ? (
-          <Text style={styles.descriptionText}>
-            Save an opportunity to this list from the opportunities tab.
-          </Text>
-        ) : (
-          <View style={styles.scrollContainer}>
-            {/* move to separate component */}
-            <ScrollView
-              indicatorStyle="white"
-              contentContainerStyle={{alignItems: 'center'}}>
-              {bookmarks.map((item, index) => (
-                <View key={index}>
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={{marginBottom: 14}}
-                    onPress={() =>
-                      navigation.navigate('SavedDetailScreen', {item})
-                    }>
-                    <View style={styles.detailsContainer}>
-                      <View style={{flexDirection: 'row'}}>
-                        <View
-                          style={{
-                            flexDirection: 'column',
-                            paddingLeft: 6,
-                          }}></View>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              ))}
-            </ScrollView>
-          </View>
-        )}
       </View>
     </SafeAreaView>
   );
@@ -81,13 +74,19 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 20,
   },
-  imageComponent: {borderRadius: 14, width: ITEM_WIDTH, height: ITEM_HEIGHT},
+  logo: {
+    borderRadius: 18,
+    width: 120,
+    height: 120,
+    borderWidth: 3,
+    borderColor: theme.colors.background,
+  },
   detailsContainer: {left: 10},
   titleText: {
     color: theme.colors.primary,
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-    lineHeight: 28,
+    lineHeight: 20,
     fontFamily: theme.fonts.regular.fontFamily,
   },
   descriptionText: {

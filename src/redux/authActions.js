@@ -27,7 +27,6 @@ export function verifyAuth() {
     return auth().onAuthStateChanged((user) => {
       if (user) {
         dispatch(signInUser(user));
-        //since this is on snapshot it won't load data the first time, either enforce it to run or use load data action
         const profileRef = getUserProfileDocRef(user.uid);
         profileRef.onSnapshot((snapshot) => {
           dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)));
@@ -40,6 +39,7 @@ export function verifyAuth() {
 }
 
 export function signOutUser() {
+  // TODO: clear asyncstorage on logout
   return {
     type: SIGN_OUT_USER,
   };
