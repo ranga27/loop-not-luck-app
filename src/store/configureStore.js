@@ -13,7 +13,6 @@ import profileReducer from '../redux/profileReducer';
 const favsConfig = {
   key: 'favs',
   storage: AsyncStorage,
-  whitelist: ['saved'],
 };
 
 const authConfig = {

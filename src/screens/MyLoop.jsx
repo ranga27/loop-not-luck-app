@@ -26,6 +26,7 @@ export const MyLoop = ({navigation}) => {
   const dispatch = useDispatch();
   const getOpps = () => dispatch(fetchOpps());
 
+  //This might fetch too often and block firestore
   useEffect(() => {
     getOpps();
     setLoading(false);

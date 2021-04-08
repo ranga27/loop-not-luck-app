@@ -1,12 +1,12 @@
-import {data} from '../constants';
 import crashlytics from '@react-native-firebase/crashlytics';
 
 // Define action types
 export const GET_SAVED_LIST = 'GET_SAVED_LIST';
 export const ADD_TO_SAVED_LIST = 'ADD_TO_SAVED_LIST';
 export const REMOVE_FROM_SAVED_LIST = 'REMOVE_FROM_SAVED_LIST';
-
-// Define action creators
+export const GET_APPLIED_LIST = 'GET_APPLIED_LIST';
+export const ADD_TO_APPLIED_LIST = 'ADD_TO_APPLIED_LIST';
+export const REMOVE_FROM_APPLIED_LIST = 'REMOVE_FROM_APPLIED_LIST';
 
 export const getBooks = () => {
   return async (dispatch) => {
@@ -39,6 +39,20 @@ export const addSaved = (opps) => (dispatch) => {
 export const removeSaved = (opps) => (dispatch) => {
   dispatch({
     type: REMOVE_FROM_SAVED_LIST,
+    payload: opps,
+  });
+};
+
+export const addApplied = (opps) => (dispatch) => {
+  dispatch({
+    type: ADD_TO_APPLIED_LIST,
+    payload: opps,
+  });
+};
+
+export const removeApplied = (opps) => (dispatch) => {
+  dispatch({
+    type: REMOVE_FROM_APPLIED_LIST,
     payload: opps,
   });
 };

@@ -65,6 +65,9 @@ export function cancelEventToggle(event) {
     isCancelled: !event.isCancelled,
   });
 }
+export function addToSavedOpportunityList(uid, opps) {
+  return db.collection('users').doc(uid).collection('saved').set(opps);
+}
 
 export function setUserProfileData(uid, user) {
   return db
@@ -89,20 +92,6 @@ export async function updateUserProfile() {
     console.log(error);
   }
 }
-
-/* export async function updateUserProfile(profile) {
-  const user = auth().currentUser;
-  try {
-    if (user.displayName !== profile.displayName) {
-      await user.updateProfile({
-        displayName: profile.displayName,
-      });
-    }
-    return await db.collection('users').doc(user.uid).update(profile);
-  } catch (error) {
-    throw error;
-  }
-} */
 
 export function getUserProfileDocRef(userId) {
   return db.collection('users').doc(userId);

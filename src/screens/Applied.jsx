@@ -1,32 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {theme} from '../constants';
 import {
   StyleSheet,
   View,
   Text,
+  ScrollView,
   TouchableOpacity,
   Image,
   Dimensions,
   SafeAreaView,
   FlatList,
-  ActivityIndicator,
 } from 'react-native';
 import {useSelector} from 'react-redux';
 
 const {width} = Dimensions.get('screen');
-const ITEM_WIDTH = width * 0.3;
+const ITEM_WIDTH = width * 0.7;
 const ITEM_HEIGHT = ITEM_WIDTH * 0.7;
 
-export const OppsList = ({navigation}) => {
-  const [loading, setLoading] = useState(false);
-  const {opps} = useSelector((state) => state.opps);
-
+export const Applied = ({navigation}) => {
+  const {applied} = useSelector((state) => state.favs);
+  //TODO: reuse code from OppsList & share the component
   const renderItem = ({item}) => {
     return (
       <View style={{marginVertical: 12}}>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('OppsDetails', {item})}>
+          onPress={() => navigation.navigate('AppliedDetails', {item})}>
           <View style={{flexDirection: 'row', flex: 1}}>
             <View style={{flexDirection: 'row', flex: 1}}>
               <Image
@@ -44,15 +43,12 @@ export const OppsList = ({navigation}) => {
       </View>
     );
   };
-  if (loading) {
-    return <ActivityIndicator />;
-  }
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, paddingHorizontal: 16}}>
         <View style={{flex: 1, marginTop: 8}}>
           <FlatList
-            data={opps}
+            data={applied}
             keyExtractor={(item, index) => String(index)}
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}

@@ -4,7 +4,7 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {theme} from '../constants';
-import {Saved, SavedDetails, Bookmarked} from '../screens';
+import {Saved, SavedDetails, Applied, AppliedDetails} from '../screens';
 
 const Tab = createMaterialTopTabNavigator();
 const options = {
@@ -28,7 +28,7 @@ export const BookmarkTabBar = () => {
         tabBarStyle: {paddingTop: 40},
       }}>
       <Tab.Screen name="Saved" component={SavedStackScreen} />
-      <Tab.Screen name="Applied" component={Bookmarked} />
+      <Tab.Screen name="Applied" component={AppliedOppsStackScreen} />
     </Tab.Navigator>
   );
 };
@@ -44,13 +44,16 @@ function SavedStackScreen() {
   );
 }
 
-const SettingsStack = createStackNavigator();
+const AppliedOppsStack = createStackNavigator();
 
-function SettingsStackScreen() {
+function AppliedOppsStackScreen() {
   return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-      <SettingsStack.Screen name="Details" component={DetailsScreen} />
-    </SettingsStack.Navigator>
+    <AppliedOppsStack.Navigator screenOptions={{headerShown: false}}>
+      <AppliedOppsStack.Screen name="AppliedScreen" component={Applied} />
+      <AppliedOppsStack.Screen
+        name="AppliedDetails"
+        component={AppliedDetails}
+      />
+    </AppliedOppsStack.Navigator>
   );
 }

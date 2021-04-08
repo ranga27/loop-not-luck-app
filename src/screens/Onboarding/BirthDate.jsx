@@ -31,6 +31,7 @@ export const BirthDate = ({navigation}) => {
   };
   const [selection, setSelection] = useState('');
   useValueChange(selection, 'birthDate');
+  
   function parseDateString(value, originalValue) {
     const parsedDate = isDate(originalValue)
       ? originalValue

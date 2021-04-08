@@ -31,3 +31,5 @@ export {OppsDetails} from './OppsDetails';
 export {MyLoop} from './MyLoop';
 export {Loading} from './Loading';
 export {Bookmarked} from './Bookmarked';
+export {Applied} from './Applied';
+export {AppliedDetails} from './AppliedDetails';

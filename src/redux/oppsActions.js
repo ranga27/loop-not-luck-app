@@ -1,4 +1,3 @@
-import {fetchOppsFromFirestore} from '../firebase/firestoreService';
 import {FETCH_OPPS} from './oppsConstants';
 //This is incorrect, move firestore calls out of actions
 import firestore from '@react-native-firebase/firestore';
