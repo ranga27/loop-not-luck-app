@@ -4,7 +4,6 @@ import {
   REMOVE_FROM_SAVED_LIST,
   GET_APPLIED_LIST,
   ADD_TO_APPLIED_LIST,
-  REMOVE_FROM_APPLIED_LIST,
 } from './favsActions';
 
 const initialState = {
@@ -27,13 +26,6 @@ function favsReducer(state = initialState, action) {
       return {...state, applied: action.payload};
     case ADD_TO_APPLIED_LIST:
       return {...state, applied: [...state.applied, action.payload]};
-    case REMOVE_FROM_APPLIED_LIST:
-      return {
-        ...state,
-        applied: state.applied.filter(
-          (opps) => opps.key !== action.payload.key,
-        ),
-      };
     default:
       return state;
   }

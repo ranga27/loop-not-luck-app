@@ -17,6 +17,7 @@ import {
   addApplied,
   removeApplied,
 } from '../redux/favsActions';
+import {addToSavedOpportunityList} from '../firebase/firestoreService';
 
 const {height} = Dimensions.get('window');
 const ITEM_HEIGHT = height * 0.5;
@@ -24,18 +25,20 @@ const ITEM_HEIGHT = height * 0.5;
 export const OpportunityDetails = ({item}) => {
   const deadline = new Date(item.deadline.seconds * 1000).toDateString();
   const {saved, applied} = useSelector((state) => state.favs);
+  const {currentUser} = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const fetchBooks = () => dispatch(getBooks());
   const addToSavedList = (opps) => dispatch(addSaved(opps));
   const removeFromSavedList = (opps) => dispatch(removeSaved(opps));
   const addToAppliedList = (opps) => dispatch(addApplied(opps));
-  const removeFromAppliedList = (opps) => dispatch(removeApplied(opps));
   /* useEffect(() => {
     fetchBooks();
   }, []); */
   const handleAddSaved = (opps) => {
     addToSavedList(opps);
+    //TODO: move following logic to reducer
+    addToSavedOpportunityList(currentUser.uid, opps);
   };
 
   const handleRemoveSaved = (opps) => {
@@ -48,15 +51,15 @@ export const OpportunityDetails = ({item}) => {
     }
     return false;
   };
-  // Reuse the above methods
+
   const handleAddApplied = (opps) => {
     addToAppliedList(opps);
   };
 
   const handleRemoveApplied = (opps) => {
-    //removeFromAppliedList(opps);
+    //do nothing, get rid of this method
   };
-
+  // Reuse if exists in saved methods
   const ifExistsInApplied = (opps) => {
     if (applied.filter((item) => item.key === opps.key).length > 0) {
       return true;

@@ -1,3 +1,4 @@
+//TODO: Merge with oppsActions
 import crashlytics from '@react-native-firebase/crashlytics';
 
 // Define action types
@@ -6,12 +7,11 @@ export const ADD_TO_SAVED_LIST = 'ADD_TO_SAVED_LIST';
 export const REMOVE_FROM_SAVED_LIST = 'REMOVE_FROM_SAVED_LIST';
 export const GET_APPLIED_LIST = 'GET_APPLIED_LIST';
 export const ADD_TO_APPLIED_LIST = 'ADD_TO_APPLIED_LIST';
-export const REMOVE_FROM_APPLIED_LIST = 'REMOVE_FROM_APPLIED_LIST';
 
 export const getBooks = () => {
   return async (dispatch) => {
     try {
-      // TODO: get initial list from fireStore
+      // TODO: get list from fireStore as a snapshot to hydrate the redux-store
       const saved = [];
       if (saved) {
         dispatch({
@@ -46,13 +46,6 @@ export const removeSaved = (opps) => (dispatch) => {
 export const addApplied = (opps) => (dispatch) => {
   dispatch({
     type: ADD_TO_APPLIED_LIST,
-    payload: opps,
-  });
-};
-
-export const removeApplied = (opps) => (dispatch) => {
-  dispatch({
-    type: REMOVE_FROM_APPLIED_LIST,
     payload: opps,
   });
 };

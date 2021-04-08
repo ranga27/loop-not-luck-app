@@ -66,7 +66,15 @@ export function cancelEventToggle(event) {
   });
 }
 export function addToSavedOpportunityList(uid, opps) {
-  return db.collection('users').doc(uid).collection('saved').set(opps);
+  return db
+    .collection('users')
+    .doc(uid)
+    .update({
+      saved: firestore.FieldValue.arrayUnion({
+        id: opps.key,
+        savedAt: Date.now(),
+      }),
+    });
 }
 
 export function setUserProfileData(uid, user) {
