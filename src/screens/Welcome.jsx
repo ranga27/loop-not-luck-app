@@ -7,7 +7,7 @@ export const Welcome = ({navigation}) => {
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../assets/images/black.png')}
+        source={require('../assets/images/loopnotluck1.png')}
       />
 
       <Button
@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   image: {
-    width: 400,
-    height: 400,
+    width: 360,
+    height: 360,
+    marginBottom: 40,
   },
 });

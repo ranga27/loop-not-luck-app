@@ -9,7 +9,8 @@ import {
   Education,
   School,
   FinishedSchool,
-  GCSE,
+  English,
+  Maths,
   Degree,
   Undergraduate,
   UGCourse,
@@ -44,7 +45,8 @@ export const OnboardingNavigator = () => {
       <Stack.Screen name="Education" component={Education} />
       <Stack.Screen name="School" component={School} />
       <Stack.Screen name="FinishedSchool" component={FinishedSchool} />
-      <Stack.Screen name="GCSE" component={GCSE} />
+      <Stack.Screen name="English" component={English} />
+      <Stack.Screen name="Maths" component={Maths} />
       <Stack.Screen name="Degree" component={Degree} />
       <Stack.Screen name="Undergraduate" component={Undergraduate} />
       <Stack.Screen name="UGCourse" component={UGCourse} />

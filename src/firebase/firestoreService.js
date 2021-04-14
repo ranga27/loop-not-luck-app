@@ -72,7 +72,31 @@ export function addToSavedOpportunityList(uid, opps) {
     .update({
       saved: firestore.FieldValue.arrayUnion({
         id: opps.key,
-        savedAt: Date.now(),
+        time: Date.now(),
+      }),
+    });
+}
+
+export function removeFromSavedOpportunityList(uid, opps) {
+  return db
+    .collection('users')
+    .doc(uid)
+    .update({
+      saved: firestore.FieldValue.arrayRemove({
+        id: opps.id,
+        time: opps.time,
+      }),
+    });
+}
+
+export function addToAppliedOpportunityList(uid, opps) {
+  return db
+    .collection('users')
+    .doc(uid)
+    .update({
+      applied: firestore.FieldValue.arrayUnion({
+        id: opps.key,
+        time: Date.now(),
       }),
     });
 }

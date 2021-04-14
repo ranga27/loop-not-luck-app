@@ -9,7 +9,7 @@ export const FinishedSchool = ({navigation}) => {
 
   const handleChange = (value) => {
     setSelection(value);
-    navigation.navigate('GCSE');
+    navigation.navigate('English');
   };
   return (
     <View style={styles.container}>

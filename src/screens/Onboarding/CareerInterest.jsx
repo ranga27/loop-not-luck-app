@@ -13,7 +13,6 @@ import crashlytics from '@react-native-firebase/crashlytics';
 const {height, width} = Dimensions.get('screen');
 
 export const CareerInterest = ({navigation}) => {
-  const {currentUserProfile} = useSelector((state) => state.profile);
   const [selection, setSelection] = useState('');
   const [showOther, setShowOther] = useState(false);
   useValueChange(selection, 'careerInterests  ');
@@ -122,7 +121,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     padding: 20,
-
     //width: width * 0.8,
     //height: 100,
     //borderWidth: 2,

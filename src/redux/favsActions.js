@@ -8,18 +8,29 @@ export const REMOVE_FROM_SAVED_LIST = 'REMOVE_FROM_SAVED_LIST';
 export const GET_APPLIED_LIST = 'GET_APPLIED_LIST';
 export const ADD_TO_APPLIED_LIST = 'ADD_TO_APPLIED_LIST';
 
-export const getBooks = () => {
+export const getSaved = (opps) => {
   return async (dispatch) => {
     try {
-      // TODO: get list from fireStore as a snapshot to hydrate the redux-store
-      const saved = [];
-      if (saved) {
-        dispatch({
-          type: GET_SAVED_LIST,
-          payload: saved,
-        });
+      if (opps) {
+        dispatch({type: GET_SAVED_LIST, payload: opps});
       } else {
-        console.log('Unable to fetch data ');
+        console.log('No Saved List for current user');
+      }
+    } catch (error) {
+      // Add custom logic to handle errors
+      console.log(error);
+      crashlytics().recordError(error);
+    }
+  };
+};
+
+export const getApplied = (opps) => {
+  return async (dispatch) => {
+    try {
+      if (opps) {
+        dispatch({type: GET_APPLIED_LIST, payload: opps});
+      } else {
+        console.log('No Applied List for current user');
       }
     } catch (error) {
       // Add custom logic to handle errors

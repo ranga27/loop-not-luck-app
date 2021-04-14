@@ -5,63 +5,48 @@ import {
   View,
   ScrollView,
   Image,
-  Dimensions,
   SafeAreaView,
 } from 'react-native';
 import {Text, FAB} from 'react-native-paper';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {
-  getBooks,
-  addSaved,
-  removeSaved,
-  addApplied,
-  removeApplied,
-} from '../redux/favsActions';
-import {addToSavedOpportunityList} from '../firebase/firestoreService';
-
-const {height} = Dimensions.get('window');
-const ITEM_HEIGHT = height * 0.5;
+  addToAppliedOpportunityList,
+  addToSavedOpportunityList,
+  removeFromSavedOpportunityList,
+} from '../firebase/firestoreService';
 
 export const OpportunityDetails = ({item}) => {
   const deadline = new Date(item.deadline.seconds * 1000).toDateString();
   const {saved, applied} = useSelector((state) => state.favs);
   const {currentUser} = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
 
-  const fetchBooks = () => dispatch(getBooks());
-  const addToSavedList = (opps) => dispatch(addSaved(opps));
-  const removeFromSavedList = (opps) => dispatch(removeSaved(opps));
-  const addToAppliedList = (opps) => dispatch(addApplied(opps));
-  /* useEffect(() => {
-    fetchBooks();
-  }, []); */
   const handleAddSaved = (opps) => {
-    addToSavedList(opps);
-    //TODO: move following logic to reducer
     addToSavedOpportunityList(currentUser.uid, opps);
   };
 
   const handleRemoveSaved = (opps) => {
-    removeFromSavedList(opps);
+    const [oppsToRemove] = saved.filter((item) => item.id === opps.key);
+    removeFromSavedOpportunityList(currentUser.uid, oppsToRemove);
   };
 
   const ifExistsInSaved = (opps) => {
-    if (saved.filter((item) => item.key === opps.key).length > 0) {
+    if (saved.filter((item) => item.id === opps.key).length > 0) {
       return true;
     }
     return false;
   };
 
   const handleAddApplied = (opps) => {
-    addToAppliedList(opps);
+    addToAppliedOpportunityList(currentUser.uid, opps);
   };
 
   const handleRemoveApplied = (opps) => {
     //do nothing, get rid of this method
   };
+
   // Reuse if exists in saved methods
   const ifExistsInApplied = (opps) => {
-    if (applied.filter((item) => item.key === opps.key).length > 0) {
+    if (applied.filter((item) => item.id === opps.key).length > 0) {
       return true;
     }
     return false;

@@ -30,7 +30,7 @@ export const Routes = () => {
                 <AuthStack.Screen name="App" component={AppNavigator} />
               ) : (
                 <AuthStack.Screen
-                  name="Onboarding"
+                  name="OnboardingNav"
                   component={OnboardingNavigator}
                 />
               )

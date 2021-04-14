@@ -14,7 +14,10 @@ const initialState = {
 function favsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_SAVED_LIST:
-      return {...state, saved: action.payload};
+      return {
+        ...state,
+        saved: action.payload,
+      };
     case ADD_TO_SAVED_LIST:
       return {...state, saved: [...state.saved, action.payload]};
     case REMOVE_FROM_SAVED_LIST:

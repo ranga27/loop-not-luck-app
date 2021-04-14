@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Dimensions, Alert} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {RadioButton, Text} from 'react-native-paper';
 import useValueChange from '../../hooks/useValueChange';
 
@@ -9,8 +9,16 @@ export const Education = ({navigation}) => {
 
   const handleChange = (value) => {
     setSelection(value);
-    if (value === 'University' || 'Graduated') value = 'Degree';
-    navigation.navigate(value);
+    let route = 'Degree';
+    switch (value) {
+      case 'School':
+        route = 'English';
+        break;
+      case 'FinishedSchool':
+        route = 'FinishedSchool';
+        break;
+    }
+    navigation.navigate(route);
   };
 
   return (

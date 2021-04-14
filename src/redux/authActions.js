@@ -13,6 +13,7 @@ import {
 } from '../firebase/firestoreService';
 import {listenToCurrentUserProfile} from './profileActions';
 import auth from '@react-native-firebase/auth';
+import {getSaved, getApplied} from './favsActions';
 
 export function signInUser(user) {
   return {
@@ -29,7 +30,10 @@ export function verifyAuth() {
         dispatch(signInUser(user));
         const profileRef = getUserProfileDocRef(user.uid);
         profileRef.onSnapshot((snapshot) => {
-          dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)));
+          const currentUserProfile = dataFromSnapshot(snapshot);
+          dispatch(listenToCurrentUserProfile(currentUserProfile));
+          dispatch(getSaved(currentUserProfile.saved));
+          dispatch(getApplied(currentUserProfile.applied));
         });
       } else {
         dispatch(signOutUser());
