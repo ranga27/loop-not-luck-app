@@ -15,7 +15,6 @@ export const ProfileStack = () => {
           shadowColor: theme.colors.background,
         },
       }}>
-      <Stack.Screen name="Career" component={CareerInterest} />
       <Stack.Screen name="Settings" component={Profile} />
     </Stack.Navigator>
   );
