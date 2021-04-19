@@ -22,8 +22,25 @@ export const Login = ({navigation}) => {
       loadUserDetails(result.user);
       actions.setSubmitting(false);
     } catch (error) {
+      let errorMessage = '';
+      switch (error.code) {
+        case 'auth/invalid-email':
+          errorMessage = 'Email address is not valid';
+          break;
+        case 'auth/user-disabled':
+          errorMessage = 'User disabled';
+          break;
+        case 'auth/user-not-found':
+          errorMessage = 'User with this email not found';
+          break;
+        case 'auth/wrong-password':
+          errorMessage = 'Incorrect passowrd';
+          break;
+        default:
+          errorMessage = 'Login Error, contact us';
+      }
       actions.setSubmitting(false);
-      actions.setErrors({auth: error.message});
+      actions.setErrors({auth: errorMessage});
       crashlytics().recordError(error);
     }
   };
@@ -120,6 +137,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   navButtonText: {
-    fontSize: 15,
+    fontSize: 12,
   },
 });

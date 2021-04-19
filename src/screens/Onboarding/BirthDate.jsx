@@ -8,16 +8,16 @@ import {InputField} from '../../components';
 import {parse, isDate} from 'date-fns';
 import crashlytics from '@react-native-firebase/crashlytics';
 
-const today = new Date();
 export const BirthDate = ({navigation}) => {
   const schema = Yup.object({
     dob: Yup.date()
       .label('Date of Birth')
       .required()
       .transform(parseDateString)
-      .typeError('Invalid Date')
-      .max(new Date('12/12/2011'), 'Invalid Date')
-      .min(new Date('12/12/1930'), 'Invalid Date'),
+      .typeError('Invalid Date'),
+    //TODO: Add validations for min & max date, currently failing due to type error
+    //.max(new Date('01/01/2011'), 'Invalid Date')
+    //.min(new Date('01/01/1971'), 'Invalid Date'),
   });
   const handleFormSubmit = (values, actions) => {
     try {
@@ -31,7 +31,7 @@ export const BirthDate = ({navigation}) => {
   };
   const [selection, setSelection] = useState('');
   useValueChange(selection, 'birthDate');
-  
+
   function parseDateString(value, originalValue) {
     const parsedDate = isDate(originalValue)
       ? originalValue

@@ -32,8 +32,10 @@ export function verifyAuth() {
         profileRef.onSnapshot((snapshot) => {
           const currentUserProfile = dataFromSnapshot(snapshot);
           dispatch(listenToCurrentUserProfile(currentUserProfile));
-          dispatch(getSaved(currentUserProfile.saved));
-          dispatch(getApplied(currentUserProfile.applied));
+          if (currentUserProfile) {
+            dispatch(getSaved(currentUserProfile.saved));
+            dispatch(getApplied(currentUserProfile.applied));
+          }
         });
       } else {
         dispatch(signOutUser());
