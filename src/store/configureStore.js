@@ -1,13 +1,13 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistStore, persistReducer} from 'redux-persist';
-import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import favsReducer from '../redux/favsReducer';
 import authReducer from '../redux/authReducer';
 import oppsReducer from '../redux/oppsReducer';
 import {verifyAuth} from '../redux/authActions';
 import profileReducer from '../redux/profileReducer';
+import Reactotron from './../utils/ReactotronConfig';
 
 //favourites
 const favsConfig = {
@@ -34,7 +34,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk)),
+  compose(applyMiddleware(thunk), Reactotron.createEnhancer()),
 );
 
 export const persistor = persistStore(store);
