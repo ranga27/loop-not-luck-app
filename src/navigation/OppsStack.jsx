@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {OppsDetails, MyLoop, OppsList} from '../screens';
+import {OppsDetails, MyLoop, OppsList, TestPage} from '../screens';
 import {theme} from '../constants/theme';
 
 const Stack = createStackNavigator();
@@ -10,7 +10,7 @@ export const OppsStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="MyLoop"
-        component={MyLoop}
+        component={TestPage}
         options={{
           headerShown: false,
         }}

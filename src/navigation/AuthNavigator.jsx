@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Login, Signup, Welcome} from '../screens';
+import {Login, Signup, Landing} from '../screens';
 import {ForgotPassword} from '../screens/AuthScreens/ForgotPassword';
 import {useSelector} from 'react-redux';
 
@@ -13,7 +13,7 @@ export const AuthNavigator = () => {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={authRoute}>
-      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="Landing" component={Landing} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
       <Stack.Screen name="Forgot" component={ForgotPassword} />

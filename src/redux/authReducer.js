@@ -12,7 +12,7 @@ const initialState = {
   authenticated: false,
   currentUser: null,
   resetPassword: false,
-  authRoute: 'Welcome',
+  authRoute: 'Landing',
   error: '',
 };
 

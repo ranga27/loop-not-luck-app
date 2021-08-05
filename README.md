@@ -1,5 +1,11 @@
 # loop-not-luck-app
 
+Setup
+Clone
+yarn install
+yarn ios
+yarn beta
+
 Configs
 change the file: /sharingan-rn-modal-dropdown/src/constants.ts
 unselected: 'white'

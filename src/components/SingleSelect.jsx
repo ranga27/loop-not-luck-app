@@ -1,14 +1,17 @@
 import React from 'react';
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, View} from 'react-native';
+import {Title} from 'react-native-paper';
+import {onChange} from 'react-native-reanimated';
 import {Dropdown} from 'sharingan-rn-modal-dropdown';
 import {theme} from '../constants/theme';
 
 import {ErrorMessage} from './ErrorMessage';
 const {width, height} = Dimensions.get('screen');
 
-export const SingleSelect = ({label, ...props}) => {
+export const SingleSelect = ({title, label, ...props}) => {
   return (
-    <>
+    <View style={styles.container}>
+      <Title style={styles.titleText}>{title}</Title>
       <Dropdown
         label={label}
         data={props.data}
@@ -20,19 +23,20 @@ export const SingleSelect = ({label, ...props}) => {
         parentDDContainerStyle={styles.dropdownItemContainer}
         selectedItemTextStyle={styles.dropdownSelectedItemText}
         textInputStyle={styles.dropdownTextInput}
-        primaryColor={theme.colors.primary}
+        primaryColor={'black'}
         {...props}
+        onChange={onChange}
       />
       <ErrorMessage errorValue={props.errorValue} />
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {marginVertical: 4},
   dropdownContainer: {
-    margin: 10,
-    width: width / 1.4,
-    backgroundColor: theme.colors.surface,
+    width: width * 0.9,
+    backgroundColor: 'white',
   },
   dropdownItemText: {
     fontFamily: theme.fonts.regular.fontFamily,
@@ -42,9 +46,16 @@ const styles = StyleSheet.create({
     height: height / 18,
   },
   dropdownItemContainer: {
-    backgroundColor: theme.colors.surface,
+    backgroundColor: 'white',
   },
   dropdownSelectedItemText: {
-    color: theme.colors.primary,
+    color: 'black',
+  },
+
+  titleText: {
+    color: 'rgb(238, 40, 68)',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingLeft: 10,
   },
 });

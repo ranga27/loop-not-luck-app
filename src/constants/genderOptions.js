@@ -1,6 +1,8 @@
 export const genderOptions = [
-  {label: 'Woman', value: 'Woman'},
-  {label: 'Man', value: 'Man'},
-  {label: 'Genderqueer/Non-binary', value: 'Genderqueer/Non-binary'},
-  {label: 'Other', value: 'Other'},
+  {label: 'Female', value: 'Female'},
+  {label: 'Male', value: 'Male'},
+  {label: 'Non-binary', value: 'Non-binary'},
+  {label: 'Transgender', value: 'Transgender'},
+  {label: 'Intersex', value: 'Intersex'},
+  {label: 'I prefer not to say', value: 'I prefer not to say'},
 ];

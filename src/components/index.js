@@ -6,3 +6,6 @@ export {ErrorMessage} from './ErrorMessage';
 export {SingleSelect} from './SingleSelect';
 export {OpportunityDetails} from './OpportunityDetails';
 export {OpportunityItem} from './OpportunityItem';
+export {SafeArea} from './SafeArea';
+export {ScrollView} from './ScrollView';
+export {Image} from './Image';

@@ -3,7 +3,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {theme} from '../constants';
 import {AppNavigator} from './AppNavigator';
 import {AuthNavigator} from './AuthNavigator';
-import {StatusBar} from 'react-native';
 import {useSelector} from 'react-redux';
 import {EmailVerifyNavigator} from './EmailVerifyNavigator';
 import {ResetPasswordNavigator} from './ResetPasswordNavigator';
@@ -21,7 +20,6 @@ export const Routes = () => {
 
   return (
     <NavigationContainer theme={theme}>
-      <StatusBar barStyle="light-content" />
       <AuthStack.Navigator screenOptions={{headerShown: false}}>
         {authenticated ? (
           currentUser.emailVerified ? (

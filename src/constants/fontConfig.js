@@ -5,7 +5,7 @@ export const fontConfig = {
       fontWeight: 'normal',
     },
     medium: {
-      fontFamily: 'ZonaPro-Regular',
+      fontFamily: 'ZonaPro-SemiBold',
       fontWeight: 'normal',
     },
     light: {
@@ -23,7 +23,7 @@ export const fontConfig = {
       fontWeight: 'normal',
     },
     medium: {
-      fontFamily: 'ZonaPro-Regular',
+      fontFamily: 'ZonaPro-SemiBold',
       fontWeight: 'normal',
     },
     light: {

@@ -50,5 +50,8 @@ platform :ios do
     upload_to_testflight(
       skip_waiting_for_build_processing: true
    )
+     slack(message: "Successfully uploaded a new beta build",
+     success: true,
+     slack_url: "https://hooks.slack.com/services/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")
   end
 end
