@@ -9,3 +9,5 @@ export {OpportunityItem} from './OpportunityItem';
 export {SafeArea} from './SafeArea';
 export {ScrollView} from './ScrollView';
 export {Image} from './Image';
+export {Text} from './Text';
+export {Container} from './Container';

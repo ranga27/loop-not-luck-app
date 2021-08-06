@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
 import {TextInput} from 'react-native-paper';
-import {onChange} from 'react-native-reanimated';
 import {ErrorMessage} from './ErrorMessage';
 
 const {width, height} = Dimensions.get('screen');

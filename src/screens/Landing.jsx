@@ -1,73 +1,51 @@
 import React from 'react';
-import {StatusBar, View, StyleSheet} from 'react-native';
-import {Text} from 'react-native-paper';
-import {Button, SafeArea, ScrollView, Image} from '../components';
+import {
+  Button,
+  SafeArea,
+  ScrollView,
+  Image,
+  Text,
+  Container,
+} from '../components';
 export const Landing = ({navigation}) => {
   return (
     <SafeArea type="dark">
-      <StatusBar barStyle="light-content" />
       <ScrollView>
         <Image source={require('../assets/images/loopnotluck1.png')} />
-        <Text style={styles.titleText}>We Represent the Underrepresented</Text>
-        <View style={styles.textContainer}>
-          <Text style={styles.bodyText}>
-            You shouldn't have to 'know someone who knows someone' to find out
-            about amazing career opportunities across the UK. Nobody wants to
-            scroll through thousands of search results or leave it up to
-            luck.Using Artificial Intelligence, we have automated the job hunt.
-            Providing you with the perfect selection of opportunities to apply
-            for and the chance to be headhunted for roles.
-          </Text>
-        </View>
-        <Text style={styles.titleText}>Get in the Loop</Text>
+        <Text type="title">We Represent the Underrepresented</Text>
+        <Container type="landing-main">
+          <Container type="landing-body">
+            <Text type="body">
+              You shouldn't have to 'know someone who knows someone' to find out
+              about amazing career opportunities across the UK.
+            </Text>
+          </Container>
+          <Container type="landing-body">
+            <Text type="body">
+              Nobody wants to scroll through thousands of search results or
+              leave it up to luck.
+            </Text>
+          </Container>
+          <Container type="landing-body">
+            <Text type="body">
+              Using Artificial Intelligence, we have automated the job hunt.
+              Providing you with the perfect selection of opportunities to apply
+              for and the chance to be headhunted for roles.
+            </Text>
+          </Container>
+        </Container>
+        <Text type="title">Get in the Loop</Text>
         <Button
-          title="Apply"
-          modeValue="contained"
-          labelStyle={styles.buttonLabel}
           onPress={() => navigation.navigate('Signup')}
+          title="Apply"
+          bgColor="red"
         />
         <Button
-          title="Login"
-          modeValue="outlined"
-          labelStyle={styles.buttonLabel}
           onPress={() => navigation.navigate('Login')}
+          title=" Sign In"
+          bgColor="red"
         />
       </ScrollView>
     </SafeArea>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    width: 343,
-    height: 343,
-    marginBottom: 40,
-    alignSelf: 'center',
-  },
-  titleText: {
-    fontSize: 20,
-    fontWeight: '700',
-    color: '#ffffff',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  textContainer: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#ffffff',
-    marginVertical: 8,
-  },
-  bodyText: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#ffffff',
-    marginBottom: 10,
-    textAlign: 'auto',
-  },
-  buttonLabel: {
-    fontSize: 22,
-  },
-  navButtonText: {
-    fontSize: 16,
-  },
-});

@@ -1,32 +1,19 @@
 import React from 'react';
-import {StyleSheet, Dimensions} from 'react-native';
-import {Button as ButtonComponent} from 'react-native-paper';
-
-const {width, height} = Dimensions.get('screen');
-
-export const Button = ({title, modeValue, ...rest}) => {
-  return (
-    <ButtonComponent
-      mode={modeValue}
-      {...rest}
-      style={styles.button}
-      contentStyle={styles.buttonContainer}>
-      {title}
-    </ButtonComponent>
-  );
-};
-
-const styles = StyleSheet.create({
-  button: {
-    marginTop: 10,
-    borderRadius: 24,
-    shadowOffset: {width: 0, height: 16},
-    shadowRadius: 30,
-    shadowOpacity: 0.2,
-    alignSelf: 'center',
-  },
-  buttonContainer: {
-    width: width / 2,
-    height: height / 15,
-  },
-});
+import styled from 'styled-components/native';
+const ButtonContainer = styled.TouchableOpacity`
+  margin: 40px;
+  width: 120px;
+  height: 40px;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: ${(props) => props.bgColor};
+`;
+const ButtonText = styled.Text`
+  font-size: 16px;
+  text-align: center;
+`;
+export const Button = ({onPress, bgColor, title}) => (
+  <ButtonContainer onPress={onPress} bgColor={bgColor}>
+    <ButtonText>{title}</ButtonText>
+  </ButtonContainer>
+);
