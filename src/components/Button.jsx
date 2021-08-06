@@ -1,19 +1,30 @@
 import React from 'react';
+import {Dimensions} from 'react-native';
 import styled from 'styled-components/native';
-const ButtonContainer = styled.TouchableOpacity`
-  margin: 40px;
-  width: 120px;
-  height: 40px;
-  padding: 12px;
-  border-radius: 10px;
-  background-color: ${(props) => props.bgColor};
+const {width, height} = Dimensions.get('screen');
+
+//TODO: Implement global theme
+const ButtonContainer = styled.Pressable`
+  align-self: center;
+  justify-content: center;
+  margin: 8px 0px 20px;
+  width: ${width * 0.8 + 'px'};
+  min-height: 56px;
+  padding: 0px 8px;
+  border-radius: 36px;
+  opacity: 1;
+  background-color: ${(props) => props.bgColor || '#f7b921'};
 `;
 const ButtonText = styled.Text`
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
   text-align: center;
+  font-family: ZonaPro-Regular;
+  color: ${(props) => props.txtColor || '#ffffff'};
 `;
-export const Button = ({onPress, bgColor, title}) => (
-  <ButtonContainer onPress={onPress} bgColor={bgColor}>
-    <ButtonText>{title}</ButtonText>
+export const Button = ({onPress, bgColor, title, txtColor, ...rest}) => (
+  <ButtonContainer onPress={onPress} bgColor={bgColor} {...rest}>
+    <ButtonText txtColor={txtColor}>{title}</ButtonText>
   </ButtonContainer>
 );

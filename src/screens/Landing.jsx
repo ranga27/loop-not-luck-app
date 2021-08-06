@@ -38,13 +38,10 @@ export const Landing = ({navigation}) => {
         <Button
           onPress={() => navigation.navigate('Signup')}
           title="Apply"
-          bgColor="red"
+          txtColor="#ee2844"
+          bgColor="#0F2134"
         />
-        <Button
-          onPress={() => navigation.navigate('Login')}
-          title=" Sign In"
-          bgColor="red"
-        />
+        <Button onPress={() => navigation.navigate('Login')} title=" Sign In" />
       </ScrollView>
     </SafeArea>
   );

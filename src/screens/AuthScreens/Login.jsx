@@ -1,6 +1,13 @@
 import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
-import {InputField, Button, ErrorMessage} from '../../components';
+import {
+  InputField,
+  Button,
+  ErrorMessage,
+  Image,
+  SafeArea,
+  ScrollView,
+} from '../../components';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import crashlytics from '@react-native-firebase/crashlytics';
@@ -57,8 +64,10 @@ export const Login = ({navigation}) => {
   });
 
   return (
-    <KeyboardAwareScrollView>
-      <View style={styles.container}>
+    <SafeArea>
+      <ScrollView>
+        <Image source={require('../../assets/images/logo-white-no-loop.png')} />
+
         <Formik
           initialValues={{email: '', password: ''}}
           onSubmit={(values, actions) => handleFormSubmit(values, actions)}
@@ -105,36 +114,23 @@ export const Login = ({navigation}) => {
         </Formik>
         <Button
           title="Forgot password?"
-          modeValue="text"
-          uppercase={false}
-          labelStyle={styles.navButtonText}
           onPress={() => navigation.navigate('Forgot')}
+          bgColor={'#2fb3bc'}
         />
         <Button
-          title="New user? Join here"
-          modeValue="text"
-          uppercase={false}
-          labelStyle={styles.navButtonText}
+          title="Register new account"
           onPress={() => navigation.navigate('Signup')}
+          bgColor={'#ee2844'}
         />
-      </View>
-    </KeyboardAwareScrollView>
+      </ScrollView>
+    </SafeArea>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: height / 3,
-  },
   titleText: {
     fontSize: 24,
     marginBottom: 10,
-  },
-  loginButtonLabel: {
-    fontSize: 22,
   },
   navButtonText: {
     fontSize: 12,

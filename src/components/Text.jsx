@@ -8,7 +8,7 @@ const TextBase = styled.Text`
 const TitleText = styled(TextBase)`
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: ${(props) => props.color || '#ffffff'};
   margin: 8px 0px;
   text-align: center;
   line-height: 36px;
@@ -22,10 +22,14 @@ const BodyText = styled(TextBase)`
   line-height: 24px;
 `;
 
-export const Text = ({type, children, ...rest}) => {
+export const Text = ({type, children, color, ...rest}) => {
   switch (type) {
     case 'title':
-      return <TitleText {...rest}>{children}</TitleText>;
+      return (
+        <TitleText color={color} {...rest}>
+          {children}
+        </TitleText>
+      );
     case 'body':
       return <BodyText {...rest}>{children}</BodyText>;
     default:

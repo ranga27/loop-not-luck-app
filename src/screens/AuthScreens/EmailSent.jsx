@@ -93,15 +93,11 @@ export const EmailSent = ({navigation}) => {
             email!
           </Title>
           <Button
-            modeValue="contained"
             title="Open Email"
-            labelStyle={styles.ButtonLabel}
             onPress={() => handleOpenInbox()}
           />
           <Button
-            modeValue="outlined"
             title="Resend"
-            labelStyle={styles.ButtonLabel}
             onPress={() => handleResend()}
           />
         </>
@@ -127,8 +123,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: theme.colors.primary,
     textAlign: 'center',
-  },
-  ButtonLabel: {
-    fontSize: 20,
   },
 });

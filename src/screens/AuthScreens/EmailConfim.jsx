@@ -22,9 +22,7 @@ export const EmailConfirm = ({navigation}) => {
     <View style={styles.container}>
       <Title style={styles.titleText}>Email verified! please continue</Title>
       <Button
-        modeValue="contained"
         title="Home"
-        labelStyle={styles.ButtonLabel}
         onPress={() => handleVerifyEmail()}
       />
     </View>
