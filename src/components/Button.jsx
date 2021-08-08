@@ -4,7 +4,8 @@ import styled from 'styled-components/native';
 const {width, height} = Dimensions.get('screen');
 
 //TODO: Implement global theme
-const ButtonContainer = styled.Pressable`
+//TODO: Implement pressed effect if using pressable
+const ButtonContainer = styled.TouchableOpacity`
   align-self: center;
   justify-content: center;
   margin: 8px 0px 20px;
@@ -15,6 +16,7 @@ const ButtonContainer = styled.Pressable`
   opacity: 1;
   background-color: ${(props) => props.bgColor || '#f7b921'};
 `;
+//TODO: Implement loading effect / spinner for Submit buttons
 const ButtonText = styled.Text`
   font-size: 20px;
   font-weight: 700;
