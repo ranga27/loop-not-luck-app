@@ -13,6 +13,7 @@ import {
   education,
   sexualityOptions,
   parentsOptions,
+  schoolOptions,
 } from '../../constants';
 
 export const Onboarding = ({navigation}) => {
@@ -32,6 +33,16 @@ export const Onboarding = ({navigation}) => {
         <SingleSelect
           title="Did either of you parents attend university?"
           data={parentsOptions}
+        />
+        <InputField label={'If other, specify your sexuality'} />
+        <SingleSelect
+          title="Did you attend public or private school?"
+          data={schoolOptions}
+        />
+        <InputField label={'What post code did you grow up in?'} />
+        <SingleSelect
+          title="Do you consider yourself to have a disability? (please select one option only)"
+          data={schoolOptions}
         />
         <InputField label={'If other, specify your sexuality'} />
       </ScrollView>

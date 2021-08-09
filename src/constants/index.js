@@ -11,3 +11,4 @@ export {societies} from './societies';
 export {countries} from './countries';
 export {education} from './education';
 export {parentsOptions} from './parentsOptions';
+export {schoolOptions} from './schoolOptions';
