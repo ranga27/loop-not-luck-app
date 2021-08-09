@@ -42,7 +42,8 @@
               "client_id": "738687721732-f58irk43ajaplkahifa663tkjle261jv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.loopnotluck.app"
+                "bundle_id": "com.loopnotluck.app",
+                "app_store_id": "1553291678"
               }
             }
           ]
