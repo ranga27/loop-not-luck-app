@@ -4,16 +4,16 @@ import {Title} from 'react-native-paper';
 import {onChange} from 'react-native-reanimated';
 import {Dropdown} from 'sharingan-rn-modal-dropdown';
 import {theme} from '../constants/theme';
-
 import {ErrorMessage} from './ErrorMessage';
 const {width, height} = Dimensions.get('screen');
-
+//TODO: style with styled components
+//TODO: Implement onChange
 export const SingleSelect = ({title, label, ...props}) => {
   return (
     <View style={styles.container}>
       <Title style={styles.titleText}>{title}</Title>
       <Dropdown
-        label={label}
+        label="Select option"
         data={props.data}
         mode={'flat'}
         paperTheme={theme}
