@@ -12,3 +12,4 @@ export {countries} from './countries';
 export {education} from './education';
 export {parentsOptions} from './parentsOptions';
 export {schoolOptions} from './schoolOptions';
+export {disabilityOptions} from './disabilityOptions';

@@ -6,7 +6,7 @@ export const education = [
   {label: 'Full-Time Employment', value: 'Full-Time Employment'},
   {label: 'Unemployed', value: 'Unemployed'},
   {
-    label: 'Graduated in the last 2 years and Unemployed',
-    value: 'Graduated in the last 2 years and Unemployed',
+    label: 'Graduated in last 2 years & Unemployed',
+    value: 'Graduated in last 2 years & Unemployed',
   },
 ];

@@ -1,4 +1,4 @@
-export const schoolOptions = [
+export const disabilityOptions = [
   {label: 'No', value: 'No'},
   {
     label: 'Yes, day to day activities limited a lot',

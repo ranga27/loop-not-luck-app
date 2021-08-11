@@ -15,7 +15,6 @@ export const SingleSelect = ({title, label, ...props}) => {
       <Dropdown
         label="Select option"
         data={props.data}
-        mode={'flat'}
         paperTheme={theme}
         mainContainerStyle={styles.dropdownContainer}
         itemTextStyle={styles.dropdownItemText}

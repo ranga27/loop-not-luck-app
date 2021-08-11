@@ -12,7 +12,9 @@ export const Landing = ({navigation}) => {
     <SafeArea type="dark">
       <ScrollView>
         <Image source={require('../assets/images/loopnotluck1.png')} />
-        <Text type="title">We Represent the Underrepresented</Text>
+        <Text type="title" color="#ffffff">
+          We Represent the Underrepresented
+        </Text>
         <Container type="landing-main">
           <Container type="landing-body">
             <Text type="body">

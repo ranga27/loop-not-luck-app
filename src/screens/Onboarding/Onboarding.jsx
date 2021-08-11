@@ -1,50 +1,79 @@
 import React from 'react';
+import {useForm} from 'react-hook-form';
+
 import {
-  Button,
   Image,
-  InputField,
   SafeArea,
   ScrollView,
-  SingleSelect,
   Text,
+  Dropdown,
+  Button,
+  TextInput,
+  Form,
 } from '../../components';
+import {Input} from '../../components/Form';
 import {
-  genderOptions,
+  disabilityOptions,
   education,
-  sexualityOptions,
+  genderOptions,
   parentsOptions,
   schoolOptions,
+  sexualityOptions,
 } from '../../constants';
 
 export const Onboarding = ({navigation}) => {
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <SafeArea>
       <ScrollView>
-        <Text type="title" color="#ee2844">
-          Tell us a bit more about yourself.
-        </Text>
+        <Text type="title">Tell us a bit more about yourself.</Text>
         <Image source={require('../../assets/images/tell-us.png')}></Image>
-        <SingleSelect
-          title="What is your current education level?"
-          data={education}
-        />
-        <SingleSelect title="What is your gender?" data={genderOptions} />
-        <SingleSelect title="What is your sexuality?" data={sexualityOptions} />
-        <SingleSelect
-          title="Did either of you parents attend university?"
-          data={parentsOptions}
-        />
-        <InputField label={'If other, specify your sexuality'} />
-        <SingleSelect
-          title="Did you attend public or private school?"
-          data={schoolOptions}
-        />
-        <InputField label={'What post code did you grow up in?'} />
-        <SingleSelect
-          title="Do you consider yourself to have a disability? (please select one option only)"
-          data={schoolOptions}
-        />
-        <InputField label={'If other, specify your sexuality'} />
+        <Form onSubmit={onSubmit}>
+          <Dropdown
+            label="What is your current education level?"
+            data={education}
+            name="education"
+          />
+          <Dropdown
+            label="What is your gender?"
+            data={genderOptions}
+            name="gender"
+          />
+          <Dropdown
+            label="What is your sexuality?"
+            data={sexualityOptions}
+            name="sexuality"
+          />
+          <TextInput
+            placeholder="If other, specify your sexuality"
+            name="otherSex"
+          />
+          <Dropdown
+            label="Did either of you parents attend university?"
+            data={parentsOptions}
+            name="parents"
+          />
+          <Dropdown
+            label="Did you attend public or private school?"
+            data={schoolOptions}
+            name="school"
+          />
+          <TextInput
+            placeholder="What post code did you grow up in?"
+            name="postcode"
+          />
+          <Dropdown
+            label="Do you consider yourself to have a disability? (please select one option only)"
+            data={disabilityOptions}
+            name="hasDisability"
+          />
+          <TextInput
+            placeholder="If yes, specify what disability"
+            name="disability"
+          />
+        </Form>
       </ScrollView>
     </SafeArea>
   );
