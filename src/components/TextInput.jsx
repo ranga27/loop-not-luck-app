@@ -7,10 +7,13 @@ const TextInputBase = styled.TextInput`
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px;
+  // line-height: 40px;
   border-bottom-width: 1px;
   border-color: 'rgb(138, 154, 167)';
-  margin: 0px 0px 16px;
+  margin: 10px 0px 30px;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  
 `;
 
 export const TextInput = ({control, name, ...rest}) => {

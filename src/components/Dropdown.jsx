@@ -1,34 +1,40 @@
 import React from 'react';
 import {Controller} from 'react-hook-form';
-import {StyleSheet, Dimensions} from 'react-native';
-import {Title} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
 import {Dropdown as DD} from 'sharingan-rn-modal-dropdown';
 import {Text} from '.';
+//TODO replace paper theme with global theme
 import {theme} from '../constants/theme';
 import {ErrorMessage} from './ErrorMessage';
+import styled from 'styled-components/native';
 
-const {width, height} = Dimensions.get('screen');
+const DropDownBase = styled(DD)`
+  font-family: ZonaPro-Regular;
+  }
+`;
 
 //TODO: style with styled components
-//TODO: Implement onChange
 export const Dropdown = ({label, control, data, name, error, ...rest}) => {
   return (
     <>
-      <Text type="label">{label}</Text>
+      <View style={{marginLeft: 10}}>
+        <Text type="label">{label}</Text>
+      </View>
       <Controller
         control={control}
         render={({field: {onChange, value}}) => (
-          <DD
+          <DropDownBase
+            label=""
             removeLabel
+            disableSelectionTick
             textInputPlaceholder="Select Option"
             data={data}
             onChange={(value) => onChange(value)}
             value={value}
             itemTextStyle={styles.itemTextStyle}
-            textInputStyle={styles.textInputStyle}
-            {...rest}
-            mainContainerStyle={styles.mainContainerStyle}
             selectedItemTextStyle={styles.selectedItemTextStyle}
+            {...rest}
+            paperTheme={theme}
           />
         )}
         name={name}
@@ -42,11 +48,8 @@ const styles = StyleSheet.create({
   itemTextStyle: {
     fontFamily: theme.fonts.regular.fontFamily,
   },
-  textInputStyle: {
-    // height: 40,
-    fontFamily: theme.fonts.regular.fontFamily,
-  },
   selectedItemTextStyle: {
     color: '#ee2844',
+    fontFamily: theme.fonts.regular.fontFamily,
   },
 });
