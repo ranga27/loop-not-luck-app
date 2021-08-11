@@ -2,20 +2,22 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import {View} from 'react-native';
 import {Button, Dropdown, TextInput} from '.';
-import {sexualityOptions} from '../constants';
+const KeysToComponentMap = {
+  dropdown: Dropdown,
+  input: TextInput,
+};
 export const Form = ({defaultValues, children, onSubmit}) => {
   const {handleSubmit, control} = useForm({defaultValues});
-
   return (
     <View>
       {Array.isArray(children)
         ? children.map((child) => {
-            return child.props.name
-              ? React.createElement(child.type, {
+            return child.name
+              ? React.createElement(KeysToComponentMap[child.component], {
                   ...{
-                    ...child.props,
+                    ...child,
                     control,
-                    key: child.props.name,
+                    key: child.name,
                   },
                 })
               : child;
@@ -31,4 +33,3 @@ export const Form = ({defaultValues, children, onSubmit}) => {
     </View>
   );
 };
-
