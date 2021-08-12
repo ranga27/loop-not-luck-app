@@ -1,10 +1,12 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import {View} from 'react-native';
-import {Button, Dropdown, TextInput} from '.';
+import {Button, Dropdown, Image, Text, TextInput} from '.';
 const KeysToComponentMap = {
   dropdown: Dropdown,
   input: TextInput,
+  text: Text,
+  image: Image,
 };
 export const Form = ({defaultValues, children, onSubmit}) => {
   const {handleSubmit, control} = useForm({defaultValues});

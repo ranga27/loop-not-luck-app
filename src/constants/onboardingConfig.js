@@ -1,5 +1,16 @@
 export const onboardingConfig = [
   {
+    name: 'title',
+    component: 'text',
+    type: 'title',
+    children: 'Tell us a bit more about yourself',
+  },
+  {
+    name: 'image',
+    component: 'image',
+    source: require('../assets/images/tell-us.png'),
+  },
+  {
     name: 'education',
     component: 'dropdown',
     label: 'What is your current education level?',

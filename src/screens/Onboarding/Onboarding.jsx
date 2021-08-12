@@ -5,11 +5,10 @@ export const Onboarding = ({navigation}) => {
   const onSubmit = (data) => {
     console.log(data);
   };
+  //TODO: Render SafeArea & ScrollView at App level & move out from components
   return (
     <SafeArea>
       <ScrollView>
-        <Text type="title">Tell us a bit more about yourself.</Text>
-        <Image source={require('../../assets/images/tell-us.png')}></Image>
         <Form onSubmit={onSubmit}>{onboardingConfig}</Form>
       </ScrollView>
     </SafeArea>
