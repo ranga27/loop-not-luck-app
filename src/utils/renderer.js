@@ -16,17 +16,19 @@ const KeysToComponentMap = {
   screen: ScreenContainer,
 };
 
-export const renderer = ({children}) => {
-  Array.isArray(children)
-    ? children.map((child) => {
-        return child.name
-          ? React.createElement(KeysToComponentMap[child.component], {
-              ...{
-                ...child,
-                key: child.name,
-              },
-            })
-          : child;
-      })
-    : children;
+export const renderer = (config) => {
+  console.log(config.children);
+  return React.createElement(
+    KeysToComponentMap[config.component],
+    {...config, key: config.name},
+    config.children &&
+      (typeof config.children === 'string'
+        ? config.children
+        : config.children.map((child) => renderer(child))),
+  );
+};
+
+const render = (child) => {
+  console.log(child);
+  return React.createElement(KeysToComponentMap[child.component], null, null);
 };
