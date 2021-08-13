@@ -7,10 +7,8 @@ export const Onboarding = ({navigation}) => {
   };
   //TODO: Render SafeArea & ScrollView at App level & move out from components
   return (
-    <SafeArea>
-      <ScrollView>
-        <Form onSubmit={onSubmit}>{onboardingConfig}</Form>
-      </ScrollView>
-    </SafeArea>
+    <>
+      <Form onSubmit={onSubmit}>{onboardingConfig}</Form>
+    </>
   );
 };

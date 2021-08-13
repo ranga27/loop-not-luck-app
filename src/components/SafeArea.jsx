@@ -20,6 +20,6 @@ export const SafeArea = ({type, children, ...rest}) => {
     case 'light':
       return <LightSafeAreaView {...rest}>{children}</LightSafeAreaView>;
     default:
-      return <SafeAreaViewBase {...rest}>{children}</SafeAreaViewBase>;
+      return <LightSafeAreaView {...rest}>{children}</LightSafeAreaView>;
   }
 };

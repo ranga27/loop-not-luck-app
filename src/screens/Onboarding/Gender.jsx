@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {RadioButton, Text, IconButton} from 'react-native-paper';
-import {genderOptions} from '../../constants/genderOptions';
 import {useSelector} from 'react-redux';
 import useValueChange from '../../hooks/useValueChange';
 import {ErrorMessage, InputField} from '../../components';
@@ -21,8 +20,7 @@ export const Gender = ({navigation}) => {
     } catch (error) {
       actions.setErrors(error.message);
       actions.setSubmitting(false);
-            crashlytics().recordError(error);
-
+      crashlytics().recordError(error);
     }
   };
   return (
@@ -41,15 +39,7 @@ export const Gender = ({navigation}) => {
               navigation.navigate('BirthDate');
             }
           }}
-          value={selection}>
-          {genderOptions.map((child, index) => (
-            <RadioButton.Item
-              key={index}
-              label={child.label}
-              value={child.value}
-            />
-          ))}
-        </RadioButton.Group>
+          value={selection}></RadioButton.Group>
       </View>
       <Formik
         initialValues={{gender: ''}}

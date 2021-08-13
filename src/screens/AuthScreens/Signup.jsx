@@ -30,67 +30,65 @@ export const Signup = ({navigation}) => {
   };
 
   return (
-    <SafeArea>
-      <ScrollView>
-        <Image source={require('../../assets/images/logo-white.png')} />
-        <Formik
-          initialValues={{
-            firstName: '',
-            email: '',
-            password: '',
-          }}
-          onSubmit={(values, actions) => handleFormSubmit(values, actions)}
-          validationSchema={signupSchema}>
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            values,
-            errors,
-            isValid,
-            touched,
-            isSubmitting,
-          }) => (
-            <>
-              <Text type="title" color="#000000">
-                Fill in your details below to register for access
-              </Text>
-              <InputField
-                label="First Name"
-                onChangeText={handleChange('firstName')}
-                onBlur={handleBlur('firstName')}
-                value={values.firstName}
-                errorValue={touched.firstName && errors.firstName}
-              />
-              <InputField
-                label="Email"
-                autoCapitalize="none"
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                value={values.email}
-                errorValue={touched.email && errors.email}
-              />
-              <InputField
-                label="Password"
-                onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
-                value={values.password}
-                secureTextEntry={true}
-                errorValue={touched.password && errors.password}
-              />
-              <ErrorMessage errorValue={errors.auth} />
-              <Button
-                title="Submit"
-                onPress={handleSubmit}
-                disabled={!isValid || isSubmitting}
-                loading={isSubmitting}
-                bgColor="#ffff"
-                txtColor="#ee2844"
-              />
-            </>
-          )}
-        </Formik>
-      </ScrollView>
-    </SafeArea>
+    <>
+      <Image source={require('../../assets/images/logo-white.png')} />
+      <Formik
+        initialValues={{
+          firstName: '',
+          email: '',
+          password: '',
+        }}
+        onSubmit={(values, actions) => handleFormSubmit(values, actions)}
+        validationSchema={signupSchema}>
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          isValid,
+          touched,
+          isSubmitting,
+        }) => (
+          <>
+            <Text type="title" color="#000000">
+              Fill in your details below to register for access
+            </Text>
+            <InputField
+              label="First Name"
+              onChangeText={handleChange('firstName')}
+              onBlur={handleBlur('firstName')}
+              value={values.firstName}
+              errorValue={touched.firstName && errors.firstName}
+            />
+            <InputField
+              label="Email"
+              autoCapitalize="none"
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+              errorValue={touched.email && errors.email}
+            />
+            <InputField
+              label="Password"
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              secureTextEntry={true}
+              errorValue={touched.password && errors.password}
+            />
+            <ErrorMessage errorValue={errors.auth} />
+            <Button
+              title="Submit"
+              onPress={handleSubmit}
+              disabled={!isValid || isSubmitting}
+              loading={isSubmitting}
+              bgColor="#ffff"
+              txtColor="#ee2844"
+            />
+          </>
+        )}
+      </Formik>
+    </>
   );
 };

@@ -5,7 +5,7 @@ import {theme} from '../constants';
 import {configureStore, persistor} from '../store/configureStore';
 import {Provider as ReduxProvider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 const store = configureStore();
 
 export const Providers = () => {
@@ -13,7 +13,9 @@ export const Providers = () => {
     <PaperProvider theme={theme}>
       <ReduxProvider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Routes />
+          <SafeAreaProvider>
+            <Routes />
+          </SafeAreaProvider>
         </PersistGate>
       </ReduxProvider>
     </PaperProvider>

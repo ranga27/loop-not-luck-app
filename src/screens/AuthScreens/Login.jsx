@@ -64,66 +64,64 @@ export const Login = ({navigation}) => {
   });
 
   return (
-    <SafeArea>
-      <ScrollView>
-        <Image source={require('../../assets/images/logo-white-no-loop.png')} />
+    <>
+      <Image source={require('../../assets/images/logo-white-no-loop.png')} />
 
-        <Formik
-          initialValues={{email: '', password: ''}}
-          onSubmit={(values, actions) => handleFormSubmit(values, actions)}
-          validationSchema={loginSchema}>
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            values,
-            errors,
-            isValid,
-            touched,
-            isSubmitting,
-          }) => (
-            <>
-              <InputField
-                label="Email"
-                autoCapitalize="none"
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                value={values.email}
-              />
-              <ErrorMessage errorValue={touched.email && errors.email} />
+      <Formik
+        initialValues={{email: '', password: ''}}
+        onSubmit={(values, actions) => handleFormSubmit(values, actions)}
+        validationSchema={loginSchema}>
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          isValid,
+          touched,
+          isSubmitting,
+        }) => (
+          <>
+            <InputField
+              label="Email"
+              autoCapitalize="none"
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+            />
+            <ErrorMessage errorValue={touched.email && errors.email} />
 
-              <InputField
-                label="Password"
-                onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
-                value={values.password}
-                secureTextEntry={true}
-              />
-              <ErrorMessage errorValue={touched.password && errors.password} />
-              <ErrorMessage errorValue={errors.auth} />
-              <Button
-                title="Login"
-                modeValue="contained"
-                labelStyle={styles.loginButtonLabel}
-                onPress={handleSubmit}
-                disabled={!isValid || isSubmitting}
-                loading={isSubmitting}
-              />
-            </>
-          )}
-        </Formik>
-        <Button
-          title="Forgot password?"
-          onPress={() => navigation.navigate('Forgot')}
-          bgColor={'#2fb3bc'}
-        />
-        <Button
-          title="Register new account"
-          onPress={() => navigation.navigate('Signup')}
-          bgColor={'#ee2844'}
-        />
-      </ScrollView>
-    </SafeArea>
+            <InputField
+              label="Password"
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              secureTextEntry={true}
+            />
+            <ErrorMessage errorValue={touched.password && errors.password} />
+            <ErrorMessage errorValue={errors.auth} />
+            <Button
+              title="Login"
+              modeValue="contained"
+              labelStyle={styles.loginButtonLabel}
+              onPress={handleSubmit}
+              disabled={!isValid || isSubmitting}
+              loading={isSubmitting}
+            />
+          </>
+        )}
+      </Formik>
+      <Button
+        title="Forgot password?"
+        onPress={() => navigation.navigate('Forgot')}
+        bgColor={'#2fb3bc'}
+      />
+      <Button
+        title="Register new account"
+        onPress={() => navigation.navigate('Signup')}
+        bgColor={'#ee2844'}
+      />
+    </>
   );
 };
 
