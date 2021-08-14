@@ -17,7 +17,6 @@ const KeysToComponentMap = {
 };
 
 export const renderer = (config) => {
-  console.log(config.children);
   return React.createElement(
     KeysToComponentMap[config.component],
     {...config, key: config.name},

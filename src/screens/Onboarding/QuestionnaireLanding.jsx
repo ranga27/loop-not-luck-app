@@ -1,8 +1,7 @@
 import React from 'react';
-import {ScreenContainer, Text} from '../../components';
 import {questionLandingConfig} from '../../constants';
 import {renderer} from '../../utils';
 
-export const QuestionnaireLanding = ({navigation}) => {
+export const QuestionnaireLanding = () => {
   return <>{questionLandingConfig.map((config) => renderer(config))}</>;
 };

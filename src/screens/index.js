@@ -35,3 +35,5 @@ export {Bookmarked} from './Bookmarked';
 export {Applied} from './Applied';
 export {AppliedDetails} from './AppliedDetails';
 export {QuestionnaireLanding} from './Onboarding/QuestionnaireLanding';
+export {StageTwoEnd} from './Onboarding/StageTwoEnd';
+export {Reject} from './Onboarding/Reject';

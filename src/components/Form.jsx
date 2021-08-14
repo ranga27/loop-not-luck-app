@@ -1,6 +1,5 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
-import {View} from 'react-native';
 import {Button, Dropdown, Image, Text, TextInput} from '.';
 const KeysToComponentMap = {
   dropdown: Dropdown,
@@ -11,7 +10,7 @@ const KeysToComponentMap = {
 export const Form = ({defaultValues, children, onSubmit}) => {
   const {handleSubmit, control} = useForm({defaultValues});
   return (
-    <View>
+    <>
       {Array.isArray(children)
         ? children.map((child) => {
             return child.name
@@ -32,6 +31,6 @@ export const Form = ({defaultValues, children, onSubmit}) => {
         bgColor="white"
         onPress={handleSubmit(onSubmit)}
       />
-    </View>
+    </>
   );
 };

@@ -17,7 +17,7 @@ const TitleText = styled(TextBase)`
 const BodyText = styled(TextBase)`
   font-size: 14px;
   font-weight: 700;
-  color: #ffffff;
+  color: ${(props) => props.color || '#ffff'};
   text-align: auto;
   line-height: 24px;
 `;
@@ -39,7 +39,11 @@ export const Text = ({type, children, color, ...rest}) => {
         </TitleText>
       );
     case 'body':
-      return <BodyText {...rest}>{children}</BodyText>;
+      return (
+        <BodyText color={color} {...rest}>
+          {children}
+        </BodyText>
+      );
     case 'label':
       return <LabelText {...rest}>{children}</LabelText>;
     default:

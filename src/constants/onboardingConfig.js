@@ -30,7 +30,7 @@ export const onboardingConfig = [
   {
     name: 'gender',
     component: 'dropdown',
-    label: 'What is your current education level?',
+    label: 'What is your gender?',
     data: [
       {label: 'Female', value: 'Female'},
       {label: 'Male', value: 'Male'},

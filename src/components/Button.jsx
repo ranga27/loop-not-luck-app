@@ -1,7 +1,8 @@
 import React from 'react';
 import {Dimensions} from 'react-native';
 import styled from 'styled-components/native';
-const {width, height} = Dimensions.get('screen');
+const {width} = Dimensions.get('screen');
+import {useNavigation} from '@react-navigation/native';
 
 //TODO: Implement global theme
 //TODO: Implement pressed effect if using pressable
@@ -25,8 +26,14 @@ const ButtonText = styled.Text`
   font-family: ZonaPro-Regular;
   color: ${(props) => props.txtColor || '#ffffff'};
 `;
-export const Button = ({onPress, bgColor, title, txtColor, ...rest}) => (
-  <ButtonContainer onPress={onPress} bgColor={bgColor} {...rest}>
-    <ButtonText txtColor={txtColor}>{title}</ButtonText>
-  </ButtonContainer>
-);
+export const Button = ({onPress, bgColor, title, txtColor, goTo, ...rest}) => {
+  const navigation = useNavigation();
+  return (
+    <ButtonContainer
+      onPress={goTo ? () => navigation.navigate(goTo) : onPress}
+      bgColor={bgColor}
+      {...rest}>
+      <ButtonText txtColor={txtColor}>{title}</ButtonText>
+    </ButtonContainer>
+  );
+};
