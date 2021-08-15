@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 
 const TextBase = styled.Text`
   font-family: ZonaPro-Regular;
+  color: red;
 `;
 
 const TitleText = styled(TextBase)`

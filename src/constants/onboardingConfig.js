@@ -31,6 +31,8 @@ export const onboardingConfig = [
     name: 'gender',
     component: 'dropdown',
     label: 'What is your gender?',
+    required: true,
+    message: 'This is required',
     data: [
       {label: 'Female', value: 'Female'},
       {label: 'Male', value: 'Male'},
@@ -44,6 +46,8 @@ export const onboardingConfig = [
     name: 'sexuality',
     component: 'dropdown',
     label: 'What is your sexuality?',
+    required: true,
+    message: 'This is required',
     data: [
       {label: 'Heterosexual', value: 'Heterosexual'},
       {label: 'Bisexual', value: 'Bisexual'},
@@ -63,6 +67,8 @@ export const onboardingConfig = [
     name: 'parents',
     component: 'dropdown',
     label: 'Did either of you parents attend university?',
+    required: true,
+    message: 'This is required',
     data: [
       {label: 'Yes, both', value: 'Yes, both'},
       {label: 'Yes, one', value: 'Yes, one'},
@@ -74,6 +80,8 @@ export const onboardingConfig = [
     name: 'school',
     component: 'dropdown',
     label: 'Did you attend public or private school?',
+    required: true,
+    message: 'This is required',
     data: [
       {label: 'Public School', value: 'Public School'},
       {label: 'Private School', value: 'Private School'},
@@ -90,6 +98,8 @@ export const onboardingConfig = [
   {
     name: 'hasDisability',
     component: 'dropdown',
+    required: true,
+    message: 'This is required',
     label:
       'Do you consider yourself to have a disability? (please select one option only)',
     data: [

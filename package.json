@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "pods": "cd ios/ && pod install",
     "beta": "cd ios/ && fastlane beta",
-    "update": "yarn upgrade --latest && cd ios/ && pod update"
+    "update": "yarn upgrade --latest && cd ios/ && pod update",
+    "postinstall": "rndebugger-open"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.5",
@@ -55,7 +56,7 @@
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "sharingan-rn-modal-dropdown": "^1.3.0",
+    "sharingan-rn-modal-dropdown": "^1.4.0",
     "styled-components": "^5.3.0",
     "yup": "^0.32.8"
   },
@@ -72,6 +73,7 @@
     "jest": "^27.0.6",
     "metro-react-native-babel-preset": "^0.66.2",
     "react-devtools": "^4.15.0",
+    "react-native-debugger-open": "^0.3.25",
     "react-test-renderer": "^17.0.2",
     "reactotron-react-native": "^5.0.0",
     "reactotron-redux": "^3.1.3"

@@ -7,8 +7,13 @@ const KeysToComponentMap = {
   text: Text,
   image: Image,
 };
-export const Form = ({defaultValues, children, onSubmit}) => {
-  const {handleSubmit, control} = useForm({defaultValues});
+export const Form = ({children, onSubmit}) => {
+  const {
+    handleSubmit,
+    control,
+    formState: {errors},
+  } = useForm();
+  console.log(errors);
   return (
     <>
       {Array.isArray(children)
@@ -18,6 +23,7 @@ export const Form = ({defaultValues, children, onSubmit}) => {
                   ...{
                     ...child,
                     control,
+                    errors,
                     key: child.name,
                   },
                 })

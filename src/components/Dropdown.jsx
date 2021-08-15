@@ -5,16 +5,25 @@ import {Dropdown as DD} from 'sharingan-rn-modal-dropdown';
 import {Text} from '.';
 //TODO replace paper theme with global theme
 import {theme} from '../constants/theme';
-import {ErrorMessage} from './ErrorMessage';
 import styled from 'styled-components/native';
 
 const DropDownBase = styled(DD)`
   font-family: ZonaPro-Regular;
+  background-color: white;
   }
 `;
 
 //TODO: style with styled components
-export const Dropdown = ({label, control, data, name, error, ...rest}) => {
+export const Dropdown = ({
+  label,
+  control,
+  data,
+  name,
+  errors,
+  required,
+  message,
+  ...rest
+}) => {
   return (
     <>
       <View style={{marginLeft: 10}}>
@@ -22,6 +31,7 @@ export const Dropdown = ({label, control, data, name, error, ...rest}) => {
       </View>
       <Controller
         control={control}
+        rules={{required: {value: required, message: message}}}
         render={({field: {onChange, value}}) => (
           <DropDownBase
             label=""
@@ -31,6 +41,7 @@ export const Dropdown = ({label, control, data, name, error, ...rest}) => {
             data={data}
             onChange={(value) => onChange(value)}
             value={value}
+            textInputStyle={{backgroundColor: 'white'}}
             itemTextStyle={styles.itemTextStyle}
             selectedItemTextStyle={styles.selectedItemTextStyle}
             {...rest}
@@ -39,7 +50,7 @@ export const Dropdown = ({label, control, data, name, error, ...rest}) => {
         )}
         name={name}
       />
-      <ErrorMessage errorValue={error} />
+      <Text>{errors[name]?.message}</Text>
     </>
   );
 };
@@ -50,6 +61,5 @@ const styles = StyleSheet.create({
   },
   selectedItemTextStyle: {
     color: '#ee2844',
-    fontFamily: theme.fonts.regular.fontFamily,
   },
 });

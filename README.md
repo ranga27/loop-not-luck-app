@@ -6,10 +6,6 @@ yarn install
 yarn ios
 yarn beta
 
-Configs
-change the file: /sharingan-rn-modal-dropdown/src/constants.ts
-unselected: 'white'
-
 TODO
 animation, screen tranistions
 use redux for getting the opps list
